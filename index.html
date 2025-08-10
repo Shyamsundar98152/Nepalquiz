@@ -145,7 +145,7 @@
         <div id="mobile-menu" class="md:hidden mt-4 text-center hidden bg-nq-blue-primary/90 rounded-b-lg py-2">
             <ul class="flex flex-col space-y-3 font-medium">
                 <li><a href="#hero-section" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Home</a></li>
-                <li><a href="quiz-categories-section" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Quizzes</a></li>
+                <li><a href="#quiz-categories-section" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Quizzes</a></li>
                 <li><a href="#core-offerings-section" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Offerings</a></li>
                 <li><a href="#footer-section" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Contact</a></li>
                 <li>
@@ -261,23 +261,7 @@
     </footer>
 
     <script>
-        // --- Helper Function for Mock Backend Data ---
-
-        /**
-         * Simulates fetching quiz categories from a backend API.
-         * In a real application, this would be an actual fetch request to your server.
-         * @returns {Promise<Array<Object>>} A promise that resolves with an array of quiz categories.
-         */
-        async function fetchQuizCategories() {
-            const mockCategories = [
-                { id: 'academic', name: 'Academic Quizzes', icon: '📚', description: '(CEE/NEET/SEE)' },
-                { id: 'loksewa', name: 'Loksewa Prep', icon: '🏛️', description: 'Prepare for government exams' },
-                { id: 'nepal-gk', name: 'Nepal GK & Current Affairs', icon: '🇳🇵', description: 'Stay updated on Nepal' },
-                { id: 'fun', name: 'Fun Quizzes', icon: '🎉', description: 'Test your general knowledge' },
-            ];
-            return new Promise(resolve => setTimeout(() => resolve(mockCategories), 300)); // Simulate a small network delay
-        }
-
+       
         // --- Core JavaScript Logic for Interactions and Animations ---
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -322,7 +306,7 @@
                     data.forEach(category => {
                         const categoryCard = document.createElement('a');
                         // Link to the main quiz categories section
-                        categoryCard.href = '#quiz-categories-section';
+                        categoryCard.href = 'quiz-categories-section';
                         // Apply Tailwind classes for styling and hover effects
                         categoryCard.className = 'card-hover-zoom block bg-nq-background-soft-dark p-6 rounded-2xl shadow-md text-center border border-nq-blue-primary';
                         categoryCard.innerHTML = `
@@ -367,5 +351,6 @@
     </script>
 </body>
 </html>
+
 
 
