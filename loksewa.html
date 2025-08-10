@@ -466,7 +466,15 @@
 
         // Firebase configuration (provided by Canvas environment or default)
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
-           
+         
+  apiKey: "AIzaSyCNSeFi6ahh4y2JmG3euiCy6kti1lHYF0M",
+  authDomain: "nepalquiz-loksewa.firebaseapp.com",
+  projectId: "nepalquiz-loksewa",
+  storageBucket: "nepalquiz-loksewa.firebasestorage.app",
+  messagingSenderId: "852593538899",
+  appId: "1:852593538899:web:4361fe7c6d3ae1a8c093a6"
+
+ 
         };
 
         // Initial authentication token (provided by Canvas environment or null)
@@ -477,7 +485,7 @@
         /* =========================
            CONFIG (Gemini & Firestore Paths)
            ========================= */
-        const GEMINI_API_KEY = ""; // Leave empty for Canvas to provide at runtime
+        const GEMINI_API_KEY = "AIzaSyB_00le4-5PPBhlD71wFYznbFl4cXURDmI"; // Leave empty for Canvas to provide at runtime
         const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${GEMINI_API_KEY}`;
         const LOCAL_STORAGE_KEY_RESULTS = "nepalQuizLoksewaResults";
         const LOCAL_STORAGE_KEY_NAME = "nepalQuizLoksewaParticipantName";
