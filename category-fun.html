@@ -351,6 +351,8 @@
         }
 
         /* Styles for the new tab navigation */
+        /* Removed as there's only one page now, but keeping for reference if more pages are added */
+        /*
         .tab-button {
             padding: 10px 20px;
             background-color: var(--color-blue-primary);
@@ -370,6 +372,7 @@
         .tab-content {
             padding-top: 1rem;
         }
+        */
     </style>
 </head>
 <body class="font-poppins antialiased">
@@ -387,11 +390,11 @@
 
             <!-- Navigation Links (Desktop) -->
             <ul class="hidden md:flex space-x-8 font-semibold">
-                <li><a href="index.html" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Home</a></li>
-                <li><a href="category-nepal-gk.html" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Quizzes</a></li>
+                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Home</a></li>
+                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Quizzes</a></li>
                 <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Leaderboard</a></li>
-                <li><a href="about-us.html" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">About</a></li>
-                <li><a href="contact.html" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Contact</a></li>
+                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">About</a></li>
+                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Contact</a></li>
             </ul>
 
             <!-- Language Toggle (Placeholder) -->
@@ -419,16 +422,13 @@
         </div>
     </header>
 
-    <!-- Main Content Area for GK Nepal & Current Affairs Page -->
+    <!-- Main Content Area for Fun and Child Quiz Page -->
     <main class="container mx-auto px-6 py-16">
 
-        <!-- Tab Navigation -->
-        <div class="flex justify-center mb-8">
-            <button id="tab-fun-child" class="tab-button active" data-page="fun-child">Fun and Child Quiz</button>
-           
-        </div>
+        <!-- No Tab Navigation - Only one section -->
+        <!-- Removed tab navigation buttons -->
 
-        <!-- Fun and Child Quiz Section (formerly GK Nepal & Current Affairs) -->
+        <!-- Fun and Child Quiz Section -->
         <section id="fun-child-quiz-chapter-selection-area" class="bg-nq-background-soft-dark p-8 rounded-2xl shadow-lg border border-nq-blue-primary reveal-item tab-content">
             <h1 class="text-4xl font-extrabold text-center mb-8 text-nq-accent-blue">Fun and Child Quiz</h1>
             <p class="text-lg mb-8 text-nq-text-dark leading-relaxed text-center">
@@ -615,10 +615,6 @@
             </div>
         </section>
 
-       
-
-           
-
         <!-- Quiz Area - Initially Hidden -->
         <section id="quiz-full-area" class="quiz-card hidden mt-8 reveal-item">
             <h2 class="text-center mb-4 text-nq-accent-blue">Quiz Time!</h2>
@@ -676,10 +672,10 @@
             <div>
                 <h4 class="text-xl font-semibold mb-4 text-nq-accent-blue">Quick Links</h4>
                 <ul class="space-y-2 text-sm">
-                    <li><a href="index.html" class="hover:text-nq-accent-blue transition duration-300">Home</a></li>
-                    <li><a href="category-nepal-gk.html" class="hover:text-nq-accent-blue transition duration-300">Quizzes</a></li>
+                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Home</a></li>
+                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Quizzes</a></li>
                     <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Leaderboard</a></li>
-                    <li><a href="about-us.html" class="hover:text-nq-accent-blue transition duration-300">About Us</a></li>
+                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">About Us</a></li>
                     <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Contact</a></li>
                 </ul>
             </div>
@@ -743,9 +739,8 @@
         const LOCAL_STORAGE_KEY_RESULTS = "nepalQuizGkResults"; // Keep this general
         const LOCAL_STORAGE_KEY_NAME = "nepalQuizGkParticipantName";
 
-        // Firestore collection paths for public quiz data (chapter-specific MCQs)
-        // Ensure this path uses the dynamic currentAppId for proper isolation
-        const QUIZZES_BASE_COLLECTION_PATH = `artifacts/${currentAppId}/public/data/quizzes`; // Base path for all quizzes
+        // Firestore collection path for quizzes (since there's only one type now)
+        const QUIZZES_COLLECTION_PATH = `artifacts/${currentAppId}/public/data/fun_child_quizzes`; // Adjusted for single page
 
         /* =========================
            GLOBAL QUIZ STATE
@@ -754,7 +749,6 @@
         let currentQuestionIndex = 0;
         let questionTimer = null;
         let participantName = "";
-        let currentSelectedPage = 'fun-child'; // Tracks the currently active page ('fun-child' or 'loksewa')
         let currentSelectedChapter = null; // Stores the chapter name for the active quiz
         let currentSelectedSubTopic = null; // Stores the sub-topic for the active quiz
 
@@ -822,14 +816,13 @@
                     year: 'numeric', month: 'short', day: 'numeric',
                     hour: '2-digit', minute: '2-digit', hour12: true
                 });
-                // Add page type to history display
-                const pageTypeDisplay = r.pageType === 'loksewa' ? 'Loksewa' : 'Fun & Child'; // Changed from 'GK'
+                // No need for page type distinction now
                 return `
                     <div class="participant flex justify-between items-center p-3 rounded-lg bg-nq-blue-primary border border-nq-accent-blue mb-2">
                         <div>
                             <strong class="text-nq-accent-blue">${escapeHtml(r.name || 'Anonymous')}</strong><br>
                             <span class="text-nq-text-dark text-sm">
-                                ${pageTypeDisplay} - Chapter: ${escapeHtml(r.chapter)} ${r.subTopic ? `(${escapeHtml(r.subTopic)})` : ''} on ${dateStr}
+                                Chapter: ${escapeHtml(r.chapter)} ${r.subTopic ? `(${escapeHtml(r.subTopic)})` : ''} on ${dateStr}
                             </span>
                         </div>
                         <div class="text-nq-text-light">${r.correct} / ${r.total} Correct (${r.skipped} skipped)</div>
@@ -866,9 +859,9 @@
            Firestore Functions
            ========================= */
 
-        // Helper to get a clean document ID for Firestore based on page, chapter, and sub-topic
-        function getQuizDocId(pageType, chapterName, subTopicName = null) {
-            let docId = `${pageType}_${chapterName.replace(/[^a-zA-Z0-9\s]/g, '').toLowerCase().replace(/\s+/g, '_')}`; // Sanitize chapter name
+        // Helper to get a clean document ID for Firestore based on chapter and sub-topic (no pageType needed)
+        function getQuizDocId(chapterName, subTopicName = null) {
+            let docId = `${chapterName.replace(/[^a-zA-Z0-9\s]/g, '').toLowerCase().replace(/\s+/g, '_')}`; // Sanitize chapter name
             if (subTopicName) {
                 docId += `_${subTopicName.replace(/[^a-zA-Z0-9\s]/g, '').toLowerCase().replace(/\s+/g, '_')}`; // Sanitize sub-topic name
             }
@@ -876,9 +869,9 @@
         }
 
 
-        async function getQuizFromFirestore(pageType, chapterName, subTopicName = null) {
+        async function getQuizFromFirestore(chapterName, subTopicName = null) { // Removed pageType
             const topicDisplay = subTopicName ? `${chapterName} - ${subTopicName}` : chapterName;
-            showMessage(`Checking for existing questions for "${topicDisplay}" on ${pageType} page...`);
+            showMessage(`Checking for existing questions for "${topicDisplay}"...`);
             try {
                 // Ensure db is initialized before trying to use it
                 if (!db) {
@@ -886,8 +879,8 @@
                     return null;
                 }
 
-                const docId = getQuizDocId(pageType, chapterName, subTopicName);
-                const docRef = doc(db, QUIZZES_BASE_COLLECTION_PATH, docId); // Use base path
+                const docId = getQuizDocId(chapterName, subTopicName);
+                const docRef = doc(db, QUIZZES_COLLECTION_PATH, docId); // Use single collection path
                 const docSnap = await getDoc(docRef);
 
                 if (docSnap.exists()) {
@@ -905,17 +898,16 @@
             }
         }
 
-        async function saveQuizToFirestore(pageType, chapterName, subTopicName, quizQuestions) {
+        async function saveQuizToFirestore(chapterName, subTopicName, quizQuestions) { // Removed pageType
             try {
                 // Ensure db is initialized before trying to use it
                 if (!db) {
                     console.error("Firestore DB not initialized.");
                     return;
                 }
-                const docId = getQuizDocId(pageType, chapterName, subTopicName);
-                const docRef = doc(db, QUIZZES_BASE_COLLECTION_PATH, docId); // Use base path
+                const docId = getQuizDocId(chapterName, subTopicName);
+                const docRef = doc(db, QUIZZES_COLLECTION_PATH, docId); // Use single collection path
                 await setDoc(docRef, {
-                    pageType: pageType, // Store page type
                     chapter: chapterName,
                     subTopic: subTopicName, // Save sub-topic as well
                     quizData: quizQuestions,
@@ -1172,17 +1164,15 @@ Return JSON array only. Do not include any other text or markdown outside the JS
            Main Quiz Flow Management
            ========================= */
 
-        async function generateAndRenderQuiz(pageType, chapterName, subTopicName = null) {
-            currentSelectedPage = pageType; // Set the current page
+        async function generateAndRenderQuiz(chapterName, subTopicName = null) { // Removed pageType
             currentSelectedChapter = chapterName; // Set the current chapter
             currentSelectedSubTopic = subTopicName; // Set the current sub-topic
 
             const topicDisplay = subTopicName ? `${chapterName} - ${subTopicName}` : chapterName;
-            const fullTopicDisplay = `${pageType === 'loksewa' ? 'Loksewa Exam Prep' : 'Fun & Child Quiz'}: ${topicDisplay}`; // Changed 'GK' to 'Fun & Child'
+            const fullTopicDisplay = `Fun & Child Quiz: ${topicDisplay}`; // Simplified as only one page type
 
             // Hide chapter selection, show quiz loading state
-            hide(el('fun-child-quiz-chapter-selection-area')); // Updated ID
-            hide(el('loksewa-chapter-selection-area'));
+            hide(el('fun-child-quiz-chapter-selection-area'));
             show(el('quiz-full-area'));
 
             el('quiz-chapter-info').innerText = `Loading quiz for: ${fullTopicDisplay}...`;
@@ -1195,7 +1185,7 @@ Return JSON array only. Do not include any other text or markdown outside the JS
 
 
             try {
-                let fetchedQuizData = await getQuizFromFirestore(pageType, chapterName, subTopicName);
+                let fetchedQuizData = await getQuizFromFirestore(chapterName, subTopicName); // Removed pageType
 
                 if (fetchedQuizData && fetchedQuizData.length > 0) {
                     quizData = fetchedQuizData.map(q => ({ ...q, answered: false, userAnswer: null, skipped: false }));
@@ -1207,7 +1197,7 @@ Return JSON array only. Do not include any other text or markdown outside the JS
                     fetchedQuizData = await generateMCQs(chapterName, subTopicName);
                     if (fetchedQuizData && fetchedQuizData.length > 0) {
                         // Save newly generated questions to Firestore for future use
-                        await saveQuizToFirestore(pageType, chapterName, subTopicName, fetchedQuizData);
+                        await saveQuizToFirestore(chapterName, subTopicName, fetchedQuizData); // Removed pageType
                         quizData = fetchedQuizData.map(q => ({ ...q, answered: false, userAnswer: null, skipped: false }));
                         currentQuestionIndex = 0;
                         el('quiz-chapter-info').innerText = `Quiz on: ${fullTopicDisplay}`;
@@ -1221,32 +1211,16 @@ Return JSON array only. Do not include any other text or markdown outside the JS
                 showMessage(`Failed to load quiz for "${fullTopicDisplay}": ${error.message || error}. Please try again.`);
                 // Return to chapter selection on error
                 hide(el('quiz-full-area'));
-                if (currentSelectedPage === 'fun-child') { // Updated ID
-                    show(el('fun-child-quiz-chapter-selection-area')); // Updated ID
-                } else {
-                    show(el('loksewa-chapter-selection-area'));
-                }
+                show(el('fun-child-quiz-chapter-selection-area')); // Only one selection area now
             }
         }
 
-        function showPage(pageId) {
-            hide(el('fun-child-quiz-chapter-selection-area')); // Updated ID
-            hide(el('loksewa-chapter-selection-area'));
+        // Simplified showPage since there's only one main content section now
+        function showPage() {
             hide(el('quiz-full-area'));
             hide(el('results-area'));
-
-            if (pageId === 'fun-child') { // Updated ID
-                show(el('fun-child-quiz-chapter-selection-area')); // Updated ID
-                el('tab-fun-child').classList.add('active'); // Updated ID
-                el('tab-loksewa').classList.remove('active');
-                currentSelectedPage = 'fun-child'; // Updated
-            } else if (pageId === 'loksewa') {
-                show(el('loksewa-chapter-selection-area'));
-                el('tab-loksewa').classList.add('active');
-                el('tab-fun-child').classList.remove('active'); // Updated ID
-                currentSelectedPage = 'loksewa';
-            }
-            renderLocalHistory(); // Re-render history if page context changes.
+            show(el('fun-child-quiz-chapter-selection-area'));
+            renderLocalHistory();
         }
 
 
@@ -1327,20 +1301,18 @@ Return JSON array only. Do not include any other text or markdown outside the JS
             startQuizChapterButtons.forEach(button => {
                 button.addEventListener('click', async () => {
                     const chapterName = button.dataset.chapterName;
-                    const pageType = button.dataset.page; // Get page type from data attribute
-                    await generateAndRenderQuiz(pageType, chapterName); // Pass pageType
+                    await generateAndRenderQuiz(chapterName); // Removed pageType
                 });
             });
 
-            // NEW: "Start Quiz" button click handlers for individual sub-topics
+            // "Start Quiz" button click handlers for individual sub-topics
             const startQuizSubtopicButtons = document.querySelectorAll('.start-quiz-subtopic-btn');
             startQuizSubtopicButtons.forEach(button => {
                 button.addEventListener('click', async (event) => {
                     event.stopPropagation(); // Prevent accordion from toggling when sub-topic button is clicked
                     const chapterName = button.dataset.chapterName;
                     const subTopicName = button.dataset.subtopic;
-                    const pageType = button.dataset.page; // Get page type from data attribute
-                    await generateAndRenderQuiz(pageType, chapterName, subTopicName); // Pass pageType
+                    await generateAndRenderQuiz(chapterName, subTopicName); // Removed pageType
                 });
             });
 
@@ -1355,11 +1327,7 @@ Return JSON array only. Do not include any other text or markdown outside the JS
                 // Return to chapter selection and clear quiz state
                 hide(el('quiz-full-area'));
                 hide(el('results-area'));
-                if (currentSelectedPage === 'fun-child') { // Updated ID
-                    show(el('fun-child-quiz-chapter-selection-area')); // Updated ID
-                } else {
-                    show(el('loksewa-chapter-selection-area'));
-                }
+                show(el('fun-child-quiz-chapter-selection-area')); // Only one selection area now
                 quizData = [];
                 currentQuestionIndex = 0;
                 currentSelectedChapter = null;
@@ -1371,7 +1339,6 @@ Return JSON array only. Do not include any other text or markdown outside the JS
             el('save-result-btn').onclick = async () => {
                 const result = {
                     name: getParticipantNameLocally() || 'Anonymous', // Use locally stored name
-                    pageType: currentSelectedPage, // Save the page type where the quiz was taken
                     chapter: currentSelectedChapter,
                     subTopic: currentSelectedSubTopic, // Save sub-topic in results
                     date: new Date().toISOString(),
@@ -1394,11 +1361,7 @@ Return JSON array only. Do not include any other text or markdown outside the JS
 
             // Initial render of local history and show default page
             renderLocalHistory();
-            showPage('fun-child'); // Default to Fun and Child Quiz page on load
-
-            // Tab button event listeners
-            el('tab-fun-child').addEventListener('click', () => showPage('fun-child')); // Updated ID
-            el('tab-loksewa').addEventListener('click', () => showPage('loksewa'));
+            showPage(); // No argument needed as there's only one page
         });
 
         /* =========================
