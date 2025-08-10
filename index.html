@@ -345,7 +345,7 @@
                 categoriesContainer.innerHTML = ''; // Clear any placeholders
                 data.forEach(category => {
                     const categoryCard = document.createElement('a');
-                    categoryCard.href = `#category-${category.id}`; // Link to specific category page/section
+                    categoryCard.href = `category-${category.id}`; // Link to specific category page/section
                     categoryCard.className = 'card-hover-zoom block bg-nq-background-soft-dark p-6 rounded-2xl shadow-md text-center border border-nq-blue-primary';
                     categoryCard.innerHTML = `
                         <div class="text-5xl mb-4 text-nq-accent-blue">${category.icon}</div>
@@ -429,4 +429,5 @@
     </script>
 </body>
 </html>
+
 
