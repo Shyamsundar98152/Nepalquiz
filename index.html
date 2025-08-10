@@ -1,356 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NepalQuiz – Play GK, CEE, NEET, and Loksewa Quizzes Online</title>
-    <meta name="description" content="NepalQuiz is Nepal’s ultimate quiz platform for CEE, NEET, Loksewa, GK, and fun quizzes. Play, learn, and compete with friends online.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NepalQuiz Homepage</title>
 
-    <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
-    <meta property="og:title" content="NepalQuiz – Play GK, CEE, NEET, and Loksewa Quizzes Online">
-    <meta property="og:description" content="NepalQuiz is Nepal’s ultimate quiz platform for CEE, NEET, Loksewa, GK, and fun quizzes. Play, learn, and compete with friends online;">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://nepalquiz.xyz/">
-    <meta property="og:image" content="https://placehold.co/1200x630/1A374D/4DC0B5?text=NepalQuiz"> <!-- Placeholder image updated for new theme -->
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/a2e0c6ad89.js" crossorigin="anonymous"></script>
 
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "EducationalOrganization",
-      "name": "NepalQuiz",
-      "url": "https://nepalquiz.xyz/",
-      "logo": "https://placehold.co/60x60/1A374D/4DC0B5?text=NQ",
-      "description": "Nepal's ultimate online quiz platform for academic, Loksewa, GK, and fun quizzes.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Virtual Platform",
-        "addressLocality": "Kathmandu",
-        "addressRegion": "Bagmati",
-        "addressCountry": "NP"
-      },
-      "sameAs": [
-        "https://www.facebook.com/nepalquiz",
-        "https://twitter.com/nepalquiz",
-        "https://www.instagram.com/nepalquiz"
-      ]
+<style>
+    /* New Sky Blue and White Light Theme Variables */
+    :root {
+        --nq-primary-blue: #60A5FA; /* A bright, medium sky blue */
+        --nq-background-light: #FFFFFF; /* Pure white background */
+        --nq-background-soft-light: #F0F4F8; /* Soft light gray for cards */
+        --nq-accent-blue: #2563EB; /* A deeper, vibrant blue for accents */
+        --nq-text-dark: #1F2937; /* Dark gray for primary text */
+        --nq-text-light: #6B7280; /* Lighter gray for secondary text */
+        --nq-shadow-color: rgba(0, 0, 0, 0.1); /* Subtle shadow for light theme */
     }
-    </script>
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Poppins (English) & Noto Sans Devanagari (Nepali) -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--nq-background-light); /* Use the new light background */
+        color: var(--nq-text-dark); /* Use the new dark text color */
+        margin: 0;
+        line-height: 1.6;
+        overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+    }
 
-    <style>
-        /* Define custom CSS variables for the color palette */
-        :root {
-            --color-blue-primary: #1A374D; /* Deep Blue for main sections */
-            --color-black-primary: #0A0A0A; /* Near Black for backgrounds/text */
-            --color-accent-blue: #4DC0B5; /* Vibrant Teal/Aqua for accents and highlights */
-            --color-text-light: #F8F8F8; /* Off-white for light text on dark backgrounds */
-            --color-text-dark: #A0AEC0; /* Lighter gray for secondary text on dark backgrounds */
-            --color-background-soft-dark: #1E3A4D; /* Slightly lighter dark background for contrast */
-        }
+    header {
+        background-color: var(--nq-primary-blue); /* Header background with primary blue */
+        padding: 1rem 1.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 10px var(--nq-shadow-color); /* Add a subtle shadow to the header */
+    }
 
-        /* Apply custom fonts */
-        .font-poppins { font-family: 'Poppins', sans-serif; }
-        .font-devanagari { font-family: 'Noto Sans Devanagari', sans-serif; }
+    header .logo {
+        font-weight: 800;
+        font-size: 1.8rem; /* Slightly larger logo */
+        color: var(--nq-background-light); /* White logo on blue background */
+        letter-spacing: 0.5px;
+    }
 
-        /* Assign Tailwind utility classes to custom CSS variables for easy use */
-        .bg-nq-blue-primary { background-color: var(--color-blue-primary); }
-        .text-nq-blue-primary { color: var(--color-blue-primary); }
-        .bg-nq-black-primary { background-color: var(--color-black-primary); }
-        .text-nq-black-primary { color: var(--color-black-primary); }
-        .bg-nq-accent-blue { background-color: var(--color-accent-blue); }
-        .text-nq-accent-blue { color: var(--color-accent-blue); }
-        .bg-nq-text-light { background-color: var(--color-text-light); }
-        .text-nq-text-light { color: var(--color-text-light); }
-        .text-nq-text-dark { color: var(--color-text-dark); }
-        .bg-nq-background-soft-dark { background-color: var(--color-background-soft-dark); }
+    nav a {
+        color: var(--nq-background-light); /* White links on blue background */
+        margin: 0 0.8rem; /* Increased margin for better spacing */
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.05rem;
+        transition: color 0.3s ease, transform 0.2s ease;
+    }
+    nav a:hover {
+        color: var(--nq-accent-blue); /* Accent blue on hover */
+        transform: translateY(-2px);
+    }
 
-        /* Base body styles */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--color-black-primary); /* Dark background for the whole page */
-            color: var(--color-text-light); /* Light text on dark background */
-            overflow-x: hidden; /* Prevent horizontal scroll from animations */
-        }
+    .section {
+        padding: 4rem 1.5rem; /* Increased padding for sections */
+        max-width: 1200px;
+        margin: auto;
+    }
 
-        /* Hero Section Background Slider styling */
-        .hero-slider-bg {
-            background-size: cover;
-            background-position: center;
-            transition: background-image 1s ease-in-out;
-            filter: brightness(0.5); /* Darken background significantly for text readability */
-        }
+    h2 {
+        text-align: center;
+        color: var(--nq-accent-blue); /* Headings in accent blue */
+        font-size: 2.5rem; /* Larger heading font size */
+        margin-bottom: 2.5rem; /* More space below headings */
+        font-weight: 700;
+    }
 
-        /* Button hover glow effect */
-        .btn-glow {
-            box-shadow: 0 0 0 rgba(77, 192, 181, 0); /* Initial transparent shadow with accent color */
-            transition: all 0.3s ease-in-out;
-        }
-        .btn-glow:hover {
-            box-shadow: 0 0 20px rgba(77, 192, 181, 0.8), 0 0 40px rgba(77, 192, 181, 0.6);
-            transform: translateY(-3px);
-        }
+    /* Animation Styles */
+    .fade-in-section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        will-change: opacity, transform;
+    }
 
-        /* Card hover animations */
-        .card-hover-zoom {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-        .card-hover-zoom:hover {
-            transform: scale(1.03);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* Darker shadow for dark theme */
-        }
+    .fade-in-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
-        /* Scroll reveal animations for sections */
-        .reveal-item {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    /* Quiz Categories Grid */
+    #quiz-categories-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted min-width for cards */
+        gap: 1.5rem; /* Increased gap */
+    }
+    #quiz-categories-container a {
+        background-color: var(--nq-background-soft-light); /* Soft light background for cards */
+        border-radius: 1.25rem; /* More rounded corners */
+        padding: 2rem; /* More padding */
+        text-align: center;
+        text-decoration: none;
+        color: var(--nq-text-dark); /* Dark text for categories */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 4px 15px var(--nq-shadow-color); /* Subtle shadow for cards */
+    }
+    #quiz-categories-container a:hover {
+        transform: translateY(-5px); /* Lift effect on hover */
+        box-shadow: 0 8px 30px rgba(37, 99, 235, 0.25); /* Stronger shadow with accent color on hover */
+    }
+    #quiz-categories-container a h3 {
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        color: var(--nq-accent-blue); /* Category titles in accent blue */
+        font-size: 1.5rem;
+    }
+    #quiz-categories-container a p {
+        color: var(--nq-text-light); /* Secondary text color */
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+    #quiz-categories-container a div {
+        font-size: 3.5rem; /* Larger icon size */
+        margin-bottom: 0.8rem;
+    }
+
+    /* Core Offerings */
+    .offerings-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Consistent min-width with categories */
+        gap: 1.5rem;
+    }
+    .offering-card {
+        background-color: var(--nq-background-soft-light); /* Soft light background for cards */
+        border-radius: 1.25rem;
+        padding: 2rem;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 15px var(--nq-shadow-color);
+    }
+    .offering-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(37, 99, 235, 0.25);
+    }
+    .offering-card i {
+        font-size: 3rem; /* Larger icon size */
+        color: var(--nq-accent-blue); /* Icons in accent blue */
+        margin-bottom: 1.2rem;
+    }
+    .offering-card h3 {
+        font-size: 1.6rem;
+        color: var(--nq-text-dark);
+        margin-bottom: 0.8rem;
+    }
+    .offering-card p {
+        color: var(--nq-text-light);
+        font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+        background-color: var(--nq-primary-blue); /* Footer background matching header */
+        color: var(--nq-background-light); /* White text in footer */
+        padding: 3rem 1.5rem; /* Increased padding */
+        font-size: 0.9rem;
+    }
+
+    .footer-content {
+        max-width: 1200px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive columns */
+        gap: 2rem;
+        text-align: left;
+    }
+
+    .footer-column h4 {
+        color: var(--nq-background-light);
+        font-size: 1.2rem;
+        margin-bottom: 1.2rem;
+        font-weight: 600;
+    }
+
+    .footer-column ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-column ul li {
+        margin-bottom: 0.8rem;
+    }
+
+    .footer-column ul li a {
+        color: var(--nq-background-light);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer-column ul li a:hover {
+        color: var(--nq-accent-blue);
+    }
+
+    .social-icons a {
+        color: var(--nq-background-light);
+        font-size: 1.5rem;
+        margin-right: 1rem;
+        transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+        color: var(--nq-accent-blue);
+    }
+
+    .footer-bottom {
+        text-align: center;
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2); /* Separator line */
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Responsive adjustments for smaller screens */
+    @media (max-width: 768px) {
+        header {
+            flex-direction: column;
+            padding: 1rem;
         }
-        .reveal-item.is-visible {
-            opacity: 1;
-            transform: translateY(0);
+        nav {
+            margin-top: 1rem;
         }
-    </style>
+        nav a {
+            margin: 0 0.4rem;
+            font-size: 0.95rem;
+        }
+        h2 {
+            font-size: 2rem;
+        }
+        .section {
+            padding: 2.5rem 1rem;
+        }
+        #quiz-categories-container a,
+        .offering-card {
+            padding: 1.5rem;
+            border-radius: 1rem;
+        }
+        #quiz-categories-container a div {
+            font-size: 3rem;
+        }
+        .offering-card i {
+            font-size: 2.5rem;
+        }
+        .footer-content {
+            grid-template-columns: 1fr; /* Stack columns on small screens */
+            text-align: center;
+        }
+        .footer-column ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .footer-column ul li {
+            margin: 0.5rem 0.8rem;
+        }
+        .social-icons {
+            margin-top: 1rem;
+        }
+    }
+</style>
 </head>
-<body class="font-poppins antialiased">
+<body>
 
-    <!-- Header Section -->
-    <header class="sticky top-0 z-50 bg-nq-blue-primary text-nq-text-light shadow-lg py-4 px-6 md:px-12 rounded-b-xl">
-        <nav class="container mx-auto flex justify-between items-center flex-wrap">
-            <!-- Logo -->
-            <a href="#hero-section" class="text-3xl font-extrabold text-nq-accent-blue tracking-wide rounded-md">NepalQuiz</a>
+<header>
+    <div class="logo">NepalQuiz</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="quizzes.html">Quizzes</a>
+        <a href="offerings.html">Offerings</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
 
-            <!-- Mobile menu button (hamburger icon) -->
-            <button id="mobile-menu-button" class="md:hidden text-nq-text-light focus:outline-none focus:ring-2 focus:ring-nq-accent-blue rounded-md p-2">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
+<!-- Quiz Categories Section -->
+<section id="quiz-categories" class="section">
+    <h2>Explore Quiz Categories</h2>
+    <div id="quiz-categories-container" class="fade-in-section"></div>
+</section>
 
-            <!-- Navigation Links (Desktop) -->
-            <ul class="hidden md:flex space-x-8 font-semibold">
-                <li><a href="#hero-section" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Home</a></li>
-                <li><a href="#quiz-categories-section" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Quizzes</a></li>
-                <!-- Leaderboard link removed for simplicity as there's no corresponding section -->
-                <li><a href="#core-offerings-section" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Offerings</a></li>
-                <li><a href="#footer-section" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Contact</a></li>
-            </ul>
-        </nav>
-
-        <!-- Mobile Menu (Hidden by default, toggled by JS) -->
-        <div id="mobile-menu" class="md:hidden mt-4 text-center hidden bg-nq-blue-primary/90 rounded-b-lg py-2">
-            <ul class="flex flex-col space-y-3 font-medium">
-                <li><a href="#hero-section" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Home</a></li>
-                <li><a href="#quiz-categories-section" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Quizzes</a></li>
-                <li><a href="#core-offerings-section" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Offerings</a></li>
-                <li><a href="#footer-section" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Contact</a></li>
-                <li>
-                    <button class="w-full text-nq-text-light border border-nq-accent-blue rounded-full px-4 py-2 text-sm hover:bg-nq-accent-blue hover:text-nq-blue-primary transition duration-300 mt-2">
-                        <i class="fas fa-globe mr-2"></i> भाषा
-                    </button>
-                </li>
-            </ul>
+<!-- Core Offerings -->
+<section id="core-offerings" class="section">
+    <h2>Our Core Offerings</h2>
+    <div class="offerings-grid fade-in-section">
+        <div class="offering-card">
+            <i class="fas fa-calendar-day"></i>
+            <h3>Daily Quizzes</h3>
+            <p>Enhance your knowledge with new quizzes every day!</p>
         </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="hero-section" class="relative bg-gradient-to-br from-nq-blue-primary to-black text-nq-text-light py-20 md:py-32 flex items-center justify-center text-center overflow-hidden shadow-inner rounded-b-3xl min-h-[500px]">
-        <!-- Dynamic Background Slider (managed by JS) -->
-        <div id="hero-background" class="absolute inset-0 hero-slider-bg"></div>
-
-        <div class="relative z-10 p-6 max-w-4xl mx-auto reveal-item">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-8 drop-shadow-lg">
-                <span class="block text-nq-accent-blue font-poppins">Test Your Knowledge – Anywhere, Anytime!</span>
-                <span class="block mt-2 font-devanagari text-nq-text-light/90 text-3xl sm:text-4xl md:text-5xl">आफ्नो ज्ञान परीक्षण गर्नुहोस् – जुनसुकै बेला, जुनसुकै स्थानमा!</span>
-            </h1>
-            <p class="text-lg md:text-xl mb-10 opacity-90 max-w-2xl mx-auto text-nq-text-dark">
-                Dive into a world of diverse quizzes designed for learners of all ages.
-                <span class="block mt-2 text-sm text-nq-accent-blue">#NepalQuiz #GK #CEE #NEET #Loksewa #OnlineQuiz #EducationNepal</span>
-            </p>
-            <a href="#quiz-categories-section" class="btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-4 px-10 rounded-full text-lg shadow-xl hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-nq-accent-blue/50">
-                Start Quiz
-            </a>
+        <div class="offering-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>SEE Prep</h3>
+            <p>Comprehensive practice for Secondary Education Exam.</p>
         </div>
-    </section>
-
-    <!-- Main Content Area -->
-    <main class="container mx-auto px-6 py-16">
-
-        <!-- Quiz Categories Section -->
-        <section id="quiz-categories-section" class="mb-16 reveal-item">
-            <h2 class="text-3xl font-bold text-center mb-10 text-nq-accent-blue">Explore Quiz Categories</h2>
-            <div id="quiz-categories" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Category Cards will be dynamically inserted here by JavaScript -->
-            </div>
-        </section>
-
-       <!-- Features Section (Our Core Offerings) -->
-<section id="core-offerings-section" class="mt-16 reveal-item">
-    <h2 class="text-3xl font-bold text-center mb-10 text-nq-accent-blue">Our Core Offerings</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-
-        <!-- Daily Quizzes -->
-        <a href="/daily-quizzes.html" class="flex flex-col items-center text-center p-6 bg-nq-background-soft-dark rounded-2xl shadow-md card-hover-zoom">
-            <i class="fas fa-calendar-day text-5xl text-nq-accent-blue mb-4"></i>
-            <h3 class="text-xl font-semibold mb-2 text-nq-text-light">Daily Quizzes</h3>
-            <p class="text-sm text-nq-text-dark">Enhance your knowledge with new quizzes every day!</p>
-        </a>
-
-        <!-- SEE Prep -->
-        <a href="/see-prep.html" class="flex flex-col items-center text-center p-6 bg-nq-background-soft-dark rounded-2xl shadow-md card-hover-zoom">
-            <i class="fas fa-graduation-cap text-5xl text-nq-accent-blue mb-4"></i>
-            <h3 class="text-xl font-semibold mb-2 text-nq-text-light">SEE Prep</h3>
-            <p class="text-sm text-nq-text-dark">Comprehensive practice for Secondary Education Exam.</p>
-        </a>
-
-        <!-- Loksewa Prep -->
-        <a href="/loksewa-prep.html" class="flex flex-col items-center text-center p-6 bg-nq-background-soft-dark rounded-2xl shadow-md card-hover-zoom">
-            <i class="fas fa-gavel text-5xl text-nq-accent-blue mb-4"></i>
-            <h3 class="text-xl font-semibold mb-2 text-nq-text-light">Loksewa Prep</h3>
-            <p class="text-sm text-nq-text-dark">Dedicated quizzes for Government Service Exam aspirants.</p>
-        </a>
-
-        <!-- Nepal GK -->
-        <a href="/nepal-gk.html" class="flex flex-col items-center text-center p-6 bg-nq-background-soft-dark rounded-2xl shadow-md card-hover-zoom">
-            <i class="fas fa-globe-asia text-5xl text-nq-accent-blue mb-4"></i>
-            <h3 class="text-xl font-semibold mb-2 text-nq-text-light">Nepal GK</h3>
-            <p class="text-sm text-nq-text-dark">Sharpen your knowledge of Nepal's general knowledge & current affairs.</p>
-        </a>
-
+        <div class="offering-card">
+            <i class="fas fa-gavel"></i>
+            <h3>Loksewa Prep</h3>
+            <p>Dedicated quizzes for Government Service Exam aspirants.</p>
+        </div>
+        <div class="offering-card">
+            <i class="fas fa-globe-asia"></i>
+            <h3>Nepal GK</h3>
+            <p>Sharpen your knowledge of Nepal's general knowledge & current affairs.</p>
+        </div>
     </div>
 </section>
 
-
-    </main>
-
-    <!-- Footer Section -->
-    <footer id="footer-section" class="bg-nq-blue-primary text-nq-text-light py-10 px-6 md:px-12 mt-16 rounded-t-xl">
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-            <!-- Copyright & Logo -->
-            <div>
-                <a href="#hero-section" class="text-3xl font-extrabold text-nq-accent-blue tracking-wide mb-4 inline-block">NepalQuiz</a>
-                <p class="text-sm text-nq-text-dark">&copy; 2025 NepalQuiz. All rights reserved.</p>
-            </div>
-
-            <!-- Quick Navigation -->
-            <div>
-                <h4 class="text-xl font-semibold mb-4 text-nq-accent-blue">Quick Links</h4>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="#hero-section" class="hover:text-nq-accent-blue transition duration-300">Home</a></li>
-                    <li><a href="#quiz-categories-section" class="hover:text-nq-accent-blue transition duration-300">Quizzes</a></li>
-                    <li><a href="#core-offerings-section" class="hover:text-nq-accent-blue transition duration-300">Offerings</a></li>
-                    <li><a href="#footer-section" class="hover:text-nq-accent-blue transition duration-300">Contact</a></li>
-                </ul>
-            </div>
-
-            <!-- Social Links -->
-            <div>
-                <h4 class="text-xl font-semibold mb-4 text-nq-accent-blue">Connect With Us</h4>
-                <div class="flex justify-center md:justify-start space-x-6 text-2xl">
-                    <a href="#" class="hover:text-nq-accent-blue hover:scale-110 transition duration-300" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="hover:text-nq-accent-blue hover:scale-110 transition duration-300" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="hover:text-nq-accent-blue hover:scale-110 transition duration-300" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="hover:text-nq-accent-blue hover:scale-110 transition duration-300" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                </div>
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-column">
+            <h4>NepalQuiz</h4>
+            <p style="color: rgba(255, 255, 255, 0.8);">Your ultimate platform for Nepali quizzes and exam preparations.</p>
+        </div>
+        <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="quizzes.html">Quizzes</a></li>
+                <li><a href="offerings.html">Offerings</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Categories</h4>
+            <ul>
+                <li><a href="academic.html">Academic</a></li>
+                <li><a href="loksewa.html">Loksewa Prep</a></li>
+                <li><a href="nepal-gk.html">Nepal GK</a></li>
+                <li><a href="fun.html">Fun Quizzes</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Connect With Us</h4>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
-    </footer>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 NepalQuiz. All Rights Reserved.</p>
+    </div>
+</footer>
 
-    <script>
-       
-        // --- Core JavaScript Logic for Interactions and Animations ---
+<script>
+    // Asynchronous function to fetch mock quiz categories.
+    // Simulates a network request with a slight delay.
+    async function fetchQuizCategories() {
+        const mockCategories = [
+            { id: 'academic', name: 'Academic Quizzes', icon: '📚', description: '(CEE/NEET/SEE)', url: 'academic.html' },
+            { id: 'loksewa', name: 'Loksewa Prep', icon: '🏛️', description: 'Prepare for government exams', url: 'loksewa.html' },
+            { id: 'nepal-gk', name: 'Nepal GK & Current Affairs', icon: '🇳🇵', description: 'Stay updated on Nepal', url: 'nepal-gk.html' },
+            { id: 'fun', name: 'Fun Quizzes', icon: '🎉', description: 'Test your general knowledge', url: 'fun.html' },
+        ];
+        // Simulate a network delay of 300 milliseconds.
+        return new Promise(resolve => setTimeout(() => resolve(mockCategories), 300));
+    }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            // Mobile menu toggle functionality
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenuButton && mobileMenu) {
-                mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden'); // Toggles the 'hidden' Tailwind class
-                });
-            }
+    // Renders the fetched quiz categories into the DOM.
+    async function renderQuizCategories() {
+        const categories = await fetchQuizCategories(); // Wait for categories to be fetched
+        const container = document.getElementById('quiz-categories-container'); // Get the container element
 
-            // Hero Background Image Slider functionality
-            const heroBackground = document.getElementById('hero-background');
-            // Array of placeholder images for the hero section background
-            const heroImages = [
-                'https://placehold.co/1920x1080/1A374D/4DC0B5?text=Nepal_Mountains', // Themed placeholder for mountains
-                'https://placehold.co/1920x1080/0A0A0A/4DC0B5?text=Nepal_Temple',    // Themed placeholder for temple
-                'https://placehold.co/1920x1080/1A374D/4DC0B5?text=Nepal_Flag',     // Themed placeholder for flag
-                'https://placehold.co/1920x1080/0A0A0A/4DC0B5?text=Nepal_Classroom' // Themed placeholder for classroom
-            ];
-            let currentImageIndex = 0; // Index to keep track of the current image
+        // Generate HTML string for each category and join them.
+        container.innerHTML = categories.map(cat => `
+            <a href="${cat.url}">
+                <div style="font-size:3.5rem; margin-bottom:0.8rem;">${cat.icon}</div>
+                <h3>${cat.name}</h3>
+                <p>${cat.description}</p>
+            </a>
+        `).join('');
+    }
 
-            // Function to update the background image
-            function updateHeroBackground() {
-                currentImageIndex = (currentImageIndex + 1) % heroImages.length; // Cycle through images
-                heroBackground.style.backgroundImage = `url('${heroImages[currentImageIndex]}')`; // Set new background image
-                // Optional: Preload the next image to avoid flicker
-                const nextImage = new Image();
-                nextImage.src = heroImages[(currentImageIndex + 1) % heroImages.length];
-            }
-            // Set the initial background image
-            heroBackground.style.backgroundImage = `url('${heroImages[currentImageIndex]}')`;
-            // Start the slider to change image every 5 seconds
-            setInterval(updateHeroBackground, 5000);
+    // Call the render function when the page loads.
+    window.onload = function() {
+        renderQuizCategories();
+        // Intersection Observer for scroll-reveal animations
+        const fadeSections = document.querySelectorAll('.fade-in-section');
 
-            // Populate Quiz Categories dynamically
-            const categoriesContainer = document.getElementById('quiz-categories');
-            if (categoriesContainer) {
-                fetchQuizCategories().then(data => {
-                    categoriesContainer.innerHTML = ''; // Clear any existing content or placeholders
-                    data.forEach(category => {
-                        const categoryCard = document.createElement('a');
-                        // Link to the main quiz categories section
-                        categoryCard.href = 'quiz-categories-section';
-                        // Apply Tailwind classes for styling and hover effects
-                        categoryCard.className = 'card-hover-zoom block bg-nq-background-soft-dark p-6 rounded-2xl shadow-md text-center border border-nq-blue-primary';
-                        categoryCard.innerHTML = `
-                            <div class="text-5xl mb-4 text-nq-accent-blue">${category.icon}</div>
-                            <h3 class="text-xl font-semibold mb-2 text-nq-text-light">${category.name}</h3>
-                            <p class="text-sm text-nq-text-dark">${category.description}</p>
-                        `;
-                        categoriesContainer.appendChild(categoryCard); // Add the card to the container
-                    });
-                }).catch(error => {
-                    console.error('Error fetching quiz categories:', error);
-                    // Display an error message if categories fail to load
-                    categoriesContainer.innerHTML = '<p class="text-center text-red-500 col-span-full">Failed to load categories. Please try again later.</p>';
-                });
-            }
-
-            // Scroll Reveal Animations using Intersection Observer
-            const revealElements = document.querySelectorAll('.reveal-item'); // Select all elements with the 'reveal-item' class
-
-            const observerOptions = {
-                root: null, // The viewport is used as the root
-                rootMargin: '0px', // No margin around the root
-                threshold: 0.1 // Trigger when 10% of the item is visible
-            };
-
-            // Callback function executed when an observed element intersects with the viewport
-            const observerCallback = (entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible'); // Add 'is-visible' class to trigger animation
-                        observer.unobserve(entry.target); // Stop observing once the element is visible
-                    }
-                });
-            };
-
-            // Create a new Intersection Observer instance
-            const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-            // Observe each reveal-item element
-            revealElements.forEach(el => observer.observe(el));
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
         });
-    </script>
+
+        fadeSections.forEach(section => {
+            observer.observe(section);
+        });
+    };
+</script>
+
 </body>
 </html>
-
-
-
