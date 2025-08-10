@@ -11,7 +11,7 @@
     <meta property="og:description" content="Engaging and educational quizzes for children of different age groups, covering basic language, math, general knowledge, and more.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nepalquiz.xyz/fun-child-quiz.html">
-    <meta property="og:image" content="https://placehold.co/1200x630/1A374D/4DC0B5?text=Nepal_Fun_Child_Quiz"> <!-- Placeholder image for this page -->
+    <meta property="og:image" content="https://placehold.co/1200x630/ADD8E6/00BFFF?text=Nepal_Fun_Child_Quiz"> <!-- Placeholder image for this page -->
 
     <!-- Schema.org Structured Data (EducationalCourse for specific topics might be too much, but generic EducationalOrganization is fine) -->
     <script type="application/ld+json">
@@ -46,19 +46,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        /* New Custom Tailwind Colors: Blue, Black, and Accent Aqua */
+        /* New Custom Tailwind Colors: Sky Blue and White Theme */
         :root {
-            --color-blue-primary: #1A374D; /* Deep Blue for main sections */
-            --color-black-primary: #0A0A0A; /* Near Black for backgrounds/text */
-            --color-accent-blue: #4DC0B5; /* Vibrant Teal/Aqua for accents and highlights */
-            --color-text-light: #F8F8F8; /* Off-white for light text on dark backgrounds */
-            --color-text-dark: #A0AEC0; /* Lighter gray for secondary text on dark backgrounds */
-            --color-background-soft-dark: #1E3A4D; /* Slightly lighter dark background for contrast */
+            --color-blue-primary: #ADD8E6; /* Light Blue for main sections, header, and buttons */
+            --color-black-primary: #FFFFFF; /* White for backgrounds */
+            --color-accent-blue: #00BFFF; /* Deep Sky Blue for accents and highlights */
+            --color-text-light: #000000; /* Black for text on light backgrounds */
+            --color-text-dark: #333333; /* Dark Gray for secondary text */
+            --color-background-soft-dark: #E6F7FF; /* Pale Blue for softer backgrounds like cards/sections */
             --green: #16a34a; /* for correct answers */
             --red: #ef4444; /* for wrong answers */
             --light-green: #d1fae5; /* for correct answers light bg */
             --light-red: #ffe4e6; /* for wrong answers light bg */
-            --border-color-light: rgba(255, 255, 255, 0.1); /* light border for dark theme */
+            --border-color-light: rgba(0, 0, 0, 0.1); /* light border for light theme */
         }
 
         .font-poppins { font-family: 'Poppins', sans-serif; }
@@ -77,18 +77,18 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--color-black-primary); /* Dark background for the whole page */
-            color: var(--color-text-light); /* Light text on dark background */
+            background-color: var(--color-black-primary); /* White background for the whole page */
+            color: var(--color-text-light); /* Black text on white background */
             overflow-x: hidden; /* Prevent horizontal scroll from animations */
         }
 
-        /* Button hover glow effect */
+        /* Button hover glow effect adjusted for light theme */
         .btn-glow {
-            box-shadow: 0 0 0 rgba(77, 192, 181, 0); /* Initial transparent shadow with accent color */
+            box-shadow: 0 0 0 rgba(0, 191, 255, 0); /* Initial transparent shadow with accent color */
             transition: all 0.3s ease-in-out;
         }
         .btn-glow:hover {
-            box-shadow: 0 0 20px rgba(77, 192, 181, 0.8), 0 0 40px rgba(77, 192, 181, 0.6);
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.5), 0 0 40px rgba(0, 191, 255, 0.3);
             transform: translateY(-3px);
         }
 
@@ -103,84 +103,64 @@
             transform: translateY(0);
         }
 
-        /* Accordion specific styles */
-        .accordion-item {
-            background-color: var(--color-background-soft-dark);
-            border-radius: 0.75rem; /* rounded-xl */
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            border: 1px solid var(--color-blue-primary);
-        }
-
-        .accordion-header {
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* Styles for the new topic/sub-topic layout */
+        .chapter-nav-button {
+            display: block;
+            width: 100%;
             padding: 1rem 1.5rem;
+            text-align: left;
             background-color: var(--color-blue-primary);
             color: var(--color-text-light);
             font-weight: 600;
-            border-radius: 0.75rem; /* rounded-xl */
-            transition: background-color 0.3s ease;
+            border-radius: 0.75rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-bottom: 0.5rem;
+            border: 1px solid var(--border-color-light);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .accordion-header:hover {
-            background-color: #2a5270; /* Slightly lighter primary blue on hover */
+        .chapter-nav-button:hover {
+            background-color: #9cddeb; /* Slightly darker light blue on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
-        .accordion-header .icon {
-            transition: transform 0.3s ease;
+        .chapter-nav-button.active {
+            background-color: var(--color-accent-blue); /* Accent color when active */
+            color: var(--color-black-primary); /* White text on active */
+            box-shadow: 0 4px 10px rgba(0, 191, 255, 0.4);
         }
-        .accordion-header.expanded .icon {
-            transform: rotate(180deg);
-        }
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
-            /* background-color: var(--color-background-soft-dark); Removed as it's on accordion-item now */
-            border-radius: 0 0 0.75rem 0.75rem; /* rounded-xl only bottom corners */
-            padding: 0 1.5rem; /* Initial padding 0, will expand */
-        }
-        .accordion-content.expanded {
-            max-height: 1200px; /* Increased for potentially longer content */
-            padding: 1rem 1.5rem;
-        }
-        .accordion-content ul {
-            list-style: none; /* Remove default list style */
-            padding: 0;
-            margin: 0;
-        }
-        .accordion-content ul li {
+
+        .subtopic-list-item {
             padding: 0.5rem 0;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-            color: var(--color-text-dark); /* Topics text color */
-            display: flex; /* Added for layout of sub-topic and button */
-            justify-content: space-between; /* Added for layout of sub-topic and button */
-            align-items: center; /* Added for layout of sub-topic and button */
+            border-bottom: 1px dashed var(--border-color-light);
+            color: var(--color-text-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .accordion-content ul li:last-child {
+        .subtopic-list-item:last-child {
             border-bottom: none;
         }
-        .accordion-content ul li .start-quiz-subtopic-btn { /* Style for new sub-topic buttons */
-            font-size: 0.75rem; /* text-xs */
-            padding: 0.3rem 0.6rem; /* px-2 py-1 */
-            border-radius: 9999px; /* rounded-full */
-            margin-left: 1rem; /* ml-4 */
+        .subtopic-list-item .start-quiz-subtopic-btn {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 9999px;
+            margin-left: 1rem;
             background-color: var(--color-accent-blue);
-            color: var(--color-blue-primary);
-            font-weight: 600; /* font-semibold */
+            color: var(--color-black-primary); /* White text on accent background */
+            font-weight: 600;
             border: none;
             cursor: pointer;
             transition: background-color 0.2s ease, transform 0.2s ease;
         }
-        .accordion-content ul li .start-quiz-subtopic-btn:hover {
-            background-color: #3aa59c; /* Slightly darker accent blue on hover */
+        .subtopic-list-item .start-quiz-subtopic-btn:hover {
+            background-color: #0099e6; /* Slightly darker accent blue on hover */
             transform: translateY(-1px);
         }
 
-        /* Quiz Specific Styles - Replicated from daily-chapter-quiz (2).html, adapted for theme */
+
+        /* Quiz Specific Styles */
         .quiz-card {
-            background: var(--color-background-soft-dark);
+            background: var(--color-background-soft-dark); /* Pale Blue background */
             border-radius: 12px;
             padding: 18px;
             box-shadow: 0 6px 18px rgba(0,0,0,0.1);
@@ -198,15 +178,15 @@
             text-align: left;
             padding: 12px;
             border-radius: 10px;
-            border: 1px solid var(--color-blue-primary); /* Use primary blue for borders */
+            border: 1px solid var(--color-blue-primary);
             margin: 8px 0;
-            background: var(--color-blue-primary); /* Options background */
-            color: var(--color-text-light); /* Text color for options */
+            background: var(--color-blue-primary);
+            color: var(--color-text-light); /* Black text */
             cursor: pointer;
             transition: background-color 0.2s ease, border-color 0.2s ease;
         }
         .option-btn:hover:not([data-answered="true"]) {
-            background: #2a5270; /* Slightly lighter primary blue on hover */
+            background: #9cddeb; /* Slightly darker light blue on hover */
             border-color: var(--color-accent-blue);
         }
         .option-btn[data-answered="true"]) {
@@ -225,7 +205,7 @@
         }
         #quiz-area .controls button:hover:not([disabled]) {
             background: var(--color-accent-blue);
-            color: var(--color-blue-primary);
+            color: var(--color-black-primary); /* White text on hover */
             transform: translateY(-2px);
         }
         #quiz-area .controls button[disabled]) {
@@ -238,7 +218,7 @@
         #restart-btn { background-color: var(--red); border-color: var(--red); }
         #restart-btn:hover:not([disabled]) { background-color: #bb2f2f; }
         #save-result-btn { background-color: var(--color-blue-primary); border-color: var(--color-accent-blue); }
-        #save-result-btn:hover:not([disabled]) { background-color: var(--color-accent-blue); color: var(--color-blue-primary); }
+        #save-result-btn:hover:not([disabled]) { background-color: var(--color-accent-blue); color: var(--color-black-primary); } /* White text on hover */
 
         #countdown {
             font-size: 1.1rem;
@@ -251,7 +231,7 @@
             font-style: italic;
             color: var(--color-text-dark);
             padding: 10px;
-            background: var(--color-background-soft-dark); /* Match card background */
+            background: var(--color-background-soft-dark);
             border-radius: 8px;
             border: 1px solid var(--color-blue-primary);
         }
@@ -260,22 +240,22 @@
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.8); /* Darker overlay for dark theme */
+            background: rgba(0,0,0,0.6); /* Slightly lighter overlay for light theme */
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
         }
         .modal-content {
-            background: var(--color-blue-primary); /* Modal background */
+            background: var(--color-blue-primary);
             padding: 25px;
             border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
             max-width: 400px;
             width: 90%;
             text-align: center;
             position: relative;
-            color: var(--color-text-light); /* Modal text color */
+            color: var(--color-text-light);
         }
         .modal-close-btn {
             position: absolute;
@@ -285,7 +265,7 @@
             cursor: pointer;
             background: none;
             border: none;
-            color: var(--color-text-dark); /* Muted close button */
+            color: var(--color-text-dark);
             padding: 0;
         }
         .modal-close-btn:hover {
@@ -295,7 +275,7 @@
             margin-top: 20px;
             padding: 10px 20px;
             background: var(--color-accent-blue);
-            color: var(--color-blue-primary);
+            color: var(--color-black-primary); /* White text on accent */
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -328,7 +308,7 @@
             color: var(--color-accent-blue);
         }
         #local-history-display .participant div:last-child {
-            color: var(--color-text-dark); /* Score text color */
+            color: var(--color-text-dark);
         }
 
         /* General styles for current/upcoming info */
@@ -349,30 +329,6 @@
         #status-area .info-card .meta {
             color: var(--color-text-dark);
         }
-
-        /* Styles for the new tab navigation */
-        /* Removed as there's only one page now, but keeping for reference if more pages are added */
-        /*
-        .tab-button {
-            padding: 10px 20px;
-            background-color: var(--color-blue-primary);
-            color: var(--color-text-light);
-            border-radius: 8px 8px 0 0;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-weight: 600;
-        }
-        .tab-button.active {
-            background-color: var(--color-background-soft-dark);
-            color: var(--color-accent-blue);
-        }
-        .tab-button:hover:not(.active) {
-            background-color: #2a5270;
-        }
-        .tab-content {
-            padding-top: 1rem;
-        }
-        */
     </style>
 </head>
 <body class="font-poppins antialiased">
@@ -390,34 +346,25 @@
 
             <!-- Navigation Links (Desktop) -->
             <ul class="hidden md:flex space-x-8 font-semibold">
-                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Home</a></li>
+                <li><a href="index.html" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Home</a></li>
                 <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Quizzes</a></li>
                 <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Leaderboard</a></li>
-                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">About</a></li>
-                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Contact</a></li>
+                <li><a href="about-us.html" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">About</a></li>
+                <li><a href="contact.html" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Contact</a></li>
             </ul>
 
-            <!-- Language Toggle (Placeholder) -->
-            <div class="hidden md:block">
-                <button class="text-nq-text-light border border-nq-accent-blue rounded-full px-4 py-2 text-sm hover:bg-nq-accent-blue hover:text-nq-blue-primary transition duration-300">
-                    <i class="fas fa-globe mr-2"></i> भाषा
-                </button>
-            </div>
+           
         </nav>
 
         <!-- Mobile Menu (Hidden by default) -->
         <div id="mobile-menu" class="md:hidden mt-4 text-center hidden bg-nq-blue-primary/90 rounded-b-lg py-2">
             <ul class="flex flex-col space-y-3 font-medium">
-                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Home</a></li>
+                <li><a href="/index.html" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Home</a></li>
                 <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Quizzes</a></li>
                 <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Leaderboard</a></li>
-                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">About</a></li>
-                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Contact</a></li>
-                <li>
-                    <button class="w-full text-nq-text-light border border-nq-accent-blue rounded-full px-4 py-2 text-sm hover:bg-nq-accent-blue hover:text-nq-blue-primary transition duration-300 mt-2">
-                        <i class="fas fa-globe mr-2"></i> भाषा
-                    </button>
-                </li>
+                <li><a href="/about-us.html" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">About</a></li>
+                <li><a href="/contact.html" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Contact</a></li>
+               
             </ul>
         </div>
     </header>
@@ -425,192 +372,24 @@
     <!-- Main Content Area for Fun and Child Quiz Page -->
     <main class="container mx-auto px-6 py-16">
 
-        <!-- No Tab Navigation - Only one section -->
-        <!-- Removed tab navigation buttons -->
-
-        <!-- Fun and Child Quiz Section -->
-        <section id="fun-child-quiz-chapter-selection-area" class="bg-nq-background-soft-dark p-8 rounded-2xl shadow-lg border border-nq-blue-primary reveal-item tab-content">
-            <h1 class="text-4xl font-extrabold text-center mb-8 text-nq-accent-blue">Fun and Child Quiz</h1>
-            <p class="text-lg mb-8 text-nq-text-dark leading-relaxed text-center">
-                Engaging and educational quizzes designed for children across different age groups. Select a topic to start learning and having fun!
-            </p>
-
-            <input type="text" id="participant-name-input" placeholder="Your name (for local history)" class="w-full p-3 rounded-lg bg-nq-blue-primary text-nq-text-light border border-nq-accent-blue focus:ring-nq-accent-blue focus:border-nq-accent-blue mb-4">
-
-            <div class="space-y-4" id="chapters-list-fun-child">
-                <!-- Chapter 1: Age 4–6 Years (Preschool / Kindergarten) -->
-                <div class="accordion-item reveal-item">
-                    <div class="accordion-header rounded-xl" tabindex="0" role="button" aria-expanded="false" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)">
-                        <span class="text-2xl text-nq-accent-blue font-semibold">👶 Age 4–6 Years (Preschool / Kindergarten)</span>
-                        <i class="fas fa-chevron-down icon text-nq-accent-blue"></i>
-                    </div>
-                    <div class="accordion-content rounded-xl">
-                        <ul class="text-nq-text-dark py-2">
-                            <li>**1.1 Basic Nepali Language**
-                                <ul class="ml-4 list-disc list-inside">
-                                    <li data-subtopic="Nepali Alphabet (Vowels and Consonants)">Nepali Alphabet (Vowels and Consonants) <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)" data-subtopic="Nepali Alphabet (Vowels and Consonants)">Start Quiz</button></li>
-                                    <li data-subtopic="Simple Nepali Words (Colors, Animals, Fruits)">Simple Nepali Words (Colors, Animals, Fruits) <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)" data-subtopic="Simple Nepali Words (Colors, Animals, Fruits)">Start Quiz</button></li>
-                                    <li data-subtopic="Basic Greetings and Common Phrases">Basic Greetings and Common Phrases <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)" data-subtopic="Basic Greetings and Common Phrases">Start Quiz</button></li>
-                                </ul>
-                            </li>
-                            <li>**1.2 Basic English Language**
-                                <ul class="ml-4 list-disc list-inside">
-                                    <li data-subtopic="English Alphabet and Simple Words">English Alphabet and Simple Words <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)" data-subtopic="English Alphabet and Simple Words">Start Quiz</button></li>
-                                    <li data-subtopic="Numbers 1 to 20">Numbers 1 to 20 <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)" data-subtopic="Numbers 1 to 20">Start Quiz</button></li>
-                                    <li data-subtopic="Simple Colors and Shapes">Simple Colors and Shapes <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)" data-subtopic="Simple Colors and Shapes">Start Quiz</button></li>
-                                </ul>
-                            </li>
-                            <li>**1.3 Numbers and Counting**
-                                <ul class="ml-4 list-disc list-inside">
-                                    <li data-subtopic="Counting from 1 to 50">Counting from 1 to 50 <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)" data-subtopic="Counting from 1 to 50">Start Quiz</button></li>
-                                    <li data-subtopic="Simple Addition and Subtraction (using objects)">Simple Addition and Subtraction (using objects) <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)" data-subtopic="Simple Addition and Subtraction (using objects)">Start Quiz</button></li>
-                                    <li data-subtopic="Recognizing Shapes (Circle, Square, Triangle)">Recognizing Shapes (Circle, Square, Triangle) <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)" data-subtopic="Recognizing Shapes (Circle, Square, Triangle)">Start Quiz</button></li>
-                                </ul>
-                            </li>
-                            <li>**1.4 General Knowledge**
-                                <ul class="ml-4 list-disc list-inside">
-                                    <li data-subtopic="Common Animals of Nepal (Cow, Yak, Elephant)">Common Animals of Nepal (Cow, Yak, Elephant) <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)" data-subtopic="Common Animals of Nepal (Cow, Yak, Elephant)">Start Quiz</button></li>
-                                    <li data-subtopic="Fruits and Vegetables">Fruits and Vegetables <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)" data-subtopic="Fruits and Vegetables">Start Quiz</button></li>
-                                    <li data-subtopic="Body Parts and Senses">Body Parts and Senses <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)" data-subtopic="Body Parts and Senses">Start Quiz</button></li>
-                                    <li data-subtopic="Days of the Week and Months">Days of the Week and Months <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)" data-subtopic="Days of the Week and Months">Start Quiz</button></li>
-                                </ul>
-                            </li>
-                            <li>**1.5 Environment and Nature**
-                                <ul class="ml-4 list-disc list-inside">
-                                    <li data-subtopic="Seasons in Nepal (Spring, Summer, Monsoon, Winter)">Seasons in Nepal (Spring, Summer, Monsoon, Winter) <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)" data-subtopic="Seasons in Nepal (Spring, Summer, Monsoon, Winter)">Start Quiz</button></li>
-                                    <li data-subtopic="Weather Types (Rainy, Sunny, Snowy)">Weather Types (Rainy, Sunny, Snowy) <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)" data-subtopic="Weather Types (Rainy, Sunny, Snowy)">Start Quiz</button></li>
-                                    <li data-subtopic="Plants and Trees Common in Nepal">Plants and Trees Common in Nepal <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)" data-subtopic="Plants and Trees Common in Nepal">Start Quiz</button></li>
-                                </ul>
-                            </li>
-                            <li>**1.6 Fun and Play**
-                                <ul class="ml-4 list-disc list-inside">
-                                    <li data-subtopic="Simple Riddles">Simple Riddles <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)" data-subtopic="Simple Riddles">Start Quiz</button></li>
-                                    <li data-subtopic="Nursery Rhymes and Songs">Nursery Rhymes and Songs <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)" data-subtopic="Nursery Rhymes and Songs">Start Quiz</button></li>
-                                    <li data-subtopic="Basic Moral Stories">Basic Moral Stories <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)" data-subtopic="Basic Moral Stories">Start Quiz</button></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div class="text-center pt-4 pb-2">
-                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-page="fun-child" data-chapter-name="Age 4–6 Years (Preschool / Kindergarten)">Start Quiz on Age 4–6 (All Topics)</button>
-                        </div>
-                    </div>
+        <section id="fun-child-quiz-chapter-selection-area" class="bg-nq-background-soft-dark p-8 rounded-2xl shadow-lg border border-nq-blue-primary reveal-item flex flex-col md:flex-row gap-8">
+            <div class="md:w-1/3 p-4 bg-nq-blue-primary rounded-xl shadow-md border border-nq-accent-blue">
+                <h2 class="text-2xl font-bold text-nq-accent-blue mb-6">Select Age Group</h2>
+                <div id="chapters-nav-list" class="space-y-3">
+                    <!-- Chapter Navigation Buttons will be rendered here by JS -->
                 </div>
+            </div>
 
-                <!-- Chapter 2: Age 7–10 Years (Primary Level) -->
-                <div class="accordion-item reveal-item">
-                    <div class="accordion-header rounded-xl" tabindex="0" role="button" aria-expanded="false" data-chapter-name="Age 7–10 Years (Primary Level)">
-                        <span class="text-2xl text-nq-accent-blue font-semibold">👦 Age 7–10 Years (Primary Level)</span>
-                        <i class="fas fa-chevron-down icon text-nq-accent-blue"></i>
-                    </div>
-                    <div class="accordion-content rounded-xl">
-                        <ul class="text-nq-text-dark py-2">
-                            <li>**2.1 Nepali Language**
-                                <ul class="ml-4 list-disc list-inside">
-                                    <li data-subtopic="Nepali Grammar Basics (Simple Sentences)">Nepali Grammar Basics (Simple Sentences) <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 7–10 Years (Primary Level)" data-subtopic="Nepali Grammar Basics (Simple Sentences)">Start Quiz</button></li>
-                                    <li data-subtopic="Common Proverbs and Sayings">Common Proverbs and Sayings <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 7–10 Years (Primary Level)" data-subtopic="Common Proverbs and Sayings">Start Quiz</button></li>
-                                    <li data-subtopic="Names of Festivals and Traditions">Names of Festivals and Traditions <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 7–10 Years (Primary Level)" data-subtopic="Names of Festivals and Traditions">Start Quiz</button></li>
-                                </ul>
-                            </li>
-                            <li>**2.2 English Language**
-                                <ul class="ml-4 list-disc list-inside">
-                                    <li data-subtopic="Basic Grammar (Nouns, Verbs, Adjectives)">Basic Grammar (Nouns, Verbs, Adjectives) <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 7–10 Years (Primary Level)" data-subtopic="Basic Grammar (Nouns, Verbs, Adjectives)">Start Quiz</button></li>
-                                    <li data-subtopic="Simple Comprehension Passages">Simple Comprehension Passages <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 7–10 Years (Primary Level)" data-subtopic="Simple Comprehension Passages">Start Quiz</button></li>
-                                    <li data-subtopic="Common Everyday Vocabulary">Common Everyday Vocabulary <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 7–10 Years (Primary Level)" data-subtopic="Common Everyday Vocabulary">Start Quiz</button></li>
-                                </ul>
-                            </li>
-                            <li>**2.3 Mathematics**
-                                <ul class="ml-4 list-disc list-inside">
-                                    <li data-subtopic="Addition, Subtraction, Multiplication, and Division">Addition, Subtraction, Multiplication, and Division <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 7–10 Years (Primary Level)" data-subtopic="Addition, Subtraction, Multiplication, and Division">Start Quiz</button></li>
-                                    <li data-subtopic="Basic Fractions and Time (Clock reading)">Basic Fractions and Time (Clock reading) <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 7–10 Years (Primary Level)" data-subtopic="Basic Fractions and Time (Clock reading)">Start Quiz</button></li>
-                                    <li data-subtopic="Simple Word Problems">Simple Word Problems <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 7–10 Years (Primary Level)" data-subtopic="Simple Word Problems">Start Quiz</button></li>
-                                </ul>
-                            </li>
-                            <li>**2.4 General Knowledge**
-                                <ul class="ml-4 list-disc list-inside">
-                                    <li data-subtopic="Important Landmarks of Nepal (Pashupatinath, Lumbini, Chitwan)">Important Landmarks of Nepal (Pashupatinath, Lumbini, Chitwan) <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 7–10 Years (Primary Level)" data-subtopic="Important Landmarks of Nepal (Pashupatinath, Lumbini, Chitwan)">Start Quiz</button></li>
-                                    <li data-subtopic="National Symbols (Flag, Animal, Bird, Flower)">National Symbols (Flag, Animal, Bird, Flower) <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 7–10 Years (Primary Level)" data-subtopic="National Symbols (Flag, Animal, Bird, Flower)">Start Quiz</button></li>
-                                    <li data-subtopic="Famous Personalities of Nepal (B. P. Koirala, Tenzing Norgay)">Famous Personalities of Nepal (B. P. Koirala, Tenzing Norgay) <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 7–10 Years (Primary Level)" data-subtopic="Famous Personalities of Nepal (B. P. Koirala, Tenzing Norgay)">Start Quiz</button></li>
-                                    <li data-subtopic="Basic Science Concepts (Water cycle, Animals’ habitats)">Basic Science Concepts (Water cycle, Animals’ habitats) <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 7–10 Years (Primary Level)" data-subtopic="Basic Science Concepts (Water cycle, Animals’ habitats)">Start Quiz</button></li>
-                                </ul>
-                            </li>
-                            <li>**2.5 Environment and Social Studies**
-                                <ul class="ml-4 list-disc list-inside">
-                                    <li data-subtopic="Community Helpers (Doctors, Teachers, Police)">Community Helpers (Doctors, Teachers, Police) <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 7–10 Years (Primary Level)" data-subtopic="Community Helpers (Doctors, Teachers, Police)">Start Quiz</button></li>
-                                    <li data-subtopic="Importance of Cleanliness and Hygiene">Importance of Cleanliness and Hygiene <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 7–10 Years (Primary Level)" data-subtopic="Importance of Cleanliness and Hygiene">Start Quiz</button></li>
-                                    <li data-subtopic="Festivals and Cultural Practices">Festivals and Cultural Practices <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 7–10 Years (Primary Level)" data-subtopic="Festivals and Cultural Practices">Start Quiz</button></li>
-                                </ul>
-                            </li>
-                            <li>**2.6 Fun and Creative**
-                                <ul class="ml-4 list-disc list-inside">
-                                    <li data-subtopic="Simple Puzzles and Brain Teasers">Simple Puzzles and Brain Teasers <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 7–10 Years (Primary Level)" data-subtopic="Simple Puzzles and Brain Teasers">Start Quiz</button></li>
-                                    <li data-subtopic="Basic Art and Craft Ideas">Basic Art and Craft Ideas <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 7–10 Years (Primary Level)" data-subtopic="Basic Art and Craft Ideas">Start Quiz</button></li>
-                                    <li data-subtopic="Moral Stories and Life Lessons">Moral Stories and Life Lessons <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 7–10 Years (Primary Level)" data-subtopic="Moral Stories and Life Lessons">Start Quiz</button></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div class="text-center pt-4 pb-2">
-                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-page="fun-child" data-chapter-name="Age 7–10 Years (Primary Level)">Start Quiz on Age 7–10 (All Topics)</button>
-                        </div>
-                    </div>
-                </div>
+            <div class="md:w-2/3 p-4 bg-nq-background-soft-dark rounded-xl shadow-md border border-nq-blue-primary">
+                <h1 class="text-4xl font-extrabold text-nq-accent-blue mb-4">Fun and Child Quiz</h1>
+                <p class="text-lg mb-6 text-nq-text-dark leading-relaxed">
+                    Engaging and educational quizzes designed for children across different age groups. Select an age group from the left to explore topics and start a quiz!
+                </p>
 
-                <!-- Chapter 3: Age 10–15 Years (Secondary Level) -->
-                <div class="accordion-item reveal-item">
-                    <div class="accordion-header rounded-xl" tabindex="0" role="button" aria-expanded="false" data-chapter-name="Age 10–15 Years (Secondary Level)">
-                        <span class="text-2xl text-nq-accent-blue font-semibold">🧑‍🎓 Age 10–15 Years (Secondary Level)</span>
-                        <i class="fas fa-chevron-down icon text-nq-accent-blue"></i>
-                    </div>
-                    <div class="accordion-content rounded-xl">
-                        <ul class="text-nq-text-dark py-2">
-                            <li>**3.1 Nepali Language and Literature**
-                                <ul class="ml-4 list-disc list-inside">
-                                    <li data-subtopic="Grammar (Tenses, Sentence Structure)">Grammar (Tenses, Sentence Structure) <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)" data-subtopic="Grammar (Tenses, Sentence Structure)">Start Quiz</button></li>
-                                    <li data-subtopic="Nepali Poetry and Short Stories">Nepali Poetry and Short Stories <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)" data-subtopic="Nepali Poetry and Short Stories">Start Quiz</button></li>
-                                    <li data-subtopic="History of Nepali Literature">History of Nepali Literature <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)" data-subtopic="History of Nepali Literature">Start Quiz</button></li>
-                                </ul>
-                            </li>
-                            <li>**3.2 English Language**
-                                <ul class="ml-4 list-disc list-inside">
-                                    <li data-subtopic="Grammar (Tenses, Passive Voice, Direct & Indirect Speech)">Grammar (Tenses, Passive Voice, Direct & Indirect Speech) <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)" data-subtopic="Grammar (Tenses, Passive Voice, Direct & Indirect Speech)">Start Quiz</button></li>
-                                    <li data-subtopic="Comprehension and Paragraph Writing">Comprehension and Paragraph Writing <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)" data-subtopic="Comprehension and Paragraph Writing">Start Quiz</button></li>
-                                    <li data-subtopic="Vocabulary Building">Vocabulary Building <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)" data-subtopic="Vocabulary Building">Start Quiz</button></li>
-                                </ul>
-                            </li>
-                            <li>**3.3 Mathematics**
-                                <ul class="ml-4 list-disc list-inside">
-                                    <li data-subtopic="Algebra Basics">Algebra Basics <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)" data-subtopic="Algebra Basics">Start Quiz</button></li>
-                                    <li data-subtopic="Geometry (Angles, Triangles, Quadrilaterals)">Geometry (Angles, Triangles, Quadrilaterals) <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)" data-subtopic="Geometry (Angles, Triangles, Quadrilaterals)">Start Quiz</button></li>
-                                    <li data-subtopic="Ratio, Percentage, and Data Interpretation">Ratio, Percentage, and Data Interpretation <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)" data-subtopic="Ratio, Percentage, and Data Interpretation">Start Quiz</button></li>
-                                </ul>
-                            </li>
-                            <li>**3.4 General Knowledge and Science**
-                                <ul class="ml-4 list-disc list-inside">
-                                    <li data-subtopic="Geography of Nepal (Provinces, Rivers, Mountains)">Geography of Nepal (Provinces, Rivers, Mountains) <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)" data-subtopic="Geography of Nepal (Provinces, Rivers, Mountains)">Start Quiz</button></li>
-                                    <li data-subtopic="Current Affairs related to Nepal and the World">Current Affairs related to Nepal and the World <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)" data-subtopic="Current Affairs related to Nepal and the World)">Start Quiz</button></li>
-                                    <li data-subtopic="Basic Physics and Chemistry Concepts">Basic Physics and Chemistry Concepts <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)" data-subtopic="Basic Physics and Chemistry Concepts">Start Quiz</button></li>
-                                    <li data-subtopic="Environmental Issues and Conservation">Environmental Issues and Conservation <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)" data-subtopic="Environmental Issues and Conservation">Start Quiz</button></li>
-                                </ul>
-                            </li>
-                            <li>**3.5 Social Studies and Civics**
-                                <ul class="ml-4 list-disc list-inside">
-                                    <li data-subtopic="Constitution of Nepal – Basic Understanding">Constitution of Nepal – Basic Understanding <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)" data-subtopic="Constitution of Nepal – Basic Understanding">Start Quiz</button></li>
-                                    <li data-subtopic="Rights and Duties of Citizens">Rights and Duties of Citizens <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)" data-subtopic="Rights and Duties of Citizens">Start Quiz</button></li>
-                                    <li data-subtopic="Local Governance System">Local Governance System <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)" data-subtopic="Local Governance System">Start Quiz</button></li>
-                                    <li data-subtopic="History of Nepal and Important Movements">History of Nepal and Important Movements <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)" data-subtopic="History of Nepal and Important Movements">Start Quiz</button></li>
-                                </ul>
-                            </li>
-                            <li>**3.6 Life Skills and Values**
-                                <ul class="ml-4 list-disc list-inside">
-                                    <li data-subtopic="Time Management and Study Skills">Time Management and Study Skills <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)" data-subtopic="Time Management and Study Skills">Start Quiz</button></li>
-                                    <li data-subtopic="Communication and Teamwork">Communication and Teamwork <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)" data-subtopic="Communication and Teamwork">Start Quiz</button></li>
-                                    <li data-subtopic="Health, Nutrition, and Personal Hygiene">Health, Nutrition, and Personal Hygiene <button class="start-quiz-subtopic-btn" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)" data-subtopic="Health, Nutrition, and Personal Hygiene">Start Quiz</button></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div class="text-center pt-4 pb-2">
-                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-page="fun-child" data-chapter-name="Age 10–15 Years (Secondary Level)">Start Quiz on Age 10–15 (All Topics)</button>
-                        </div>
-                    </div>
+                <input type="text" id="participant-name-input" placeholder="Your name (for local history)" class="w-full p-3 rounded-lg bg-nq-blue-primary text-nq-text-light border border-nq-accent-blue focus:ring-nq-accent-blue focus:border-nq-accent-blue mb-4">
+
+                <div id="subtopic-details">
+                    <p class="text-nq-text-dark text-center py-10">Please select an age group from the left to view topics.</p>
                 </div>
             </div>
         </section>
@@ -672,7 +451,7 @@
             <div>
                 <h4 class="text-xl font-semibold mb-4 text-nq-accent-blue">Quick Links</h4>
                 <ul class="space-y-2 text-sm">
-                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Home</a></li>
+                    <li><a href="/index.html" class="hover:text-nq-accent-blue transition duration-300">Home</a></li>
                     <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Quizzes</a></li>
                     <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Leaderboard</a></li>
                     <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">About Us</a></li>
@@ -751,6 +530,47 @@
         let participantName = "";
         let currentSelectedChapter = null; // Stores the chapter name for the active quiz
         let currentSelectedSubTopic = null; // Stores the sub-topic for the active quiz
+
+        // Chapter data for dynamic rendering
+        const allChaptersData = [
+            {
+                name: "Age 4–6 Years (Preschool / Kindergarten)",
+                icon: "👶",
+                subtopics: [
+                    { title: "Basic Nepali Language", sub_items: ["Nepali Alphabet (Vowels and Consonants)", "Simple Nepali Words (Colors, Animals, Fruits)", "Basic Greetings and Common Phrases"] },
+                    { title: "Basic English Language", sub_items: ["English Alphabet and Simple Words", "Numbers 1 to 20", "Simple Colors and Shapes"] },
+                    { title: "Numbers and Counting", sub_items: ["Counting from 1 to 50", "Simple Addition and Subtraction (using objects)", "Recognizing Shapes (Circle, Square, Triangle)"] },
+                    { title: "General Knowledge", sub_items: ["Common Animals of Nepal (Cow, Yak, Elephant)", "Fruits and Vegetables", "Body Parts and Senses", "Days of the Week and Months"] },
+                    { title: "Environment and Nature", sub_items: ["Seasons in Nepal (Spring, Summer, Monsoon, Winter)", "Weather Types (Rainy, Sunny, Snowy)", "Plants and Trees Common in Nepal"] },
+                    { title: "Fun and Play", sub_items: ["Simple Riddles", "Nursery Rhymes and Songs", "Basic Moral Stories"] }
+                ]
+            },
+            {
+                name: "Age 7–10 Years (Primary Level)",
+                icon: "👦",
+                subtopics: [
+                    { title: "Nepali Language", sub_items: ["Nepali Grammar Basics (Simple Sentences)", "Common Proverbs and Sayings", "Names of Festivals and Traditions"] },
+                    { title: "English Language", sub_items: ["Basic Grammar (Nouns, Verbs, Adjectives)", "Simple Comprehension Passages", "Common Everyday Vocabulary"] },
+                    { title: "Mathematics", sub_items: ["Addition, Subtraction, Multiplication, and Division", "Basic Fractions and Time (Clock reading)", "Simple Word Problems"] },
+                    { title: "General Knowledge", sub_items: ["Important Landmarks of Nepal (Pashupatinath, Lumbini, Chitwan)", "National Symbols (Flag, Animal, Bird, Flower)", "Famous Personalities of Nepal (B. P. Koirala, Tenzing Norgay)", "Basic Science Concepts (Water cycle, Animals’ habitats)"] },
+                    { title: "Environment and Social Studies", sub_items: ["Community Helpers (Doctors, Teachers, Police)", "Importance of Cleanliness and Hygiene", "Festivals and Cultural Practices"] },
+                    { title: "Fun and Creative", sub_items: ["Simple Puzzles and Brain Teasers", "Basic Art and Craft Ideas", "Moral Stories and Life Lessons"] }
+                ]
+            },
+            {
+                name: "Age 10–15 Years (Secondary Level)",
+                icon: "🧑‍🎓",
+                subtopics: [
+                    { title: "Nepali Language and Literature", sub_items: ["Grammar (Tenses, Sentence Structure)", "Nepali Poetry and Short Stories", "History of Nepali Literature"] },
+                    { title: "English Language", sub_items: ["Grammar (Tenses, Passive Voice, Direct & Indirect Speech)", "Comprehension and Paragraph Writing", "Vocabulary Building"] },
+                    { title: "Mathematics", sub_items: ["Algebra Basics", "Geometry (Angles, Triangles, Quadrilaterals)", "Ratio, Percentage, and Data Interpretation"] },
+                    { title: "General Knowledge and Science", sub_items: ["Geography of Nepal (Provinces, Rivers, Mountains)", "Current Affairs related to Nepal and the World", "Basic Physics and Chemistry Concepts", "Environmental Issues and Conservation"] },
+                    { title: "Social Studies and Civics", sub_items: ["Constitution of Nepal – Basic Understanding", "Rights and Duties of Citizens", "Local Governance System", "History of Nepal and Important Movements"] },
+                    { title: "Life Skills and Values", sub_items: ["Time Management and Study Skills", "Communication and Teamwork", "Health, Nutrition, and Personal Hygiene"] }
+                ]
+            }
+        ];
+
 
         /* =========================
            Helpers
@@ -1223,6 +1043,78 @@ Return JSON array only. Do not include any other text or markdown outside the JS
             renderLocalHistory();
         }
 
+        // NEW: Function to display sub-topics in the right panel
+        function displayChapterDetails(chapterName) {
+            const subtopicDetailsEl = el('subtopic-details');
+            subtopicDetailsEl.innerHTML = ''; // Clear previous content
+
+            const chapter = allChaptersData.find(c => c.name === chapterName);
+            if (!chapter) {
+                subtopicDetailsEl.innerHTML = `<p class="text-nq-text-dark text-center py-10">No topics found for "${chapterName}".</p>`;
+                return;
+            }
+
+            let htmlContent = `<h3 class="text-2xl font-semibold text-nq-accent-blue mb-4">${chapter.name} Topics</h3>`;
+            htmlContent += `<ul class="space-y-2 mb-6">`;
+
+            chapter.subtopics.forEach(mainTopic => {
+                htmlContent += `<li class="text-nq-text-dark font-semibold mt-4">${mainTopic.title}</li>`;
+                if (mainTopic.sub_items && mainTopic.sub_items.length > 0) {
+                    htmlContent += `<ul class="ml-4 border-l-2 border-nq-blue-primary pl-4 space-y-2">`;
+                    mainTopic.sub_items.forEach(subItem => {
+                        htmlContent += `
+                            <li class="subtopic-list-item">
+                                <span>${subItem}</span>
+                                <button class="start-quiz-subtopic-btn" data-chapter-name="${chapterName}" data-subtopic="${subItem}">Start Quiz</button>
+                            </li>
+                        `;
+                    });
+                    htmlContent += `</ul>`;
+                }
+            });
+            htmlContent += `</ul>`;
+
+            htmlContent += `
+                <div class="text-center pt-4">
+                    <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-chapter-name="${chapterName}">Start Quiz on ${chapter.name} (All Topics)</button>
+                </div>
+            `;
+            subtopicDetailsEl.innerHTML = htmlContent;
+
+            // Re-attach event listeners to newly rendered buttons
+            attachSubtopicButtonListeners();
+            attachChapterAllTopicsButtonListeners();
+        }
+
+        // Helper to attach listeners for sub-topic buttons
+        function attachSubtopicButtonListeners() {
+            const startQuizSubtopicButtons = document.querySelectorAll('#subtopic-details .start-quiz-subtopic-btn');
+            startQuizSubtopicButtons.forEach(button => {
+                button.removeEventListener('click', handleSubtopicButtonClick); // Prevent duplicate listeners
+                button.addEventListener('click', handleSubtopicButtonClick);
+            });
+        }
+
+        function handleSubtopicButtonClick(event) {
+            event.stopPropagation();
+            const chapterName = event.target.dataset.chapterName;
+            const subTopicName = event.target.dataset.subtopic;
+            generateAndRenderQuiz(chapterName, subTopicName);
+        }
+
+        // Helper to attach listeners for "Start Quiz on All Topics" buttons
+        function attachChapterAllTopicsButtonListeners() {
+            const startQuizChapterButtons = document.querySelectorAll('#subtopic-details .start-quiz-btn');
+            startQuizChapterButtons.forEach(button => {
+                button.removeEventListener('click', handleChapterAllTopicsButtonClick); // Prevent duplicate listeners
+                button.addEventListener('click', handleChapterAllTopicsButtonClick);
+            });
+        }
+
+        function handleChapterAllTopicsButtonClick(event) {
+            const chapterName = event.target.dataset.chapterName;
+            generateAndRenderQuiz(chapterName);
+        }
 
         /* =========================
            Event wiring
@@ -1278,44 +1170,22 @@ Return JSON array only. Do not include any other text or markdown outside the JS
             const observer = new IntersectionObserver(observerCallback, observerOptions);
             revealElements.forEach(el => observer.observe(el));
 
-            // Accordion / Collapsible Chapter Logic
-            const accordionHeaders = document.querySelectorAll('.accordion-header');
-            accordionHeaders.forEach(header => {
-                header.addEventListener('click', () => {
-                    const content = header.nextElementSibling;
-                    header.classList.toggle('expanded');
-                    content.classList.toggle('expanded');
-                    const isExpanded = header.classList.contains('expanded');
-                    header.setAttribute('aria-expanded', isExpanded);
+            // Populate chapter navigation in the left panel
+            const chaptersNavListEl = el('chapters-nav-list');
+            allChaptersData.forEach(chapter => {
+                const button = document.createElement('button');
+                button.className = 'chapter-nav-button';
+                button.innerText = `${chapter.icon} ${chapter.name}`;
+                button.dataset.chapterName = chapter.name;
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    document.querySelectorAll('.chapter-nav-button').forEach(btn => btn.classList.remove('active'));
+                    // Add active class to the clicked button
+                    button.classList.add('active');
+                    displayChapterDetails(chapter.name);
                 });
-                header.addEventListener('keydown', (event) => {
-                    if (event.key === 'Enter' || event.key === ' ') {
-                        event.preventDefault();
-                        header.click();
-                    }
-                });
+                chaptersNavListEl.appendChild(button);
             });
-
-            // "Start Quiz" button click handlers inside each accordion (for whole chapter)
-            const startQuizChapterButtons = document.querySelectorAll('.start-quiz-btn');
-            startQuizChapterButtons.forEach(button => {
-                button.addEventListener('click', async () => {
-                    const chapterName = button.dataset.chapterName;
-                    await generateAndRenderQuiz(chapterName); // Removed pageType
-                });
-            });
-
-            // "Start Quiz" button click handlers for individual sub-topics
-            const startQuizSubtopicButtons = document.querySelectorAll('.start-quiz-subtopic-btn');
-            startQuizSubtopicButtons.forEach(button => {
-                button.addEventListener('click', async (event) => {
-                    event.stopPropagation(); // Prevent accordion from toggling when sub-topic button is clicked
-                    const chapterName = button.dataset.chapterName;
-                    const subTopicName = button.dataset.subtopic;
-                    await generateAndRenderQuiz(chapterName, subTopicName); // Removed pageType
-                });
-            });
-
 
             // Quiz navigation and submission buttons
             el('prev-btn').onclick = prevQuestion;
@@ -1334,6 +1204,9 @@ Return JSON array only. Do not include any other text or markdown outside the JS
                 currentSelectedSubTopic = null; // Reset sub-topic
                 if (questionTimer) clearInterval(questionTimer);
                 renderLocalHistory(); // Ensure local history is updated
+                // Clear subtopic details and remove active class from chapter nav
+                el('subtopic-details').innerHTML = '<p class="text-nq-text-dark text-center py-10">Please select an age group from the left to view topics.</p>';
+                document.querySelectorAll('.chapter-nav-button').forEach(btn => btn.classList.remove('active'));
             };
 
             el('save-result-btn').onclick = async () => {
