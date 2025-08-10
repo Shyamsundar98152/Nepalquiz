@@ -154,9 +154,28 @@
             padding: 0.5rem 0;
             border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
             color: var(--color-text-dark); /* Topics text color */
+            display: flex; /* Added for layout of sub-topic and button */
+            justify-content: space-between; /* Added for layout of sub-topic and button */
+            align-items: center; /* Added for layout of sub-topic and button */
         }
         .accordion-content ul li:last-child {
             border-bottom: none;
+        }
+        .accordion-content ul li .start-quiz-subtopic-btn { /* Style for new sub-topic buttons */
+            font-size: 0.75rem; /* text-xs */
+            padding: 0.3rem 0.6rem; /* px-2 py-1 */
+            border-radius: 9999px; /* rounded-full */
+            margin-left: 1rem; /* ml-4 */
+            background-color: var(--color-accent-blue);
+            color: var(--color-blue-primary);
+            font-weight: 600; /* font-semibold */
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .accordion-content ul li .start-quiz-subtopic-btn:hover {
+            background-color: #3aa59c; /* Slightly darker accent blue on hover */
+            transform: translateY(-1px);
         }
 
         /* Quiz Specific Styles - Replicated from daily-chapter-quiz (2).html, adapted for theme */
@@ -190,7 +209,7 @@
             background: #2a5270; /* Slightly lighter primary blue on hover */
             border-color: var(--color-accent-blue);
         }
-        .option-btn[data-answered="true"] {
+        .option-btn[data-answered="true"]) {
             cursor: default; /* No hover after answer */
         }
         #quiz-area .controls button {
@@ -209,7 +228,7 @@
             color: var(--color-blue-primary);
             transform: translateY(-2px);
         }
-        #quiz-area .controls button[disabled] {
+        #quiz-area .controls button[disabled]) {
             opacity: .6;
             cursor: not-allowed;
         }
@@ -388,6 +407,8 @@
                 Dive deep into the general knowledge of Nepal and stay updated with the latest current affairs. Click on a chapter to explore its topics and then start a quiz!
             </p>
 
+            <input type="text" id="participant-name-input" placeholder="Your name (for local history)" class="w-full p-3 rounded-lg bg-nq-blue-primary text-nq-text-light border border-nq-accent-blue focus:ring-nq-accent-blue focus:border-nq-accent-blue mb-4">
+
             <div class="space-y-4" id="chapters-list">
                 <!-- Chapter 1: General Knowledge (GK) -->
                 <div class="accordion-item reveal-item">
@@ -397,15 +418,15 @@
                     </div>
                     <div class="accordion-content rounded-xl">
                         <ul class="text-nq-text-dark py-2">
-                            <li>Physical geography of Nepal</li>
-                            <li>Provinces, districts, municipalities</li>
-                            <li>Rivers, lakes, and mountains (Everest, Annapurna, etc.)</li>
-                            <li>National parks & wildlife reserves</li>
-                            <li>Climate and vegetation zones of Nepal</li>
-                            <li>Natural resources & minerals</li>
+                            <li data-subtopic="Physical geography of Nepal">Physical geography of Nepal <button class="start-quiz-subtopic-btn" data-chapter-name="General Knowledge (GK)" data-subtopic="Physical geography of Nepal">Start Quiz</button></li>
+                            <li data-subtopic="Provinces, districts, municipalities">Provinces, districts, municipalities <button class="start-quiz-subtopic-btn" data-chapter-name="General Knowledge (GK)" data-subtopic="Provinces, districts, municipalities">Start Quiz</button></li>
+                            <li data-subtopic="Rivers, lakes, and mountains (Everest, Annapurna, etc.)">Rivers, lakes, and mountains (Everest, Annapurna, etc.) <button class="start-quiz-subtopic-btn" data-chapter-name="General Knowledge (GK)" data-subtopic="Rivers, lakes, and mountains (Everest, Annapurna, etc.)">Start Quiz</button></li>
+                            <li data-subtopic="National parks & wildlife reserves">National parks & wildlife reserves <button class="start-quiz-subtopic-btn" data-chapter-name="General Knowledge (GK)" data-subtopic="National parks & wildlife reserves">Start Quiz</button></li>
+                            <li data-subtopic="Climate and vegetation zones of Nepal">Climate and vegetation zones of Nepal <button class="start-quiz-subtopic-btn" data-chapter-name="General Knowledge (GK)" data-subtopic="Climate and vegetation zones of Nepal">Start Quiz</button></li>
+                            <li data-subtopic="Natural resources & minerals">Natural resources & minerals <button class="start-quiz-subtopic-btn" data-chapter-name="General Knowledge (GK)" data-subtopic="Natural resources & minerals">Start Quiz</button></li>
                         </ul>
                         <div class="text-center pt-4 pb-2">
-                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-chapter-name="General Knowledge (GK)">Start Quiz on GK</button>
+                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-chapter-name="General Knowledge (GK)">Start Quiz on GK (All Topics)</button>
                         </div>
                     </div>
                 </div>
@@ -418,13 +439,13 @@
                     </div>
                     <div class="accordion-content rounded-xl">
                         <ul class="text-nq-text-dark py-2">
-                            <li>Ancient history of Nepal (Kirant, Lichhavi, Malla periods)</li>
-                            <li>Unification of Nepal by Prithvi Narayan Shah</li>
-                            <li>Rana regime & political movements</li>
-                            <li>Modern political history (Democracy, Panchayat, Republic)</li>
+                            <li data-subtopic="Ancient history of Nepal (Kirant, Lichhavi, Malla periods)">Ancient history of Nepal (Kirant, Lichhavi, Malla periods) <button class="start-quiz-subtopic-btn" data-chapter-name="History" data-subtopic="Ancient history of Nepal (Kirant, Lichhavi, Malla periods)">Start Quiz</button></li>
+                            <li data-subtopic="Unification of Nepal by Prithvi Narayan Shah">Unification of Nepal by Prithvi Narayan Shah <button class="start-quiz-subtopic-btn" data-chapter-name="History" data-subtopic="Unification of Nepal by Prithvi Narayan Shah">Start Quiz</button></li>
+                            <li data-subtopic="Rana regime & political movements">Rana regime & political movements <button class="start-quiz-subtopic-btn" data-chapter-name="History" data-subtopic="Rana regime & political movements">Start Quiz</button></li>
+                            <li data-subtopic="Modern political history (Democracy, Panchayat, Republic)">Modern political history (Democracy, Panchayat, Republic) <button class="start-quiz-subtopic-btn" data-chapter-name="History" data-subtopic="Modern political history (Democracy, Panchayat, Republic)">Start Quiz</button></li>
                         </ul>
                         <div class="text-center pt-4 pb-2">
-                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-chapter-name="History">Start Quiz on History</button>
+                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-chapter-name="History">Start Quiz on History (All Topics)</button>
                         </div>
                     </div>
                 </div>
@@ -437,13 +458,13 @@
                     </div>
                     <div class="accordion-content rounded-xl">
                         <ul class="text-nq-text-dark py-2">
-                            <li>GDP and major sectors (Agriculture, Industry, Tourism)</li>
-                            <li>Major exports and imports</li>
-                            <li>Development plans (Five-year plans)</li>
-                            <li>Currency & banking system in Nepal</li>
+                            <li data-subtopic="GDP and major sectors (Agriculture, Industry, Tourism)">GDP and major sectors (Agriculture, Industry, Tourism) <button class="start-quiz-subtopic-btn" data-chapter-name="Economy" data-subtopic="GDP and major sectors (Agriculture, Industry, Tourism)">Start Quiz</button></li>
+                            <li data-subtopic="Major exports and imports">Major exports and imports <button class="start-quiz-subtopic-btn" data-chapter-name="Economy" data-subtopic="Major exports and imports">Start Quiz</button></li>
+                            <li data-subtopic="Development plans (Five-year plans)">Development plans (Five-year plans) <button class="start-quiz-subtopic-btn" data-chapter-name="Economy" data-subtopic="Development plans (Five-year plans)">Start Quiz</button></li>
+                            <li data-subtopic="Currency & banking system in Nepal">Currency & banking system in Nepal <button class="start-quiz-subtopic-btn" data-chapter-name="Economy" data-subtopic="Currency & banking system in Nepal">Start Quiz</button></li>
                         </ul>
                         <div class="text-center pt-4 pb-2">
-                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-chapter-name="Economy">Start Quiz on Economy</button>
+                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-chapter-name="Economy">Start Quiz on Economy (All Topics)</button>
                         </div>
                     </div>
                 </div>
@@ -456,13 +477,13 @@
                     </div>
                     <div class="accordion-content rounded-xl">
                         <ul class="text-nq-text-dark py-2">
-                            <li>Festivals and traditions</li>
-                            <li>UNESCO World Heritage sites in Nepal</li>
-                            <li>Languages & ethnic diversity</li>
-                            <li>National symbols (flag, emblem, anthem, animal, bird, flower)</li>
+                            <li data-subtopic="Festivals and traditions">Festivals and traditions <button class="start-quiz-subtopic-btn" data-chapter-name="Culture" data-subtopic="Festivals and traditions">Start Quiz</button></li>
+                            <li data-subtopic="UNESCO World Heritage sites in Nepal">UNESCO World Heritage sites in Nepal <button class="start-quiz-subtopic-btn" data-chapter-name="Culture" data-subtopic="UNESCO World Heritage sites in Nepal">Start Quiz</button></li>
+                            <li data-subtopic="Languages & ethnic diversity">Languages & ethnic diversity <button class="start-quiz-subtopic-btn" data-chapter-name="Culture" data-subtopic="Languages & ethnic diversity">Start Quiz</button></li>
+                            <li data-subtopic="National symbols (flag, emblem, anthem, animal, bird, flower)">National symbols (flag, emblem, anthem, animal, bird, flower) <button class="start-quiz-subtopic-btn" data-chapter-name="Culture" data-subtopic="National symbols (flag, emblem, anthem, animal, bird, flower)">Start Quiz</button></li>
                         </ul>
                         <div class="text-center pt-4 pb-2">
-                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-chapter-name="Culture">Start Quiz on Culture</button>
+                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-chapter-name="Culture">Start Quiz on Culture (All Topics)</button>
                         </div>
                     </div>
                 </div>
@@ -475,16 +496,16 @@
                     </div>
                     <div class="accordion-content rounded-xl">
                         <ul class="text-nq-text-dark py-2">
-                            <li>Recent government appointments and reshuffles</li>
-                            <li>Major national events in the past year</li>
-                            <li>Current Prime Minister, President, Chief Justice, Speaker</li>
-                            <li>Recent laws and bills passed in Parliament</li>
-                            <li>International relations & agreements involving Nepal</li>
-                            <li>Major natural disasters and relief programs</li>
-                            <li>Sports achievements (South Asian Games, Cricket, Football)</li>
+                            <li data-subtopic="Recent government appointments and reshuffles">Recent government appointments and reshuffles <button class="start-quiz-subtopic-btn" data-chapter-name="Current Affairs" data-subtopic="Recent government appointments and reshuffles">Start Quiz</button></li>
+                            <li data-subtopic="Major national events in the past year">Major national events in the past year <button class="start-quiz-subtopic-btn" data-chapter-name="Current Affairs" data-subtopic="Major national events in the past year">Start Quiz</button></li>
+                            <li data-subtopic="Current Prime Minister, President, Chief Justice, Speaker">Current Prime Minister, President, Chief Justice, Speaker <button class="start-quiz-subtopic-btn" data-chapter-name="Current Affairs" data-subtopic="Current Prime Minister, President, Chief Justice, Speaker">Start Quiz</button></li>
+                            <li data-subtopic="Recent laws and bills passed in Parliament">Recent laws and bills passed in Parliament <button class="start-quiz-subtopic-btn" data-chapter-name="Current Affairs" data-subtopic="Recent laws and bills passed in Parliament">Start Quiz</button></li>
+                            <li data-subtopic="International relations & agreements involving Nepal">International relations & agreements involving Nepal <button class="start-quiz-subtopic-btn" data-chapter-name="Current Affairs" data-subtopic="International relations & agreements involving Nepal">Start Quiz</button></li>
+                            <li data-subtopic="Major natural disasters and relief programs">Major natural disasters and relief programs <button class="start-quiz-subtopic-btn" data-chapter-name="Current Affairs" data-subtopic="Major natural disasters and relief programs">Start Quiz</button></li>
+                            <li data-subtopic="Sports achievements (South Asian Games, Cricket, Football)">Sports achievements (South Asian Games, Cricket, Football) <button class="start-quiz-subtopic-btn" data-chapter-name="Current Affairs" data-subtopic="Sports achievements (South Asian Games, Cricket, Football)">Start Quiz</button></li>
                         </ul>
                         <div class="text-center pt-4 pb-2">
-                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-chapter-name="Current Affairs">Start Quiz on Current Affairs</button>
+                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-chapter-name="Current Affairs">Start Quiz on Current Affairs (All Topics)</button>
                         </div>
                     </div>
                 </div>
@@ -499,47 +520,47 @@
                         <ul class="text-nq-text-dark py-2">
                             <li>**General Provisions**
                                 <ul class="ml-4 list-disc list-inside">
-                                    <li>Preamble & key principles</li>
-                                    <li>Fundamental rights and duties of citizens</li>
-                                    <li>Directive principles of state policy</li>
+                                    <li data-subtopic="Preamble & key principles">Preamble & key principles <button class="start-quiz-subtopic-btn" data-chapter-name="Constitution of Nepal (2015)" data-subtopic="Preamble & key principles">Start Quiz</button></li>
+                                    <li data-subtopic="Fundamental rights and duties of citizens">Fundamental rights and duties of citizens <button class="start-quiz-subtopic-btn" data-chapter-name="Constitution of Nepal (2015)" data-subtopic="Fundamental rights and duties of citizens">Start Quiz</button></li>
+                                    <li data-subtopic="Directive principles of state policy">Directive principles of state policy <button class="start-quiz-subtopic-btn" data-chapter-name="Constitution of Nepal (2015)" data-subtopic="Directive principles of state policy">Start Quiz</button></li>
                                 </ul>
                             </li>
                             <li>**Federal System**
                                 <ul class="ml-4 list-disc list-inside">
-                                    <li>Structure: Federation, Provinces, Local Governments</li>
-                                    <li>Division of powers between Federal, Provincial, and Local levels</li>
+                                    <li data-subtopic="Structure: Federation, Provinces, Local Governments">Structure: Federation, Provinces, Local Governments <button class="start-quiz-subtopic-btn" data-chapter-name="Constitution of Nepal (2015)" data-subtopic="Structure: Federation, Provinces, Local Governments">Start Quiz</button></li>
+                                    <li data-subtopic="Division of powers between Federal, Provincial, and Local levels">Division of powers between Federal, Provincial, and Local levels <button class="start-quiz-subtopic-btn" data-chapter-name="Constitution of Nepal (2015)" data-subtopic="Division of powers between Federal, Provincial, and Local levels">Start Quiz</button></li>
                                 </ul>
                             </li>
                             <li>**Legislature**
                                 <ul class="ml-4 list-disc list-inside">
-                                    <li>Federal Parliament structure (House of Representatives & National Assembly)</li>
-                                    <li>Provincial Assembly structure</li>
-                                    <li>Law-making process</li>
+                                    <li data-subtopic="Federal Parliament structure (House of Representatives & National Assembly)">Federal Parliament structure (House of Representatives & National Assembly) <button class="start-quiz-subtopic-btn" data-chapter-name="Constitution of Nepal (2015)" data-subtopic="Federal Parliament structure (House of Representatives & National Assembly)">Start Quiz</button></li>
+                                    <li data-subtopic="Provincial Assembly structure">Provincial Assembly structure <button class="start-quiz-subtopic-btn" data-chapter-name="Constitution of Nepal (2015)" data-subtopic="Provincial Assembly structure">Start Quiz</button></li>
+                                    <li data-subtopic="Law-making process">Law-making process <button class="start-quiz-subtopic-btn" data-chapter-name="Constitution of Nepal (2015)" data-subtopic="Law-making process">Start Quiz</button></li>
                                 </ul>
                             </li>
                             <li>**Executive**
                                 <ul class="ml-4 list-disc list-inside">
-                                    <li>President and Vice President: roles and powers</li>
-                                    <li>Prime Minister & Council of Ministers</li>
-                                    <li>Provincial Chief Minister & Provincial Council</li>
+                                    <li data-subtopic="President and Vice President: roles and powers">President and Vice President: roles and powers <button class="start-quiz-subtopic-btn" data-chapter-name="Constitution of Nepal (2015)" data-subtopic="President and Vice President: roles and powers">Start Quiz</button></li>
+                                    <li data-subtopic="Prime Minister & Council of Ministers">Prime Minister & Council of Ministers <button class="start-quiz-subtopic-btn" data-chapter-name="Constitution of Nepal (2015)" data-subtopic="Prime Minister & Council of Ministers">Start Quiz</button></li>
+                                    <li data-subtopic="Provincial Chief Minister & Provincial Council">Provincial Chief Minister & Provincial Council <button class="start-quiz-subtopic-btn" data-chapter-name="Constitution of Nepal (2015)" data-subtopic="Provincial Chief Minister & Provincial Council">Start Quiz</button></li>
                                 </ul>
                             </li>
                             <li>**Judiciary**
                                 <ul class="ml-4 list-disc list-inside">
-                                    <li>Supreme Court, High Courts, District Courts</li>
-                                    <li>Judicial Council and its functions</li>
+                                    <li data-subtopic="Supreme Court, High Courts, District Courts">Supreme Court, High Courts, District Courts <button class="start-quiz-subtopic-btn" data-chapter-name="Constitution of Nepal (2015)" data-subtopic="Supreme Court, High Courts, District Courts">Start Quiz</button></li>
+                                    <li data-subtopic="Judicial Council and its functions">Judicial Council and its functions <button class="start-quiz-subtopic-btn" data-chapter-name="Constitution of Nepal (2015)" data-subtopic="Judicial Council and its functions">Start Quiz</button></li>
                                 </ul>
                             </li>
                             <li>**Elections & Commissions**
                                 <ul class="ml-4 list-disc list-inside">
-                                    <li>Election Commission</li>
-                                    <li>National Human Rights Commission</li>
-                                    <li>Other constitutional bodies (CIAA, Auditor General, Public Service Commission)</li>
+                                    <li data-subtopic="Election Commission">Election Commission <button class="start-quiz-subtopic-btn" data-chapter-name="Constitution of Nepal (2015)" data-subtopic="Election Commission">Start Quiz</button></li>
+                                    <li data-subtopic="National Human Rights Commission">National Human Rights Commission <button class="start-quiz-subtopic-btn" data-chapter-name="Constitution of Nepal (2015)" data-subtopic="National Human Rights Commission">Start Quiz</button></li>
+                                    <li data-subtopic="Other constitutional bodies (CIAA, Auditor General, Public Service Commission)">Other constitutional bodies (CIAA, Auditor General, Public Service Commission) <button class="start-quiz-subtopic-btn" data-chapter-name="Constitution of Nepal (2015)" data-subtopic="Other constitutional bodies (CIAA, Auditor General, Public Service Commission)">Start Quiz</button></li>
                                 </ul>
                             </li>
                         </ul>
                         <div class="text-center pt-4 pb-2">
-                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-chapter-name="Constitution of Nepal (2015)">Start Quiz on Constitution</button>
+                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-chapter-name="Constitution of Nepal (2015)">Start Quiz on Constitution (All Topics)</button>
                         </div>
                     </div>
                 </div>
@@ -647,21 +668,31 @@
         let auth;
         let userId; // Will store the authenticated user's ID
 
-        // Firebase configuration (provided by Canvas environment or hardcoded if not available)
-        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        // Firebase configuration (provided by Canvas environment or default)
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+            apiKey: "AIzaSyD6sZ8Hp7MLUyHljZn-qwz2UhwVo5O0SZE",
+            authDomain: "nepalquiz-gk.firebaseapp.com",
+            projectId: "nepalquiz-gk",
+            storageBucket: "nepalquiz-gk.firebasestorage.app",
+            messagingSenderId: "579414109480",
+            appId: "1:579414109480:web:b762c2f3d14fe58951b41d"
+        };
 
+        // Initial authentication token (provided by Canvas environment or null)
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-        const currentAppId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id'; // Use default if not available
+        // Application ID (provided by Canvas environment or default)
+        const currentAppId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
 
         /* =========================
            CONFIG (Gemini & Firestore Paths)
            ========================= */
-        const GEMINI_API_KEY = "AIzaSyB_00le4-5PPBhlD71wFYznbFl4cXURDmI"; // Canvas environment will provide it at runtime.
+        const GEMINI_API_KEY = "AIzaSyB_00le4-5PPBhlD71wFYznbFl4cXURDmI"; // Directly set the Gemini API Key here
         const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${GEMINI_API_KEY}`;
-        const LOCAL_STORAGE_KEY_RESULTS = "nepalQuizGkResults"; // Changed for specific page
-        const LOCAL_STORAGE_KEY_NAME = "nepalQuizGkParticipantName"; // Changed for specific page
+        const LOCAL_STORAGE_KEY_RESULTS = "nepalQuizGkResults";
+        const LOCAL_STORAGE_KEY_NAME = "nepalQuizGkParticipantName";
 
         // Firestore collection paths for public quiz data (chapter-specific MCQs)
+        // Ensure this path uses the dynamic currentAppId for proper isolation
         const QUIZZES_COLLECTION_PATH = `artifacts/${currentAppId}/public/data/gk_quizzes`;
 
         /* =========================
@@ -672,6 +703,7 @@
         let questionTimer = null;
         let participantName = "";
         let currentSelectedChapter = null; // Stores the chapter name for the active quiz
+        let currentSelectedSubTopic = null; // Stores the sub-topic for the active quiz
 
         /* =========================
            Helpers
@@ -741,7 +773,7 @@
                     <div class="participant flex justify-between items-center p-3 rounded-lg bg-nq-blue-primary border border-nq-accent-blue mb-2">
                         <div>
                             <strong class="text-nq-accent-blue">${escapeHtml(r.name || 'Anonymous')}</strong><br>
-                            <span class="text-nq-text-dark text-sm">Chapter: ${escapeHtml(r.chapter)} on ${dateStr}</span>
+                            <span class="text-nq-text-dark text-sm">Chapter: ${escapeHtml(r.chapter)} ${r.subTopic ? `(${escapeHtml(r.subTopic)})` : ''} on ${dateStr}</span>
                         </div>
                         <div class="text-nq-text-light">${r.correct} / ${r.total} Correct (${r.skipped} skipped)</div>
                     </div>
@@ -777,25 +809,35 @@
            Firestore Functions
            ========================= */
 
-        // Helper to get a clean chapter ID for Firestore document names
-        function getChapterDocId(chapterName) {
-            // Replace non-alphanumeric characters with underscores, convert to lowercase
-            return chapterName.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
+        // Helper to get a clean document ID for Firestore based on chapter and sub-topic
+        function getQuizDocId(chapterName, subTopicName = null) {
+            let docId = chapterName.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
+            if (subTopicName) {
+                docId += '_' + subTopicName.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
+            }
+            return docId;
         }
 
-        async function getQuizFromFirestore(chapterName) {
-            showMessage(`Checking for existing questions for "${chapterName}"...`);
+        async function getQuizFromFirestore(chapterName, subTopicName = null) {
+            const topicDisplay = subTopicName ? `${chapterName} - ${subTopicName}` : chapterName;
+            showMessage(`Checking for existing questions for "${topicDisplay}"...`);
             try {
-                const chapterDocId = getChapterDocId(chapterName);
-                const docRef = doc(db, QUIZZES_COLLECTION_PATH, chapterDocId);
+                // Ensure db is initialized before trying to use it
+                if (!db) {
+                    console.error("Firestore DB not initialized.");
+                    return null;
+                }
+
+                const docId = getQuizDocId(chapterName, subTopicName);
+                const docRef = doc(db, QUIZZES_COLLECTION_PATH, docId);
                 const docSnap = await getDoc(docRef);
 
                 if (docSnap.exists()) {
                     console.log("Quiz data found in Firestore:", docSnap.data());
-                    showMessage(`Questions for "${chapterName}" loaded from cache!`);
+                    showMessage(`Questions for "${topicDisplay}" loaded from cache!`);
                     return docSnap.data().quizData; // Assuming quiz data is stored under 'quizData' field
                 } else {
-                    console.log("No quiz data found in Firestore for:", chapterName);
+                    console.log("No quiz data found in Firestore for:", topicDisplay);
                     return null;
                 }
             } catch (e) {
@@ -805,17 +847,23 @@
             }
         }
 
-        async function saveQuizToFirestore(chapterName, quizQuestions) {
+        async function saveQuizToFirestore(chapterName, subTopicName, quizQuestions) {
             try {
-                const chapterDocId = getChapterDocId(chapterName);
-                const docRef = doc(db, QUIZZES_COLLECTION_PATH, chapterDocId);
+                // Ensure db is initialized before trying to use it
+                if (!db) {
+                    console.error("Firestore DB not initialized.");
+                    return;
+                }
+                const docId = getQuizDocId(chapterName, subTopicName);
+                const docRef = doc(db, QUIZZES_COLLECTION_PATH, docId);
                 await setDoc(docRef, {
                     chapter: chapterName,
+                    subTopic: subTopicName, // Save sub-topic as well
                     quizData: quizQuestions,
                     generatedAt: new Date().toISOString(), // Timestamp for when it was generated
                     userId: userId // Store the user who generated it (for potential future moderation)
                 });
-                console.log("Quiz data saved to Firestore for:", chapterName);
+                console.log("Quiz data saved to Firestore for:", docId);
                 // No message needed here, message for loading will be shown by getQuizFromFirestore
             } catch (e) {
                 console.error("Error saving quiz to Firestore:", e);
@@ -826,10 +874,11 @@
         /* =========================
            Gemini generate (30 MCQs)
            ========================= */
-        async function generateMCQs(chapter) {
-            showMessage(`Generating questions for "${chapter}" — please wait... (This may take a moment)`, null);
+        async function generateMCQs(chapter, subTopic = null) {
+            const topicForPrompt = subTopic ? `${subTopic} within the chapter "${chapter}"` : chapter;
+            showMessage(`Generating questions for "${topicForPrompt}" — please wait... (This may take a moment)`, null);
             const prompt = `
-Generate 30 multiple choice questions in JSON (array) for a quiz on the topic "${chapter}" for a Nepali educational platform. Each question must have exactly 4 options. Ensure the correct option is clearly indicated by its 0-indexed position (0-3). Provide a short explanation for the correct answer. The questions should be relevant to Nepali General Knowledge or Current Affairs, or the Constitution of Nepal, as appropriate for the chapter.
+Generate 30 multiple choice questions in JSON (array) for a quiz on the topic "${topicForPrompt}" for a Nepali educational platform. Each question must have exactly 4 options. Ensure the correct option is clearly indicated by its 0-indexed position (0-3). Provide a short explanation for the correct answer. The questions should be relevant to Nepali General Knowledge or Current Affairs, or the Constitution of Nepal, as appropriate for the chapter.
 
 Use exactly this JSON schema:
 [
@@ -874,7 +923,7 @@ Return JSON array only. Do not include any other text or markdown outside the JS
                         // For a robust app, you might want to retry generation or log errors server-side.
                     }
                 });
-                showMessage(`Questions for "${chapter}" generated successfully!`);
+                showMessage(`Questions for "${topicForPrompt}" generated successfully!`);
                 return parsed.filter(q => q.question && Array.isArray(q.options) && q.options.length === 4 && typeof q.correct === 'number' && q.correct >= 0 && q.correct <= 3 && q.explanation);
             } catch (e) {
                 console.error("Gemini error", e);
@@ -924,7 +973,7 @@ Return JSON array only. Do not include any other text or markdown outside the JS
                     if (i === q.userAnswer) {
                         btn.style.background = i === q.correct ? cssVarLightGreen : cssVarLightRed;
                         btn.style.borderColor = i === q.correct ? cssVarGreen : cssVarRed;
-                        btn.style.color = i === q.correct ? cssVarBluePrimary : cssVarBluePrimary; // Text color on light backgrounds
+                        btn.style.color = cssVarBluePrimary; // Text color on light backgrounds
                     } else if (i === q.correct) {
                         btn.style.background = cssVarLightGreen;
                         btn.style.borderColor = cssVarGreen;
@@ -1064,13 +1113,16 @@ Return JSON array only. Do not include any other text or markdown outside the JS
            Main Quiz Flow Management
            ========================= */
 
-        async function generateAndRenderQuiz(chapterName) {
+        async function generateAndRenderQuiz(chapterName, subTopicName = null) {
             currentSelectedChapter = chapterName; // Set the current chapter
+            currentSelectedSubTopic = subTopicName; // Set the current sub-topic
+
+            const topicDisplay = subTopicName ? `${chapterName} - ${subTopicName}` : chapterName;
 
             // Hide chapter selection, show quiz loading state
             hide(el('chapter-selection-area'));
             show(el('quiz-full-area'));
-            el('quiz-chapter-info').innerText = `Loading quiz for: ${chapterName}...`;
+            el('quiz-chapter-info').innerText = `Loading quiz for: ${topicDisplay}...`;
             el('question-text').innerText = 'Please wait, fetching questions...';
             el('options-container').innerHTML = '';
             el('prev-btn').disabled = true;
@@ -1080,22 +1132,22 @@ Return JSON array only. Do not include any other text or markdown outside the JS
 
 
             try {
-                let fetchedQuizData = await getQuizFromFirestore(chapterName);
+                let fetchedQuizData = await getQuizFromFirestore(chapterName, subTopicName);
 
                 if (fetchedQuizData && fetchedQuizData.length > 0) {
                     quizData = fetchedQuizData.map(q => ({ ...q, answered: false, userAnswer: null, skipped: false }));
                     currentQuestionIndex = 0;
-                    el('quiz-chapter-info').innerText = `Quiz on: ${chapterName}`;
+                    el('quiz-chapter-info').innerText = `Quiz on: ${topicDisplay}`;
                     renderQuestion();
                 } else {
                     // If not found in Firestore, generate new questions
-                    fetchedQuizData = await generateMCQs(chapterName);
+                    fetchedQuizData = await generateMCQs(chapterName, subTopicName);
                     if (fetchedQuizData && fetchedQuizData.length > 0) {
                         // Save newly generated questions to Firestore for future use
-                        await saveQuizToFirestore(chapterName, fetchedQuizData);
+                        await saveQuizToFirestore(chapterName, subTopicName, fetchedQuizData);
                         quizData = fetchedQuizData.map(q => ({ ...q, answered: false, userAnswer: null, skipped: false }));
                         currentQuestionIndex = 0;
-                        el('quiz-chapter-info').innerText = `Quiz on: ${chapterName}`;
+                        el('quiz-chapter-info').innerText = `Quiz on: ${topicDisplay}`;
                         renderQuestion();
                     } else {
                         throw new Error("Could not get or generate quiz data, please try again.");
@@ -1103,7 +1155,7 @@ Return JSON array only. Do not include any other text or markdown outside the JS
                 }
             } catch (error) {
                 console.error("Error generating/loading quiz:", error);
-                showMessage(`Failed to load quiz for "${chapterName}": ${error.message || error}. Please try again.`);
+                showMessage(`Failed to load quiz for "${topicDisplay}": ${error.message || error}. Please try again.`);
                 // Return to chapter selection on error
                 hide(el('quiz-full-area'));
                 show(el('chapter-selection-area'));
@@ -1121,6 +1173,7 @@ Return JSON array only. Do not include any other text or markdown outside the JS
                 auth = getAuth(app);
                 db = getFirestore(app);
 
+                // Authenticate the user
                 if (initialAuthToken) {
                     try {
                         await signInWithCustomToken(auth, initialAuthToken);
@@ -1132,6 +1185,7 @@ Return JSON array only. Do not include any other text or markdown outside the JS
                 } else {
                     await signInAnonymously(auth);
                 }
+                // Set userId after authentication
                 userId = auth.currentUser?.uid || crypto.randomUUID();
                 console.log("Firebase initialized and user signed in. User ID:", userId);
             } catch (error) {
@@ -1181,14 +1235,26 @@ Return JSON array only. Do not include any other text or markdown outside the JS
                 });
             });
 
-            // "Start Quiz" button click handlers inside each accordion
-            const startQuizButtons = document.querySelectorAll('.start-quiz-btn');
-            startQuizButtons.forEach(button => {
+            // "Start Quiz" button click handlers inside each accordion (for whole chapter)
+            const startQuizChapterButtons = document.querySelectorAll('.start-quiz-btn');
+            startQuizChapterButtons.forEach(button => {
                 button.addEventListener('click', async () => {
                     const chapterName = button.dataset.chapterName;
-                    await generateAndRenderQuiz(chapterName);
+                    await generateAndRenderQuiz(chapterName); // No sub-topic for chapter quizzes
                 });
             });
+
+            // NEW: "Start Quiz" button click handlers for individual sub-topics
+            const startQuizSubtopicButtons = document.querySelectorAll('.start-quiz-subtopic-btn');
+            startQuizSubtopicButtons.forEach(button => {
+                button.addEventListener('click', async (event) => {
+                    event.stopPropagation(); // Prevent accordion from toggling when sub-topic button is clicked
+                    const chapterName = button.dataset.chapterName;
+                    const subTopicName = button.dataset.subtopic;
+                    await generateAndRenderQuiz(chapterName, subTopicName);
+                });
+            });
+
 
             // Quiz navigation and submission buttons
             el('prev-btn').onclick = prevQuestion;
@@ -1204,6 +1270,7 @@ Return JSON array only. Do not include any other text or markdown outside the JS
                 quizData = [];
                 currentQuestionIndex = 0;
                 currentSelectedChapter = null;
+                currentSelectedSubTopic = null; // Reset sub-topic
                 if (questionTimer) clearInterval(questionTimer);
                 renderLocalHistory(); // Ensure local history is updated
             };
@@ -1212,6 +1279,7 @@ Return JSON array only. Do not include any other text or markdown outside the JS
                 const result = {
                     name: getParticipantNameLocally() || 'Anonymous', // Use locally stored name
                     chapter: currentSelectedChapter,
+                    subTopic: currentSelectedSubTopic, // Save sub-topic in results
                     date: new Date().toISOString(),
                     total: quizData.length,
                     correct: parseInt(el('res-correct').innerText),
@@ -1223,18 +1291,11 @@ Return JSON array only. Do not include any other text or markdown outside the JS
                 el('save-result-btn').disabled = true;
             };
 
-            // Set up participant name input and local history
-            const participantNameInput = document.createElement('input');
-            participantNameInput.type = 'text';
-            participantNameInput.placeholder = 'Your name (for local history)';
-            participantNameInput.className = 'w-full p-3 rounded-lg bg-nq-blue-primary text-nq-text-light border border-nq-accent-blue focus:ring-nq-accent-blue focus:border-nq-accent-blue mb-4';
-            participantNameInput.id = 'participant-name-input';
-            participantNameInput.value = getParticipantNameLocally();
-            participantNameInput.addEventListener('input', (e) => saveParticipantNameLocally(e.target.value));
-
-            const participantNameContainer = document.querySelector('#chapter-selection-area .text-center'); // Find a good place, e.g., below the main description
-            if (participantNameContainer) {
-                participantNameContainer.insertBefore(participantNameInput, participantNameContainer.firstChild);
+            // Participant name input handling
+            const participantNameInput = el('participant-name-input');
+            if (participantNameInput) {
+                participantNameInput.value = getParticipantNameLocally();
+                participantNameInput.addEventListener('input', (e) => saveParticipantNameLocally(e.target.value));
             }
 
             renderLocalHistory(); // Initial render of local history
