@@ -8,7 +8,7 @@
 
     <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
     <meta property="og:title" content="NepalQuiz – Play GK, CEE, NEET, and Loksewa Quizzes Online">
-    <meta property="og:description" content="NepalQuiz is Nepal’s ultimate quiz platform for CEE, NEET, Loksewa, GK, and fun quizzes. Play, learn, and compete with friends online.">
+    <meta property="og:description" content="NepalQuiz is Nepal’s ultimate quiz platform for CEE, NEET, Loksewa, GK, and fun quizzes. Play, learn, and compete with friends online;">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nepalquiz.xyz/">
     <meta property="og:image" content="https://placehold.co/1200x630/1A374D/4DC0B5?text=NepalQuiz"> <!-- Placeholder image updated for new theme -->
@@ -45,7 +45,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        /* New Custom Tailwind Colors: Blue, Black, and Accent Aqua */
+        /* Define custom CSS variables for the color palette */
         :root {
             --color-blue-primary: #1A374D; /* Deep Blue for main sections */
             --color-black-primary: #0A0A0A; /* Near Black for backgrounds/text */
@@ -55,8 +55,11 @@
             --color-background-soft-dark: #1E3A4D; /* Slightly lighter dark background for contrast */
         }
 
+        /* Apply custom fonts */
         .font-poppins { font-family: 'Poppins', sans-serif; }
         .font-devanagari { font-family: 'Noto Sans Devanagari', sans-serif; }
+
+        /* Assign Tailwind utility classes to custom CSS variables for easy use */
         .bg-nq-blue-primary { background-color: var(--color-blue-primary); }
         .text-nq-blue-primary { color: var(--color-blue-primary); }
         .bg-nq-black-primary { background-color: var(--color-black-primary); }
@@ -68,7 +71,7 @@
         .text-nq-text-dark { color: var(--color-text-dark); }
         .bg-nq-background-soft-dark { background-color: var(--color-background-soft-dark); }
 
-
+        /* Base body styles */
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--color-black-primary); /* Dark background for the whole page */
@@ -76,7 +79,7 @@
             overflow-x: hidden; /* Prevent horizontal scroll from animations */
         }
 
-        /* Hero Section Background Slider */
+        /* Hero Section Background Slider styling */
         .hero-slider-bg {
             background-size: cover;
             background-position: center;
@@ -103,7 +106,7 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* Darker shadow for dark theme */
         }
 
-        /* Scroll reveal animations */
+        /* Scroll reveal animations for sections */
         .reveal-item {
             opacity: 0;
             transform: translateY(20px);
@@ -113,58 +116,38 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Leaderboard entry animation (removed, but keeping class for consistency if needed elsewhere) */
-        .leaderboard-entry {
-            opacity: 0;
-            transform: translateX(-20px);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-        }
-        /* Delay animation for each entry */
-        .leaderboard-entry:nth-child(1) { transition-delay: 0.1s; }
-        .leaderboard-entry:nth-child(2) { transition-delay: 0.2s; }
-        .leaderboard-entry:nth-child(3) { transition-delay: 0.3s; }
-        .leaderboard-entry:nth-child(4) { transition-delay: 0.4s; }
-        .leaderboard-entry:nth-child(5) { transition-delay: 0.5s; }
-        .leaderboard-entry.is-visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
     </style>
 </head>
 <body class="font-poppins antialiased">
 
-    <!-- Header -->
+    <!-- Header Section -->
     <header class="sticky top-0 z-50 bg-nq-blue-primary text-nq-text-light shadow-lg py-4 px-6 md:px-12 rounded-b-xl">
         <nav class="container mx-auto flex justify-between items-center flex-wrap">
             <!-- Logo -->
-            <a href="#" class="text-3xl font-extrabold text-nq-accent-blue tracking-wide rounded-md">NepalQuiz</a>
+            <a href="#hero-section" class="text-3xl font-extrabold text-nq-accent-blue tracking-wide rounded-md">NepalQuiz</a>
 
-            <!-- Mobile menu button -->
+            <!-- Mobile menu button (hamburger icon) -->
             <button id="mobile-menu-button" class="md:hidden text-nq-text-light focus:outline-none focus:ring-2 focus:ring-nq-accent-blue rounded-md p-2">
                 <i class="fas fa-bars text-2xl"></i>
             </button>
 
             <!-- Navigation Links (Desktop) -->
             <ul class="hidden md:flex space-x-8 font-semibold">
-                <li><a href="index.html" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Home</a></li>
-                <li><a href="gk-current-affairs.html" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Quizzes</a></li>
-                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Leaderboard</a></li>
-                <li><a href="about-us.html" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">About</a></li>
-                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Contact</a></li>
+                <li><a href="#hero-section" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Home</a></li>
+                <li><a href="#quiz-categories-section" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Quizzes</a></li>
+                <!-- Leaderboard link removed for simplicity as there's no corresponding section -->
+                <li><a href="#core-offerings-section" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Offerings</a></li>
+                <li><a href="#footer-section" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Contact</a></li>
             </ul>
-
-           
         </nav>
 
-        <!-- Mobile Menu (Hidden by default) -->
+        <!-- Mobile Menu (Hidden by default, toggled by JS) -->
         <div id="mobile-menu" class="md:hidden mt-4 text-center hidden bg-nq-blue-primary/90 rounded-b-lg py-2">
             <ul class="flex flex-col space-y-3 font-medium">
-                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Home</a></li>
-                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Quizzes</a></li>
-                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Leaderboard</a></li>
-                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">About</a></li>
-                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Contact</a></li>
+                <li><a href="#hero-section" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Home</a></li>
+                <li><a href="#quiz-categories-section" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Quizzes</a></li>
+                <li><a href="#core-offerings-section" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Offerings</a></li>
+                <li><a href="#footer-section" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Contact</a></li>
                 <li>
                     <button class="w-full text-nq-text-light border border-nq-accent-blue rounded-full px-4 py-2 text-sm hover:bg-nq-accent-blue hover:text-nq-blue-primary transition duration-300 mt-2">
                         <i class="fas fa-globe mr-2"></i> भाषा
@@ -176,7 +159,7 @@
 
     <!-- Hero Section -->
     <section id="hero-section" class="relative bg-gradient-to-br from-nq-blue-primary to-black text-nq-text-light py-20 md:py-32 flex items-center justify-center text-center overflow-hidden shadow-inner rounded-b-3xl min-h-[500px]">
-        <!-- Dynamic Background Slider -->
+        <!-- Dynamic Background Slider (managed by JS) -->
         <div id="hero-background" class="absolute inset-0 hero-slider-bg"></div>
 
         <div class="relative z-10 p-6 max-w-4xl mx-auto reveal-item">
@@ -188,29 +171,28 @@
                 Dive into a world of diverse quizzes designed for learners of all ages.
                 <span class="block mt-2 text-sm text-nq-accent-blue">#NepalQuiz #GK #CEE #NEET #Loksewa #OnlineQuiz #EducationNepal</span>
             </p>
-            <button class="btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-4 px-10 rounded-full text-lg shadow-xl hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-nq-accent-blue/50">
+            <a href="#quiz-categories-section" class="btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-4 px-10 rounded-full text-lg shadow-xl hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-nq-accent-blue/50">
                 Start Quiz
-            </button>
+            </a>
         </div>
     </section>
 
     <!-- Main Content Area -->
     <main class="container mx-auto px-6 py-16">
 
-        <!-- Categories Section -->
-        <section class="mb-16 reveal-item">
+        <!-- Quiz Categories Section -->
+        <section id="quiz-categories-section" class="mb-16 reveal-item">
             <h2 class="text-3xl font-bold text-center mb-10 text-nq-accent-blue">Explore Quiz Categories</h2>
             <div id="quiz-categories" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Category Cards will be dynamically inserted here by JavaScript -->
             </div>
         </section>
 
-        
-
-        <!-- Features Section (Now "Our Core Offerings") -->
-        <section class="mt-16 reveal-item">
+        <!-- Features Section (Our Core Offerings) -->
+        <section id="core-offerings-section" class="mt-16 reveal-item">
             <h2 class="text-3xl font-bold text-center mb-10 text-nq-accent-blue">Our Core Offerings</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Each offering card -->
                 <div class="flex flex-col items-center text-center p-6 bg-nq-background-soft-dark rounded-2xl shadow-md card-hover-zoom">
                     <i class="fas fa-calendar-day text-5xl text-nq-accent-blue mb-4"></i>
                     <h3 class="text-xl font-semibold mb-2 text-nq-text-light">Daily Quizzes</h3>
@@ -236,12 +218,12 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-nq-blue-primary text-nq-text-light py-10 px-6 md:px-12 mt-16 rounded-t-xl">
+    <!-- Footer Section -->
+    <footer id="footer-section" class="bg-nq-blue-primary text-nq-text-light py-10 px-6 md:px-12 mt-16 rounded-t-xl">
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
             <!-- Copyright & Logo -->
             <div>
-                <a href="index.html" class="text-3xl font-extrabold text-nq-accent-blue tracking-wide mb-4 inline-block">NepalQuiz</a>
+                <a href="#hero-section" class="text-3xl font-extrabold text-nq-accent-blue tracking-wide mb-4 inline-block">NepalQuiz</a>
                 <p class="text-sm text-nq-text-dark">&copy; 2025 NepalQuiz. All rights reserved.</p>
             </div>
 
@@ -249,11 +231,10 @@
             <div>
                 <h4 class="text-xl font-semibold mb-4 text-nq-accent-blue">Quick Links</h4>
                 <ul class="space-y-2 text-sm">
-                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Home</a></li>
-                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Quizzes</a></li>
-                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Leaderboard</a></li>
-                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">About Us</a></li>
-                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Contact</a></li>
+                    <li><a href="#hero-section" class="hover:text-nq-accent-blue transition duration-300">Home</a></li>
+                    <li><a href="#quiz-categories-section" class="hover:text-nq-accent-blue transition duration-300">Quizzes</a></li>
+                    <li><a href="#core-offerings-section" class="hover:text-nq-accent-blue transition duration-300">Offerings</a></li>
+                    <li><a href="#footer-section" class="hover:text-nq-accent-blue transition duration-300">Contact</a></li>
                 </ul>
             </div>
 
@@ -271,10 +252,11 @@
     </footer>
 
     <script>
-        // --- Helper Functions for Backend Data Mocking ---
+        // --- Helper Function for Mock Backend Data ---
 
         /**
          * Simulates fetching quiz categories from a backend API.
+         * In a real application, this would be an actual fetch request to your server.
          * @returns {Promise<Array<Object>>} A promise that resolves with an array of quiz categories.
          */
         async function fetchQuizCategories() {
@@ -284,135 +266,95 @@
                 { id: 'nepal-gk', name: 'Nepal GK & Current Affairs', icon: '🇳🇵', description: 'Stay updated on Nepal' },
                 { id: 'fun', name: 'Fun Quizzes', icon: '🎉', description: 'Test your general knowledge' },
             ];
-            return new Promise(resolve => setTimeout(() => resolve(mockCategories), 300)); // Simulate network delay
+            return new Promise(resolve => setTimeout(() => resolve(mockCategories), 300)); // Simulate a small network delay
         }
 
-        // --- Core JavaScript Logic ---
+        // --- Core JavaScript Logic for Interactions and Animations ---
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Mobile menu toggle
+            // Mobile menu toggle functionality
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             if (mobileMenuButton && mobileMenu) {
                 mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
+                    mobileMenu.classList.toggle('hidden'); // Toggles the 'hidden' Tailwind class
                 });
             }
 
-            // Hero Background Image Slider
+            // Hero Background Image Slider functionality
             const heroBackground = document.getElementById('hero-background');
+            // Array of placeholder images for the hero section background
             const heroImages = [
-                'https://placehold.co/1920x1080/1A374D/4DC0B5?text=Nepal_Mountains', // Placeholder Mountain image (themed)
-                'https://placehold.co/1920x1080/0A0A0A/4DC0B5?text=Nepal_Temple',    // Placeholder Temple image (themed)
-                'https://placehold.co/1920x1080/1A374D/4DC0B5?text=Nepal_Flag',     // Placeholder Flag image (themed)
-                'https://placehold.co/1920x1080/0A0A0A/4DC0B5?text=Nepal_Classroom' // Placeholder Classroom image (themed)
+                'https://placehold.co/1920x1080/1A374D/4DC0B5?text=Nepal_Mountains', // Themed placeholder for mountains
+                'https://placehold.co/1920x1080/0A0A0A/4DC0B5?text=Nepal_Temple',    // Themed placeholder for temple
+                'https://placehold.co/1920x1080/1A374D/4DC0B5?text=Nepal_Flag',     // Themed placeholder for flag
+                'https://placehold.co/1920x1080/0A0A0A/4DC0B5?text=Nepal_Classroom' // Themed placeholder for classroom
             ];
-            let currentImageIndex = 0;
+            let currentImageIndex = 0; // Index to keep track of the current image
 
+            // Function to update the background image
             function updateHeroBackground() {
-                currentImageIndex = (currentImageIndex + 1) % heroImages.length;
-                heroBackground.style.backgroundImage = `url('${heroImages[currentImageIndex]}')`;
-                // Preload next image to avoid flicker
+                currentImageIndex = (currentImageIndex + 1) % heroImages.length; // Cycle through images
+                heroBackground.style.backgroundImage = `url('${heroImages[currentImageIndex]}')`; // Set new background image
+                // Optional: Preload the next image to avoid flicker
                 const nextImage = new Image();
                 nextImage.src = heroImages[(currentImageIndex + 1) % heroImages.length];
             }
-            // Start the slider (change every 5 seconds)
-            heroBackground.style.backgroundImage = `url('${heroImages[currentImageIndex]}')`; // Initial image
+            // Set the initial background image
+            heroBackground.style.backgroundImage = `url('${heroImages[currentImageIndex]}')`;
+            // Start the slider to change image every 5 seconds
             setInterval(updateHeroBackground, 5000);
 
-            // Populate Leaderboard (Leaderboard section is removed, this function is no longer needed)
-            // No need to call or define fetchLeaderboardData() here anymore.
-
-            // Populate Quiz Categories
+            // Populate Quiz Categories dynamically
             const categoriesContainer = document.getElementById('quiz-categories');
-            fetchQuizCategories().then(data => {
-                categoriesContainer.innerHTML = ''; // Clear any placeholders
-                data.forEach(category => {
-                    const categoryCard = document.createElement('a');
-                    categoryCard.href = `category-${category.id}`; // Link to specific category page/section
-                    categoryCard.className = 'card-hover-zoom block bg-nq-background-soft-dark p-6 rounded-2xl shadow-md text-center border border-nq-blue-primary';
-                    categoryCard.innerHTML = `
-                        <div class="text-5xl mb-4 text-nq-accent-blue">${category.icon}</div>
-                        <h3 class="text-xl font-semibold mb-2 text-nq-text-light">${category.name}</h3>
-                        <p class="text-sm text-nq-text-dark">${category.description}</p>
-                    `;
-                    categoriesContainer.appendChild(categoryCard);
+            if (categoriesContainer) {
+                fetchQuizCategories().then(data => {
+                    categoriesContainer.innerHTML = ''; // Clear any existing content or placeholders
+                    data.forEach(category => {
+                        const categoryCard = document.createElement('a');
+                        // Link to the main quiz categories section
+                        categoryCard.href = '#quiz-categories-section';
+                        // Apply Tailwind classes for styling and hover effects
+                        categoryCard.className = 'card-hover-zoom block bg-nq-background-soft-dark p-6 rounded-2xl shadow-md text-center border border-nq-blue-primary';
+                        categoryCard.innerHTML = `
+                            <div class="text-5xl mb-4 text-nq-accent-blue">${category.icon}</div>
+                            <h3 class="text-xl font-semibold mb-2 text-nq-text-light">${category.name}</h3>
+                            <p class="text-sm text-nq-text-dark">${category.description}</p>
+                        `;
+                        categoriesContainer.appendChild(categoryCard); // Add the card to the container
+                    });
+                }).catch(error => {
+                    console.error('Error fetching quiz categories:', error);
+                    // Display an error message if categories fail to load
+                    categoriesContainer.innerHTML = '<p class="text-center text-red-500 col-span-full">Failed to load categories. Please try again later.</p>';
                 });
-            }).catch(error => {
-                console.error('Error fetching quiz categories:', error);
-                categoriesContainer.innerHTML = '<p class="text-center text-red-500 col-span-full">Failed to load categories. Please try again later.</p>';
-            });
-
-            // Countdown Timer Logic
-            const countdownElement = document.getElementById('countdown');
-            const daysElement = document.getElementById('days');
-            const hoursElement = document.getElementById('hours');
-            const minutesElement = document.getElementById('minutes');
-            const secondsElement = document.getElementById('seconds');
-
-            /**
-             * Backend configurable quiz date. In a real scenario, this would be fetched from a DB.
-             * Example: Quiz is 3 days from now, at 10 AM.
-             */
-            const getBackendQuizDate = () => {
-                const now = new Date();
-                const quizTime = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 3, 10, 0, 0); // Example: 3 days from now, at 10:00 AM
-                return quizTime;
-            };
-            const quizDate = getBackendQuizDate();
-
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const distance = quizDate.getTime() - now;
-
-                if (distance < 0) {
-                    countdownElement.innerHTML = "<span class='text-nq-accent-blue text-4xl'>Quiz has started!</span>";
-                    clearInterval(countdownInterval);
-                    return;
-                }
-
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                daysElement.textContent = String(days).padStart(2, '0');
-                hoursElement.textContent = String(hours).padStart(2, '0');
-                minutesElement.textContent = String(minutes).padStart(2, '0');
-                secondsElement.textContent = String(seconds).padStart(2, '0');
             }
 
-            // Update the countdown every 1 second
-            const countdownInterval = setInterval(updateCountdown, 1000);
-            updateCountdown(); // Initial call to display immediately
-
             // Scroll Reveal Animations using Intersection Observer
-            const revealElements = document.querySelectorAll('.reveal-item');
-            // Removed leaderboardEntries as the section no longer exists.
+            const revealElements = document.querySelectorAll('.reveal-item'); // Select all elements with the 'reveal-item' class
 
             const observerOptions = {
-                root: null, // viewport
-                rootMargin: '0px',
-                threshold: 0.1 // 10% of item visible to trigger
+                root: null, // The viewport is used as the root
+                rootMargin: '0px', // No margin around the root
+                threshold: 0.1 // Trigger when 10% of the item is visible
             };
 
+            // Callback function executed when an observed element intersects with the viewport
             const observerCallback = (entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // Stop observing once visible
+                        entry.target.classList.add('is-visible'); // Add 'is-visible' class to trigger animation
+                        observer.unobserve(entry.target); // Stop observing once the element is visible
                     }
                 });
             };
 
+            // Create a new Intersection Observer instance
             const observer = new IntersectionObserver(observerCallback, observerOptions);
 
+            // Observe each reveal-item element
             revealElements.forEach(el => observer.observe(el));
-            // No longer observing leaderboard entries.
         });
     </script>
 </body>
 </html>
-
-
-
