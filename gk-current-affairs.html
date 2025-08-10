@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GK Nepal & Current Affairs – NepalQuiz</title>
+    <meta name="description" content="Explore comprehensive quizzes on General Knowledge (GK) of Nepal, history, geography, economy, culture, and recent current affairs. Prepare for SEE, Loksewa, and general knowledge exams.">
+
+    <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
+    <meta property="og:title" content="GK Nepal & Current Affairs – NepalQuiz">
+    <meta property="og:description" content="Explore comprehensive quizzes on General Knowledge (GK) of Nepal, history, geography, economy, culture, and recent current affairs.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nepalquiz.xyz/gk-current-affairs.html">
+    <meta property="og:image" content="https://placehold.co/1200x630/1A374D/4DC0B5?text=Nepal_GK_Current_Affairs"> <!-- Placeholder image for this page -->
+
+    <!-- Schema.org Structured Data (EducationalCourse for specific topics might be too much, but generic EducationalOrganization is fine) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "GK Nepal & Current Affairs – NepalQuiz",
+      "url": "https://nepalquiz.xyz/gk-current-affairs.html",
+      "description": "Comprehensive quizzes and learning material on Nepali General Knowledge, Current Affairs, and the Constitution of Nepal.",
+      "about": [
+        {"@type": "Thing", "name": "General Knowledge of Nepal"},
+        {"@type": "Thing", "name": "Nepali Geography"},
+        {"@type": "Thing", "name": "Nepali History"},
+        {"@type": "Thing", "name": "Nepali Economy"},
+        {"@type": "Thing", "name": "Nepali Culture"},
+        {"@type": "Thing", "name": "Current Affairs Nepal"},
+        {"@type": "Thing", "name": "Constitution of Nepal"}
+      ],
+      "publisher": {
+        "@type": "EducationalOrganization",
+        "name": "NepalQuiz",
+        "url": "https://nepalquiz.xyz/"
+      }
+    }
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Poppins (English) & Noto Sans Devanagari (Nepali) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* New Custom Tailwind Colors: Blue, Black, and Accent Aqua */
+        :root {
+            --color-blue-primary: #1A374D; /* Deep Blue for main sections */
+            --color-black-primary: #0A0A0A; /* Near Black for backgrounds/text */
+            --color-accent-blue: #4DC0B5; /* Vibrant Teal/Aqua for accents and highlights */
+            --color-text-light: #F8F8F8; /* Off-white for light text on dark backgrounds */
+            --color-text-dark: #A0AEC0; /* Lighter gray for secondary text on dark backgrounds */
+            --color-background-soft-dark: #1E3A4D; /* Slightly lighter dark background for contrast */
+            --green: #16a34a; /* for correct answers */
+            --red: #ef4444; /* for wrong answers */
+            --light-green: #d1fae5; /* for correct answers light bg */
+            --light-red: #ffe4e6; /* for wrong answers light bg */
+            --border-color-light: rgba(255, 255, 255, 0.1); /* light border for dark theme */
+        }
+
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+        .font-devanagari { font-family: 'Noto Sans Devanagari', sans-serif; }
+        .bg-nq-blue-primary { background-color: var(--color-blue-primary); }
+        .text-nq-blue-primary { color: var(--color-blue-primary); }
+        .bg-nq-black-primary { background-color: var(--color-black-primary); }
+        .text-nq-black-primary { color: var(--color-black-primary); }
+        .bg-nq-accent-blue { background-color: var(--color-accent-blue); }
+        .text-nq-accent-blue { color: var(--color-accent-blue); }
+        .bg-nq-text-light { background-color: var(--color-text-light); }
+        .text-nq-text-light { color: var(--color-text-light); }
+        .text-nq-text-dark { color: var(--color-text-dark); }
+        .bg-nq-background-soft-dark { background-color: var(--color-background-soft-dark); }
+
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-black-primary); /* Dark background for the whole page */
+            color: var(--color-text-light); /* Light text on dark background */
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+        }
+
+        /* Button hover glow effect */
+        .btn-glow {
+            box-shadow: 0 0 0 rgba(77, 192, 181, 0); /* Initial transparent shadow with accent color */
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 20px rgba(77, 192, 181, 0.8), 0 0 40px rgba(77, 192, 181, 0.6);
+            transform: translateY(-3px);
+        }
+
+        /* Scroll reveal animations */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Accordion specific styles */
+        .accordion-item {
+            background-color: var(--color-background-soft-dark);
+            border-radius: 0.75rem; /* rounded-xl */
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--color-blue-primary);
+        }
+
+        .accordion-header {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background-color: var(--color-blue-primary);
+            color: var(--color-text-light);
+            font-weight: 600;
+            border-radius: 0.75rem; /* rounded-xl */
+            transition: background-color 0.3s ease;
+        }
+        .accordion-header:hover {
+            background-color: #2a5270; /* Slightly lighter primary blue on hover */
+        }
+        .accordion-header .icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-header.expanded .icon {
+            transform: rotate(180deg);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+            /* background-color: var(--color-background-soft-dark); Removed as it's on accordion-item now */
+            border-radius: 0 0 0.75rem 0.75rem; /* rounded-xl only bottom corners */
+            padding: 0 1.5rem; /* Initial padding 0, will expand */
+        }
+        .accordion-content.expanded {
+            max-height: 1200px; /* Increased for potentially longer content */
+            padding: 1rem 1.5rem;
+        }
+        .accordion-content ul {
+            list-style: none; /* Remove default list style */
+            padding: 0;
+            margin: 0;
+        }
+        .accordion-content ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            color: var(--color-text-dark); /* Topics text color */
+        }
+        .accordion-content ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Quiz Specific Styles - Replicated from daily-chapter-quiz (2).html, adapted for theme */
+        .quiz-card {
+            background: var(--color-background-soft-dark);
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            margin-bottom: 16px;
+            border: 1px solid var(--color-blue-primary);
+        }
+        .quiz-card h2 {
+            color: var(--color-accent-blue);
+            margin: 6px 0 14px;
+            font-size: 1.4rem;
+        }
+        .option-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--color-blue-primary); /* Use primary blue for borders */
+            margin: 8px 0;
+            background: var(--color-blue-primary); /* Options background */
+            color: var(--color-text-light); /* Text color for options */
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+        .option-btn:hover:not([data-answered="true"]) {
+            background: #2a5270; /* Slightly lighter primary blue on hover */
+            border-color: var(--color-accent-blue);
+        }
+        .option-btn[data-answered="true"] {
+            cursor: default; /* No hover after answer */
+        }
+        #quiz-area .controls button {
+            background: var(--color-blue-primary);
+            color: var(--color-text-light);
+            border: 1px solid var(--color-accent-blue);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 1rem;
+            flex: 1; /* Distribute space */
+            min-width: 100px; /* Ensure buttons don't get too small */
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        #quiz-area .controls button:hover:not([disabled]) {
+            background: var(--color-accent-blue);
+            color: var(--color-blue-primary);
+            transform: translateY(-2px);
+        }
+        #quiz-area .controls button[disabled] {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
+        #submit-btn { background-color: var(--green); border-color: var(--green); }
+        #submit-btn:hover:not([disabled]) { background-color: #128a3f; }
+        #restart-btn { background-color: var(--red); border-color: var(--red); }
+        #restart-btn:hover:not([disabled]) { background-color: #bb2f2f; }
+        #save-result-btn { background-color: var(--color-blue-primary); border-color: var(--color-accent-blue); }
+        #save-result-btn:hover:not([disabled]) { background-color: var(--color-accent-blue); color: var(--color-blue-primary); }
+
+        #countdown {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--color-accent-blue);
+            margin-bottom: 10px;
+        }
+        #explanation {
+            margin-top: 15px;
+            font-style: italic;
+            color: var(--color-text-dark);
+            padding: 10px;
+            background: var(--color-background-soft-dark); /* Match card background */
+            border-radius: 8px;
+            border: 1px solid var(--color-blue-primary);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.8); /* Darker overlay for dark theme */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: var(--color-blue-primary); /* Modal background */
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            color: var(--color-text-light); /* Modal text color */
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--color-text-dark); /* Muted close button */
+            padding: 0;
+        }
+        .modal-close-btn:hover {
+            color: var(--color-accent-blue);
+        }
+        .modal-content button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: var(--color-accent-blue);
+            color: var(--color-blue-primary);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: auto;
+        }
+        .modal-content button:hover {
+            opacity: 0.9;
+        }
+
+        /* Results Area styling */
+        #results-area {
+            background: var(--color-background-soft-dark);
+            border: 1px solid var(--color-blue-primary);
+            padding: 18px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        }
+        #results-area h2 {
+            color: var(--color-accent-blue);
+        }
+        #results-area div {
+            color: var(--color-text-dark);
+        }
+        #local-history-display .participant {
+            background: var(--color-blue-primary);
+            color: var(--color-text-light);
+            border: 1px solid var(--color-accent-blue);
+        }
+        #local-history-display .participant strong {
+            color: var(--color-accent-blue);
+        }
+        #local-history-display .participant div:last-child {
+            color: var(--color-text-dark); /* Score text color */
+        }
+
+        /* General styles for current/upcoming info */
+        #status-area .info-card {
+            background: var(--color-background-soft-dark);
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            border: 1px solid var(--color-blue-primary);
+            color: var(--color-text-light);
+        }
+        #status-area .info-card h3 {
+            color: var(--color-accent-blue);
+            font-size: 1.4rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        #status-area .info-card .meta {
+            color: var(--color-text-dark);
+        }
+
+    </style>
+</head>
+<body class="font-poppins antialiased">
+
+    <!-- Header - Copied from homepage -->
+    <header class="sticky top-0 z-50 bg-nq-blue-primary text-nq-text-light shadow-lg py-4 px-6 md:px-12 rounded-b-xl">
+        <nav class="container mx-auto flex justify-between items-center flex-wrap">
+            <!-- Logo -->
+            <a href="#" class="text-3xl font-extrabold text-nq-accent-blue tracking-wide rounded-md">NepalQuiz</a>
+
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-button" class="md:hidden text-nq-text-light focus:outline-none focus:ring-2 focus:ring-nq-accent-blue rounded-md p-2">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+
+            <!-- Navigation Links (Desktop) -->
+            <ul class="hidden md:flex space-x-8 font-semibold">
+                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Home</a></li>
+                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Quizzes</a></li>
+                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Leaderboard</a></li>
+                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">About</a></li>
+                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Contact</a></li>
+            </ul>
+
+            <!-- Language Toggle (Placeholder) -->
+            <div class="hidden md:block">
+                <button class="text-nq-text-light border border-nq-accent-blue rounded-full px-4 py-2 text-sm hover:bg-nq-accent-blue hover:text-nq-blue-primary transition duration-300">
+                    <i class="fas fa-globe mr-2"></i> भाषा
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="md:hidden mt-4 text-center hidden bg-nq-blue-primary/90 rounded-b-lg py-2">
+            <ul class="flex flex-col space-y-3 font-medium">
+                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Home</a></li>
+                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Quizzes</a></li>
+                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Leaderboard</a></li>
+                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">About</a></li>
+                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Contact</a></li>
+                <li>
+                    <button class="w-full text-nq-text-light border border-nq-accent-blue rounded-full px-4 py-2 text-sm hover:bg-nq-accent-blue hover:text-nq-blue-primary transition duration-300 mt-2">
+                        <i class="fas fa-globe mr-2"></i> भाषा
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Content Area for GK Nepal & Current Affairs Page -->
+    <main class="container mx-auto px-6 py-16">
+        <section id="chapter-selection-area" class="bg-nq-background-soft-dark p-8 rounded-2xl shadow-lg border border-nq-blue-primary reveal-item">
+            <h1 class="text-4xl font-extrabold text-center mb-8 text-nq-accent-blue">GK Nepal & Current Affairs</h1>
+            <p class="text-lg mb-8 text-nq-text-dark leading-relaxed text-center">
+                Dive deep into the general knowledge of Nepal and stay updated with the latest current affairs. Click on a chapter to explore its topics and then start a quiz!
+            </p>
+
+            <div class="space-y-4" id="chapters-list">
+                <!-- Chapter 1: General Knowledge (GK) -->
+                <div class="accordion-item reveal-item">
+                    <div class="accordion-header rounded-xl" tabindex="0" role="button" aria-expanded="false" data-chapter-name="General Knowledge (GK)">
+                        <span class="text-2xl text-nq-accent-blue font-semibold">📘 General Knowledge (GK)</span>
+                        <i class="fas fa-chevron-down icon text-nq-accent-blue"></i>
+                    </div>
+                    <div class="accordion-content rounded-xl">
+                        <ul class="text-nq-text-dark py-2">
+                            <li>Physical geography of Nepal</li>
+                            <li>Provinces, districts, municipalities</li>
+                            <li>Rivers, lakes, and mountains (Everest, Annapurna, etc.)</li>
+                            <li>National parks & wildlife reserves</li>
+                            <li>Climate and vegetation zones of Nepal</li>
+                            <li>Natural resources & minerals</li>
+                        </ul>
+                        <div class="text-center pt-4 pb-2">
+                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-chapter-name="General Knowledge (GK)">Start Quiz on GK</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chapter 2: History -->
+                <div class="accordion-item reveal-item">
+                    <div class="accordion-header rounded-xl" tabindex="0" role="button" aria-expanded="false" data-chapter-name="History">
+                        <span class="text-2xl text-nq-accent-blue font-semibold">📜 History</span>
+                        <i class="fas fa-chevron-down icon text-nq-accent-blue"></i>
+                    </div>
+                    <div class="accordion-content rounded-xl">
+                        <ul class="text-nq-text-dark py-2">
+                            <li>Ancient history of Nepal (Kirant, Lichhavi, Malla periods)</li>
+                            <li>Unification of Nepal by Prithvi Narayan Shah</li>
+                            <li>Rana regime & political movements</li>
+                            <li>Modern political history (Democracy, Panchayat, Republic)</li>
+                        </ul>
+                        <div class="text-center pt-4 pb-2">
+                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-chapter-name="History">Start Quiz on History</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chapter 3: Economy -->
+                <div class="accordion-item reveal-item">
+                    <div class="accordion-header rounded-xl" tabindex="0" role="button" aria-expanded="false" data-chapter-name="Economy">
+                        <span class="text-2xl text-nq-accent-blue font-semibold">📈 Economy</span>
+                        <i class="fas fa-chevron-down icon text-nq-accent-blue"></i>
+                    </div>
+                    <div class="accordion-content rounded-xl">
+                        <ul class="text-nq-text-dark py-2">
+                            <li>GDP and major sectors (Agriculture, Industry, Tourism)</li>
+                            <li>Major exports and imports</li>
+                            <li>Development plans (Five-year plans)</li>
+                            <li>Currency & banking system in Nepal</li>
+                        </ul>
+                        <div class="text-center pt-4 pb-2">
+                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-chapter-name="Economy">Start Quiz on Economy</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chapter 4: Culture -->
+                <div class="accordion-item reveal-item">
+                    <div class="accordion-header rounded-xl" tabindex="0" role="button" aria-expanded="false" data-chapter-name="Culture">
+                        <span class="text-2xl text-nq-accent-blue font-semibold">🎨 Culture</span>
+                        <i class="fas fa-chevron-down icon text-nq-accent-blue"></i>
+                    </div>
+                    <div class="accordion-content rounded-xl">
+                        <ul class="text-nq-text-dark py-2">
+                            <li>Festivals and traditions</li>
+                            <li>UNESCO World Heritage sites in Nepal</li>
+                            <li>Languages & ethnic diversity</li>
+                            <li>National symbols (flag, emblem, anthem, animal, bird, flower)</li>
+                        </ul>
+                        <div class="text-center pt-4 pb-2">
+                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-chapter-name="Culture">Start Quiz on Culture</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chapter 5: Current Affairs -->
+                <div class="accordion-item reveal-item">
+                    <div class="accordion-header rounded-xl" tabindex="0" role="button" aria-expanded="false" data-chapter-name="Current Affairs">
+                        <span class="text-2xl text-nq-accent-blue font-semibold">📰 Current Affairs</span>
+                        <i class="fas fa-chevron-down icon text-nq-accent-blue"></i>
+                    </div>
+                    <div class="accordion-content rounded-xl">
+                        <ul class="text-nq-text-dark py-2">
+                            <li>Recent government appointments and reshuffles</li>
+                            <li>Major national events in the past year</li>
+                            <li>Current Prime Minister, President, Chief Justice, Speaker</li>
+                            <li>Recent laws and bills passed in Parliament</li>
+                            <li>International relations & agreements involving Nepal</li>
+                            <li>Major natural disasters and relief programs</li>
+                            <li>Sports achievements (South Asian Games, Cricket, Football)</li>
+                        </ul>
+                        <div class="text-center pt-4 pb-2">
+                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-chapter-name="Current Affairs">Start Quiz on Current Affairs</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chapter 6: Constitution of Nepal (2015) -->
+                <div class="accordion-item reveal-item">
+                    <div class="accordion-header rounded-xl" tabindex="0" role="button" aria-expanded="false" data-chapter-name="Constitution of Nepal (2015)">
+                        <span class="text-2xl text-nq-accent-blue font-semibold">📜 Constitution of Nepal (2015)</span>
+                        <i class="fas fa-chevron-down icon text-nq-accent-blue"></i>
+                    </div>
+                    <div class="accordion-content rounded-xl">
+                        <ul class="text-nq-text-dark py-2">
+                            <li>**General Provisions**
+                                <ul class="ml-4 list-disc list-inside">
+                                    <li>Preamble & key principles</li>
+                                    <li>Fundamental rights and duties of citizens</li>
+                                    <li>Directive principles of state policy</li>
+                                </ul>
+                            </li>
+                            <li>**Federal System**
+                                <ul class="ml-4 list-disc list-inside">
+                                    <li>Structure: Federation, Provinces, Local Governments</li>
+                                    <li>Division of powers between Federal, Provincial, and Local levels</li>
+                                </ul>
+                            </li>
+                            <li>**Legislature**
+                                <ul class="ml-4 list-disc list-inside">
+                                    <li>Federal Parliament structure (House of Representatives & National Assembly)</li>
+                                    <li>Provincial Assembly structure</li>
+                                    <li>Law-making process</li>
+                                </ul>
+                            </li>
+                            <li>**Executive**
+                                <ul class="ml-4 list-disc list-inside">
+                                    <li>President and Vice President: roles and powers</li>
+                                    <li>Prime Minister & Council of Ministers</li>
+                                    <li>Provincial Chief Minister & Provincial Council</li>
+                                </ul>
+                            </li>
+                            <li>**Judiciary**
+                                <ul class="ml-4 list-disc list-inside">
+                                    <li>Supreme Court, High Courts, District Courts</li>
+                                    <li>Judicial Council and its functions</li>
+                                </ul>
+                            </li>
+                            <li>**Elections & Commissions**
+                                <ul class="ml-4 list-disc list-inside">
+                                    <li>Election Commission</li>
+                                    <li>National Human Rights Commission</li>
+                                    <li>Other constitutional bodies (CIAA, Auditor General, Public Service Commission)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="text-center pt-4 pb-2">
+                            <button class="start-quiz-btn btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-2 px-6 rounded-full text-md shadow" data-chapter-name="Constitution of Nepal (2015)">Start Quiz on Constitution</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Area - Initially Hidden -->
+        <section id="quiz-full-area" class="quiz-card hidden mt-8 reveal-item">
+            <h2 class="text-center mb-4 text-nq-accent-blue">Quiz Time!</h2>
+            <p id="quiz-chapter-info" class="text-center text-nq-text-dark mb-6"></p>
+
+            <div id="status" class="mb-4">
+                <div id="question-num" class="text-nq-text-dark"></div>
+                <div id="countdown" class="text-nq-accent-blue text-center"></div>
+            </div>
+
+            <h3 id="question-text" class="text-nq-text-light text-xl mb-4"></h3>
+            <div id="options-container" class="space-y-3"></div>
+            <div id="explanation" class="text-nq-text-dark mt-4 hidden"></div>
+
+            <div class="controls flex justify-between gap-4 mt-8">
+                <button id="prev-btn" class="bg-nq-blue-primary">Previous</button>
+                <button id="skip-btn" class="bg-nq-blue-primary">Skip</button>
+                <button id="next-btn" class="bg-nq-blue-primary">Next</button>
+                <button id="submit-btn" class="bg-green-600">Submit Quiz</button>
+            </div>
+        </section>
+
+        <!-- Results Area - Initially Hidden -->
+        <section id="results-area" class="quiz-card hidden mt-8 reveal-item">
+            <h2 class="text-center mb-4 text-nq-accent-blue">Quiz Result</h2>
+            <div class="text-center space-y-2 text-nq-text-dark mb-6">
+                <div>Total Questions: <span id="res-total" class="font-bold text-nq-text-light">0</span></div>
+                <div>Correct Answers: <span id="res-correct" class="font-bold text-nq-accent-blue">0</span></div>
+                <div>Wrong Answers: <span id="res-wrong" class="font-bold text-red-500">0</span></div>
+                <div>Skipped Questions: <span id="res-skipped" class="font-bold text-nq-text-dark">0</span></div>
+            </div>
+            <div class="controls flex justify-center gap-4 mt-8">
+                <button id="save-result-btn" class="bg-nq-blue-primary">Save Result (Local)</button>
+                <button id="restart-btn" class="bg-red-600">Restart Quiz</button>
+            </div>
+
+            <h3 class="text-xl font-semibold text-center mt-10 mb-4 text-nq-accent-blue">Your Local History</h3>
+            <div id="local-history-display" class="space-y-3">
+                <div class="text-nq-text-dark text-center">No previous results saved locally.</div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer - Copied from homepage -->
+    <footer class="bg-nq-blue-primary text-nq-text-light py-10 px-6 md:px-12 mt-16 rounded-t-xl">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <!-- Copyright & Logo -->
+            <div>
+                <a href="#" class="text-3xl font-extrabold text-nq-accent-blue tracking-wide mb-4 inline-block">NepalQuiz</a>
+                <p class="text-sm text-nq-text-dark">&copy; 2025 NepalQuiz. All rights reserved.</p>
+            </div>
+
+            <!-- Quick Navigation -->
+            <div>
+                <h4 class="text-xl font-semibold mb-4 text-nq-accent-blue">Quick Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Home</a></li>
+                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Quizzes</a></li>
+                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Leaderboard</a></li>
+                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">About Us</a></li>
+                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Links -->
+            <div>
+                <h4 class="text-xl font-semibold mb-4 text-nq-accent-blue">Connect With Us</h4>
+                <div class="flex justify-center md:justify-start space-x-6 text-2xl">
+                    <a href="#" class="hover:text-nq-accent-blue hover:scale-110 transition duration-300" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-nq-accent-blue hover:scale-110 transition duration-300" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-nq-accent-blue hover:scale-110 transition duration-300" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-nq-accent-blue hover:scale-110 transition duration-300" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for messages -->
+    <div id="modal-message-overlay" class="modal-overlay hidden">
+      <div class="modal-content">
+        <button class="modal-close-btn" id="modal-message-close">&times;</button>
+        <p id="modal-message-text"></p>
+        <button id="modal-message-ok">OK</button>
+      </div>
+    </div>
+
+    <script type="module">
+        /* =========================
+           Firebase Imports & Setup
+           ========================= */
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Global Firebase instances
+        let app;
+        let db;
+        let auth;
+        let userId; // Will store the authenticated user's ID
+
+        // Firebase configuration (provided by Canvas environment or hardcoded if not available)
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        const currentAppId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id'; // Use default if not available
+
+        /* =========================
+           CONFIG (Gemini & Firestore Paths)
+           ========================= */
+        const GEMINI_API_KEY = "AIzaSyB_00le4-5PPBhlD71wFYznbFl4cXURDmI"; // Canvas environment will provide it at runtime.
+        const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${GEMINI_API_KEY}`;
+        const LOCAL_STORAGE_KEY_RESULTS = "nepalQuizGkResults"; // Changed for specific page
+        const LOCAL_STORAGE_KEY_NAME = "nepalQuizGkParticipantName"; // Changed for specific page
+
+        // Firestore collection paths for public quiz data (chapter-specific MCQs)
+        const QUIZZES_COLLECTION_PATH = `artifacts/${currentAppId}/public/data/gk_quizzes`;
+
+        /* =========================
+           GLOBAL QUIZ STATE
+           ========================= */
+        let quizData = [];             // array of questions from Gemini or Firestore
+        let currentQuestionIndex = 0;
+        let questionTimer = null;
+        let participantName = "";
+        let currentSelectedChapter = null; // Stores the chapter name for the active quiz
+
+        /* =========================
+           Helpers
+           ========================= */
+        function el(id){ return document.getElementById(id); }
+        function show(q){ q.classList.remove('hidden'); q.style.display = ''; }
+        function hide(q){ q.classList.add('hidden'); q.style.display = 'none'; }
+
+        function showMessage(msg, callback = null) {
+            el('modal-message-text').innerText = msg;
+            show(el('modal-message-overlay'));
+            el('modal-message-ok').onclick = () => {
+                hide(el('modal-message-overlay'));
+                if (callback) callback();
+            };
+            el('modal-message-close').onclick = () => {
+                hide(el('modal-message-overlay'));
+                if (callback) callback();
+            };
+        }
+
+        /* =========================
+           Local Storage Management
+           ========================= */
+        function saveParticipantNameLocally(name) {
+            localStorage.setItem(LOCAL_STORAGE_KEY_NAME, name);
+        }
+
+        function getParticipantNameLocally() {
+            return localStorage.getItem(LOCAL_STORAGE_KEY_NAME) || "";
+        }
+
+        function saveQuizResultLocally(result) {
+            const results = getQuizResultsLocally();
+            results.push(result);
+            localStorage.setItem(LOCAL_STORAGE_KEY_RESULTS, JSON.stringify(results));
+            renderLocalHistory(); // Re-render history after saving
+        }
+
+        function getQuizResultsLocally() {
+            try {
+                return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_RESULTS) || "[]");
+            } catch (e) {
+                console.error("Error parsing local results:", e);
+                return [];
+            }
+        }
+
+        function renderLocalHistory() {
+            const historyDisplayEl = el('local-history-display');
+            const results = getQuizResultsLocally();
+
+            if (results.length === 0) {
+                historyDisplayEl.innerHTML = '<div class="text-nq-text-dark text-center">No previous results saved locally.</div>';
+                return;
+            }
+
+            // Sort by date descending
+            results.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            historyDisplayEl.innerHTML = results.map(r => {
+                const dateStr = new Date(r.date).toLocaleString('en-NP', {
+                    year: 'numeric', month: 'short', day: 'numeric',
+                    hour: '2-digit', minute: '2-digit', hour12: true
+                });
+                return `
+                    <div class="participant flex justify-between items-center p-3 rounded-lg bg-nq-blue-primary border border-nq-accent-blue mb-2">
+                        <div>
+                            <strong class="text-nq-accent-blue">${escapeHtml(r.name || 'Anonymous')}</strong><br>
+                            <span class="text-nq-text-dark text-sm">Chapter: ${escapeHtml(r.chapter)} on ${dateStr}</span>
+                        </div>
+                        <div class="text-nq-text-light">${r.correct} / ${r.total} Correct (${r.skipped} skipped)</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        /* =========================
+           Exponential Backoff for API calls
+           ========================= */
+        async function fetchWithExponentialBackoff(url, options, retries = 3, delay = 1000) {
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.status === 429 || !response.ok) { // Too Many Requests or other non-OK status
+                        if (i < retries - 1) {
+                            await new Promise(resolve => setTimeout(resolve, delay * Math.pow(2, i)));
+                            continue;
+                        }
+                    }
+                    return response;
+                } catch (error) {
+                    if (i < retries - 1) {
+                        await new Promise(resolve => setTimeout(resolve, delay * Math.pow(2, i)));
+                        continue;
+                    }
+                    throw error; // Re-throw if all retries fail
+                }
+            }
+        }
+
+        /* =========================
+           Firestore Functions
+           ========================= */
+
+        // Helper to get a clean chapter ID for Firestore document names
+        function getChapterDocId(chapterName) {
+            // Replace non-alphanumeric characters with underscores, convert to lowercase
+            return chapterName.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
+        }
+
+        async function getQuizFromFirestore(chapterName) {
+            showMessage(`Checking for existing questions for "${chapterName}"...`);
+            try {
+                const chapterDocId = getChapterDocId(chapterName);
+                const docRef = doc(db, QUIZZES_COLLECTION_PATH, chapterDocId);
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    console.log("Quiz data found in Firestore:", docSnap.data());
+                    showMessage(`Questions for "${chapterName}" loaded from cache!`);
+                    return docSnap.data().quizData; // Assuming quiz data is stored under 'quizData' field
+                } else {
+                    console.log("No quiz data found in Firestore for:", chapterName);
+                    return null;
+                }
+            } catch (e) {
+                console.error("Error fetching quiz from Firestore:", e);
+                showMessage(`Error fetching quiz from database: ${e.message}`);
+                return null;
+            }
+        }
+
+        async function saveQuizToFirestore(chapterName, quizQuestions) {
+            try {
+                const chapterDocId = getChapterDocId(chapterName);
+                const docRef = doc(db, QUIZZES_COLLECTION_PATH, chapterDocId);
+                await setDoc(docRef, {
+                    chapter: chapterName,
+                    quizData: quizQuestions,
+                    generatedAt: new Date().toISOString(), // Timestamp for when it was generated
+                    userId: userId // Store the user who generated it (for potential future moderation)
+                });
+                console.log("Quiz data saved to Firestore for:", chapterName);
+                // No message needed here, message for loading will be shown by getQuizFromFirestore
+            } catch (e) {
+                console.error("Error saving quiz to Firestore:", e);
+                showMessage(`Error saving quiz to database: ${e.message}`);
+            }
+        }
+
+        /* =========================
+           Gemini generate (30 MCQs)
+           ========================= */
+        async function generateMCQs(chapter) {
+            showMessage(`Generating questions for "${chapter}" — please wait... (This may take a moment)`, null);
+            const prompt = `
+Generate 30 multiple choice questions in JSON (array) for a quiz on the topic "${chapter}" for a Nepali educational platform. Each question must have exactly 4 options. Ensure the correct option is clearly indicated by its 0-indexed position (0-3). Provide a short explanation for the correct answer. The questions should be relevant to Nepali General Knowledge or Current Affairs, or the Constitution of Nepal, as appropriate for the chapter.
+
+Use exactly this JSON schema:
+[
+  {
+    "question": "text of the question",
+    "options": ["Option A","Option B","Option C","Option D"],
+    "correct": 0, // index of the correct option (0 for A, 1 for B, etc.)
+    "explanation": "short explanation for the correct answer"
+  }
+]
+Return JSON array only. Do not include any other text or markdown outside the JSON.
+`.trim();
+
+            const payload = {
+                contents: [{ role: "user", parts: [{ text: prompt }] }],
+                generationConfig: { responseMimeType: "application/json" }
+            };
+
+            try {
+                const r = await fetchWithExponentialBackoff(GEMINI_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!r.ok) {
+                    const errText = await r.text();
+                    throw new Error(`Gemini API failed: ${r.status} - ${errText}`);
+                }
+                const json = await r.json();
+                const raw = json?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+                const parsed = JSON.parse(raw);
+
+                // Basic validation of the parsed quiz data
+                if (!Array.isArray(parsed) || parsed.length === 0) {
+                    throw new Error("Gemini returned an empty or invalid quiz data structure.");
+                }
+                parsed.forEach((q, idx) => {
+                    if (!q.question || !Array.isArray(q.options) || q.options.length !== 4 || typeof q.correct !== 'number' || q.correct < 0 || q.correct > 3 || !q.explanation) {
+                        console.warn(`Question ${idx} failed schema validation:`, q);
+                        // Filter out malformed questions
+                        // For a robust app, you might want to retry generation or log errors server-side.
+                    }
+                });
+                showMessage(`Questions for "${chapter}" generated successfully!`);
+                return parsed.filter(q => q.question && Array.isArray(q.options) && q.options.length === 4 && typeof q.correct === 'number' && q.correct >= 0 && q.correct <= 3 && q.explanation);
+            } catch (e) {
+                console.error("Gemini error", e);
+                showMessage(`Failed to generate questions: ${e.message}. Please try again.`);
+                throw e;
+            }
+        }
+
+        /* =========================
+           Quiz UI functions
+           ========================= */
+        function renderQuestion() {
+            if (!quizData.length) {
+                el('question-text').innerText = "No questions loaded.";
+                el('options-container').innerHTML = '';
+                hide(el('explanation'));
+                el('question-num').innerText = '';
+                el('countdown').innerText = '';
+                return;
+            }
+
+            const q = quizData[currentQuestionIndex];
+            el('question-num').innerText = `Question ${currentQuestionIndex + 1} / ${quizData.length}`;
+            el('question-text').innerText = q.question || '';
+            el('explanation').classList.add('hidden'); // Hide explanation initially
+            el('explanation').innerText = '';
+            const cont = el('options-container'); cont.innerHTML = '';
+
+            const rootStyles = getComputedStyle(document.documentElement);
+            const cssVarLightGreen = rootStyles.getPropertyValue('--light-green');
+            const cssVarLightRed = rootStyles.getPropertyValue('--light-red');
+            const cssVarGreen = rootStyles.getPropertyValue('--green');
+            const cssVarRed = rootStyles.getPropertyValue('--red');
+            const cssVarBluePrimary = rootStyles.getPropertyValue('--color-blue-primary');
+            const cssVarAccentBlue = rootStyles.getPropertyValue('--color-accent-blue');
+            const cssVarTextLight = rootStyles.getPropertyValue('--color-text-light');
+
+
+            (q.options || []).forEach((opt, i) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = opt;
+                btn.dataset.index = i;
+                btn.dataset.answered = q.answered ? 'true' : 'false';
+
+                if (q.answered) {
+                    if (i === q.userAnswer) {
+                        btn.style.background = i === q.correct ? cssVarLightGreen : cssVarLightRed;
+                        btn.style.borderColor = i === q.correct ? cssVarGreen : cssVarRed;
+                        btn.style.color = i === q.correct ? cssVarBluePrimary : cssVarBluePrimary; // Text color on light backgrounds
+                    } else if (i === q.correct) {
+                        btn.style.background = cssVarLightGreen;
+                        btn.style.borderColor = cssVarGreen;
+                        btn.style.color = cssVarBluePrimary; // Text color on light backgrounds
+                    }
+                    show(el('explanation'));
+                    el('explanation').innerText = (q.userAnswer === q.correct ? '✅ Correct. ' : '❌ Incorrect. Correct answer: ' + (q.options && q.options[q.correct] ? q.options[q.correct] : '')) + (q.explanation ? ' — ' + q.explanation : '');
+                } else {
+                    btn.style.background = cssVarBluePrimary; // Default background
+                    btn.style.borderColor = cssVarBluePrimary; // Default border
+                    btn.style.color = cssVarTextLight; // Default text color
+                }
+
+
+                btn.onclick = () => {
+                    if (q.answered) return;
+                    q.answered = true;
+                    q.userAnswer = i;
+                    btn.dataset.answered = 'true';
+
+                    Array.from(cont.children).forEach(optionBtn => {
+                        const optionIndex = parseInt(optionBtn.dataset.index);
+                        if (optionIndex === i) {
+                            optionBtn.style.background = i === q.correct ? cssVarLightGreen : cssVarLightRed;
+                            optionBtn.style.borderColor = i === q.correct ? cssVarGreen : cssVarRed;
+                            optionBtn.style.color = cssVarBluePrimary; // Text color on light backgrounds
+                        } else if (optionIndex === q.correct) {
+                            optionBtn.style.background = cssVarLightGreen;
+                            optionBtn.style.borderColor = cssVarGreen;
+                            optionBtn.style.color = cssVarBluePrimary; // Text color on light backgrounds
+                        } else {
+                            optionBtn.style.background = cssVarBluePrimary;
+                            optionBtn.style.borderColor = cssVarBluePrimary;
+                            optionBtn.style.color = cssVarTextLight;
+                        }
+                    });
+
+                    show(el('explanation'));
+                    el('explanation').innerText = (i === q.correct ? '✅ Correct. ' : '❌ Incorrect. Correct answer: ' + (q.options && q.options[q.correct] ? q.options[q.correct] : '')) + (q.explanation ? ' — ' + q.explanation : '');
+                    clearInterval(questionTimer);
+                };
+                cont.appendChild(btn);
+            });
+
+            // Ensure buttons are correctly enabled/disabled based on current question
+            el('prev-btn').disabled = currentQuestionIndex === 0;
+            el('next-btn').disabled = currentQuestionIndex === quizData.length - 1;
+            el('skip-btn').disabled = q.answered; // Can't skip if already answered
+            el('submit-btn').disabled = false; // Always allow submitting
+
+
+            if (!q.answered) {
+                startQuestionTimer();
+            } else {
+                clearInterval(questionTimer);
+                el('countdown').innerText = 'Time: 0s (Answered)';
+            }
+        }
+
+        function nextQuestion() {
+            if (!quizData[currentQuestionIndex].answered) {
+                quizData[currentQuestionIndex].skipped = true;
+                quizData[currentQuestionIndex].answered = true;
+                quizData[currentQuestionIndex].userAnswer = null;
+            }
+
+            if (currentQuestionIndex < quizData.length - 1) {
+                currentQuestionIndex++; renderQuestion();
+            } else {
+                submitQuiz();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--; renderQuestion();
+            }
+        }
+
+        function skipQuestion() {
+            if (!quizData[currentQuestionIndex].answered) {
+                quizData[currentQuestionIndex].skipped = true;
+                quizData[currentQuestionIndex].answered = true;
+                quizData[currentQuestionIndex].userAnswer = null;
+            }
+            nextQuestion();
+        }
+
+        function startQuestionTimer() {
+            let timeLeft = 30; // 30 seconds per question
+            el('countdown').innerText = `Time: ${timeLeft}s`;
+            if (questionTimer) clearInterval(questionTimer);
+            questionTimer = setInterval(() => {
+                timeLeft--;
+                el('countdown').innerText = `Time: ${timeLeft}s`;
+                if (timeLeft <= 0) {
+                    clearInterval(questionTimer);
+                    if (!quizData[currentQuestionIndex].answered) {
+                        quizData[currentQuestionIndex].skipped = true;
+                        quizData[currentQuestionIndex].answered = true;
+                        quizData[currentQuestionIndex].userAnswer = null;
+                    }
+                    if (currentQuestionIndex < quizData.length - 1) { currentQuestionIndex++; renderQuestion(); }
+                    else submitQuiz();
+                }
+            }, 1000);
+        }
+
+        function submitQuiz() {
+            if (questionTimer) clearInterval(questionTimer);
+
+            if (!quizData[currentQuestionIndex].answered) {
+                quizData[currentQuestionIndex].skipped = true;
+                quizData[currentQuestionIndex].answered = true;
+                quizData[currentQuestionIndex].userAnswer = null;
+            }
+
+            let correct = 0, wrong = 0, skipped = 0;
+            quizData.forEach(q => {
+                if (q.answered && q.userAnswer !== null && q.userAnswer === q.correct) correct++;
+                else if (q.answered && q.userAnswer !== null && q.userAnswer !== q.correct) wrong++;
+                else if (q.skipped) skipped++;
+            });
+
+            el('res-total').innerText = quizData.length;
+            el('res-correct').innerText = correct;
+            el('res-wrong').innerText = wrong;
+            el('res-skipped').innerText = skipped;
+
+            hide(el('quiz-full-area'));
+            show(el('results-area'));
+            el('save-result-btn').disabled = false;
+            renderLocalHistory();
+        }
+
+        /* =========================
+           Main Quiz Flow Management
+           ========================= */
+
+        async function generateAndRenderQuiz(chapterName) {
+            currentSelectedChapter = chapterName; // Set the current chapter
+
+            // Hide chapter selection, show quiz loading state
+            hide(el('chapter-selection-area'));
+            show(el('quiz-full-area'));
+            el('quiz-chapter-info').innerText = `Loading quiz for: ${chapterName}...`;
+            el('question-text').innerText = 'Please wait, fetching questions...';
+            el('options-container').innerHTML = '';
+            el('prev-btn').disabled = true;
+            el('next-btn').disabled = true;
+            el('skip-btn').disabled = true;
+            el('submit-btn').disabled = true;
+
+
+            try {
+                let fetchedQuizData = await getQuizFromFirestore(chapterName);
+
+                if (fetchedQuizData && fetchedQuizData.length > 0) {
+                    quizData = fetchedQuizData.map(q => ({ ...q, answered: false, userAnswer: null, skipped: false }));
+                    currentQuestionIndex = 0;
+                    el('quiz-chapter-info').innerText = `Quiz on: ${chapterName}`;
+                    renderQuestion();
+                } else {
+                    // If not found in Firestore, generate new questions
+                    fetchedQuizData = await generateMCQs(chapterName);
+                    if (fetchedQuizData && fetchedQuizData.length > 0) {
+                        // Save newly generated questions to Firestore for future use
+                        await saveQuizToFirestore(chapterName, fetchedQuizData);
+                        quizData = fetchedQuizData.map(q => ({ ...q, answered: false, userAnswer: null, skipped: false }));
+                        currentQuestionIndex = 0;
+                        el('quiz-chapter-info').innerText = `Quiz on: ${chapterName}`;
+                        renderQuestion();
+                    } else {
+                        throw new Error("Could not get or generate quiz data, please try again.");
+                    }
+                }
+            } catch (error) {
+                console.error("Error generating/loading quiz:", error);
+                showMessage(`Failed to load quiz for "${chapterName}": ${error.message || error}. Please try again.`);
+                // Return to chapter selection on error
+                hide(el('quiz-full-area'));
+                show(el('chapter-selection-area'));
+            }
+        }
+
+
+        /* =========================
+           Event wiring
+           ========================= */
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Firebase Initialization
+            try {
+                app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+
+                if (initialAuthToken) {
+                    try {
+                        await signInWithCustomToken(auth, initialAuthToken);
+                    } catch (customTokenError) {
+                        console.warn("Custom token sign-in failed, attempting anonymous sign-in:", customTokenError);
+                        // Fallback to anonymous sign-in if custom token fails
+                        await signInAnonymously(auth);
+                    }
+                } else {
+                    await signInAnonymously(auth);
+                }
+                userId = auth.currentUser?.uid || crypto.randomUUID();
+                console.log("Firebase initialized and user signed in. User ID:", userId);
+            } catch (error) {
+                console.error("Error initializing Firebase or signing in:", error);
+                showMessage(`Error initializing app: ${error.message}. Quiz features may not work.`);
+                return;
+            }
+
+            // Mobile menu toggle
+            const mobileMenuButton = el('mobile-menu-button');
+            const mobileMenu = el('mobile-menu');
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Scroll Reveal Animations
+            const revealElements = document.querySelectorAll('.reveal-item');
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            revealElements.forEach(el => observer.observe(el));
+
+            // Accordion / Collapsible Chapter Logic
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    header.classList.toggle('expanded');
+                    content.classList.toggle('expanded');
+                    const isExpanded = header.classList.contains('expanded');
+                    header.setAttribute('aria-expanded', isExpanded);
+                });
+                header.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        header.click();
+                    }
+                });
+            });
+
+            // "Start Quiz" button click handlers inside each accordion
+            const startQuizButtons = document.querySelectorAll('.start-quiz-btn');
+            startQuizButtons.forEach(button => {
+                button.addEventListener('click', async () => {
+                    const chapterName = button.dataset.chapterName;
+                    await generateAndRenderQuiz(chapterName);
+                });
+            });
+
+            // Quiz navigation and submission buttons
+            el('prev-btn').onclick = prevQuestion;
+            el('next-btn').onclick = nextQuestion;
+            el('skip-btn').onclick = skipQuestion;
+            el('submit-btn').onclick = submitQuiz;
+
+            el('restart-btn').onclick = () => {
+                // Return to chapter selection and clear quiz state
+                hide(el('quiz-full-area'));
+                hide(el('results-area'));
+                show(el('chapter-selection-area'));
+                quizData = [];
+                currentQuestionIndex = 0;
+                currentSelectedChapter = null;
+                if (questionTimer) clearInterval(questionTimer);
+                renderLocalHistory(); // Ensure local history is updated
+            };
+
+            el('save-result-btn').onclick = async () => {
+                const result = {
+                    name: getParticipantNameLocally() || 'Anonymous', // Use locally stored name
+                    chapter: currentSelectedChapter,
+                    date: new Date().toISOString(),
+                    total: quizData.length,
+                    correct: parseInt(el('res-correct').innerText),
+                    wrong: parseInt(el('res-wrong').innerText),
+                    skipped: parseInt(el('res-skipped').innerText)
+                };
+                saveQuizResultLocally(result);
+                showMessage('Your quiz result has been saved locally!');
+                el('save-result-btn').disabled = true;
+            };
+
+            // Set up participant name input and local history
+            const participantNameInput = document.createElement('input');
+            participantNameInput.type = 'text';
+            participantNameInput.placeholder = 'Your name (for local history)';
+            participantNameInput.className = 'w-full p-3 rounded-lg bg-nq-blue-primary text-nq-text-light border border-nq-accent-blue focus:ring-nq-accent-blue focus:border-nq-accent-blue mb-4';
+            participantNameInput.id = 'participant-name-input';
+            participantNameInput.value = getParticipantNameLocally();
+            participantNameInput.addEventListener('input', (e) => saveParticipantNameLocally(e.target.value));
+
+            const participantNameContainer = document.querySelector('#chapter-selection-area .text-center'); // Find a good place, e.g., below the main description
+            if (participantNameContainer) {
+                participantNameContainer.insertBefore(participantNameInput, participantNameContainer.firstChild);
+            }
+
+            renderLocalHistory(); // Initial render of local history
+        });
+
+        /* =========================
+           small helper: escape html
+           ========================= */
+        function escapeHtml(str) {
+            return String(str).replace(/[&<>"']/g, s => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[s]));
+        }
+    </script>
+</body>
+</html>

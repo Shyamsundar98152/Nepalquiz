@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About NepalQuiz – Learn and Grow!</title>
+    <meta name="description" content="Learn more about NepalQuiz, Nepal’s leading online platform for academic, Loksewa, GK, and fun quizzes designed to help you learn and compete.">
+
+    <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
+    <meta property="og:title" content="About NepalQuiz – Learn and Grow!">
+    <meta property="og:description" content="NepalQuiz is Nepal’s ultimate quiz platform for CEE, NEET, Loksewa, GK, and fun quizzes. Play, learn, and compete with friends online.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nepalquiz.xyz/about.html">
+    <meta property="og:image" content="https://placehold.co/1200x630/1A374D/4DC0B5?text=NepalQuiz_About"> <!-- Placeholder image updated for new theme -->
+
+    <!-- Schema.org Structured Data (Adjusted for AboutPage if needed, or generic for EducationalWebsite) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "About NepalQuiz",
+      "url": "https://nepalquiz.xyz/about.html",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://nepalquiz.xyz/about.html"
+      },
+      "description": "Nepal's ultimate online quiz platform for academic, Loksewa, GK, and fun quizzes.",
+      "publisher": {
+        "@type": "EducationalOrganization",
+        "name": "NepalQuiz",
+        "url": "https://nepalquiz.xyz/"
+      }
+    }
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Poppins (English) & Noto Sans Devanagari (Nepali) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* New Custom Tailwind Colors: Blue, Black, and Accent Aqua */
+        :root {
+            --color-blue-primary: #1A374D; /* Deep Blue for main sections */
+            --color-black-primary: #0A0A0A; /* Near Black for backgrounds/text */
+            --color-accent-blue: #4DC0B5; /* Vibrant Teal/Aqua for accents and highlights */
+            --color-text-light: #F8F8F8; /* Off-white for light text on dark backgrounds */
+            --color-text-dark: #A0AEC0; /* Lighter gray for secondary text on dark backgrounds */
+            --color-background-soft-dark: #1E3A4D; /* Slightly lighter dark background for contrast */
+        }
+
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+        .font-devanagari { font-family: 'Noto Sans Devanagari', sans-serif; }
+        .bg-nq-blue-primary { background-color: var(--color-blue-primary); }
+        .text-nq-blue-primary { color: var(--color-blue-primary); }
+        .bg-nq-black-primary { background-color: var(--color-black-primary); }
+        .text-nq-black-primary { color: var(--color-black-primary); }
+        .bg-nq-accent-blue { background-color: var(--color-accent-blue); }
+        .text-nq-accent-blue { color: var(--color-accent-blue); }
+        .bg-nq-text-light { background-color: var(--color-text-light); }
+        .text-nq-text-light { color: var(--color-text-light); }
+        .text-nq-text-dark { color: var(--color-text-dark); }
+        .bg-nq-background-soft-dark { background-color: var(--color-background-soft-dark); }
+
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-black-primary); /* Dark background for the whole page */
+            color: var(--color-text-light); /* Light text on dark background */
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+        }
+
+        /* Button hover glow effect */
+        .btn-glow {
+            box-shadow: 0 0 0 rgba(77, 192, 181, 0); /* Initial transparent shadow with accent color */
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 20px rgba(77, 192, 181, 0.8), 0 0 40px rgba(77, 192, 181, 0.6);
+            transform: translateY(-3px);
+        }
+
+        /* Scroll reveal animations */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-poppins antialiased">
+
+    <!-- Header - Copied from homepage -->
+    <header class="sticky top-0 z-50 bg-nq-blue-primary text-nq-text-light shadow-lg py-4 px-6 md:px-12 rounded-b-xl">
+        <nav class="container mx-auto flex justify-between items-center flex-wrap">
+            <!-- Logo -->
+            <a href="#" class="text-3xl font-extrabold text-nq-accent-blue tracking-wide rounded-md">NepalQuiz</a>
+
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-button" class="md:hidden text-nq-text-light focus:outline-none focus:ring-2 focus:ring-nq-accent-blue rounded-md p-2">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+
+            <!-- Navigation Links (Desktop) -->
+            <ul class="hidden md:flex space-x-8 font-semibold">
+                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Home</a></li>
+                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Quizzes</a></li>
+                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Leaderboard</a></li>
+                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">About</a></li>
+                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Contact</a></li>
+            </ul>
+
+            <!-- Language Toggle (Placeholder) -->
+            <div class="hidden md:block">
+                <button class="text-nq-text-light border border-nq-accent-blue rounded-full px-4 py-2 text-sm hover:bg-nq-accent-blue hover:text-nq-blue-primary transition duration-300">
+                    <i class="fas fa-globe mr-2"></i> भाषा
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="md:hidden mt-4 text-center hidden bg-nq-blue-primary/90 rounded-b-lg py-2">
+            <ul class="flex flex-col space-y-3 font-medium">
+                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Home</a></li>
+                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Quizzes</a></li>
+                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Leaderboard</a></li>
+                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">About</a></li>
+                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Contact</a></li>
+                <li>
+                    <button class="w-full text-nq-text-light border border-nq-accent-blue rounded-full px-4 py-2 text-sm hover:bg-nq-accent-blue hover:text-nq-blue-primary transition duration-300 mt-2">
+                        <i class="fas fa-globe mr-2"></i> भाषा
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Content Area for the About Us Page -->
+    <main class="container mx-auto px-6 py-16">
+        <section class="bg-nq-background-soft-dark p-8 rounded-2xl shadow-lg border border-nq-blue-primary reveal-item">
+            <h1 class="text-4xl font-extrabold text-center mb-8 text-nq-accent-blue">About NepalQuiz</h1>
+            <p class="text-lg mb-6 text-nq-text-dark leading-relaxed">
+                Welcome to NepalQuiz! We are Nepal's premier online platform dedicated to helping students and enthusiasts test and expand their knowledge across various subjects. Our mission is to make learning engaging, accessible, and fun for everyone.
+            </p>
+            <p class="text-lg mb-6 text-nq-text-dark leading-relaxed">
+                Whether you're preparing for critical exams like **SEE**, aiming for success in **Loksewa**, or simply want to stay updated with **Nepal GK & Current Affairs**, NepalQuiz provides a comprehensive range of quizzes tailored to your needs. We believe in continuous learning and aim to foster a vibrant community of knowledge-seekers.
+            </p>
+            <p class="text-lg text-nq-text-dark leading-relaxed">
+                Join us today and embark on your journey to mastery!
+            </p>
+
+            <div class="mt-12 text-center reveal-item">
+                <h2 class="text-3xl font-bold mb-6 text-nq-accent-blue">Our Vision</h2>
+                <p class="text-lg text-nq-text-dark max-w-2xl mx-auto leading-relaxed">
+                    To be the leading educational quiz platform in Nepal, empowering individuals through knowledge and fostering a culture of lifelong learning and healthy competition.
+                </p>
+            </div>
+
+            <div class="mt-12 text-center reveal-item">
+                <h2 class="text-3xl font-bold mb-6 text-nq-accent-blue">Our Team</h2>
+                <p class="text-lg text-nq-text-dark max-w-2xl mx-auto leading-relaxed">
+                    We are a passionate team of educators, developers, and quiz enthusiasts committed to delivering high-quality content and an intuitive user experience.
+                </p>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="#" class="btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-3 px-8 rounded-full text-md shadow-xl hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-nq-accent-blue/50">
+                    Explore Quizzes
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer - Copied from homepage -->
+    <footer class="bg-nq-blue-primary text-nq-text-light py-10 px-6 md:px-12 mt-16 rounded-t-xl">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <!-- Copyright & Logo -->
+            <div>
+                <a href="#" class="text-3xl font-extrabold text-nq-accent-blue tracking-wide mb-4 inline-block">NepalQuiz</a>
+                <p class="text-sm text-nq-text-dark">&copy; 2025 NepalQuiz. All rights reserved.</p>
+            </div>
+
+            <!-- Quick Navigation -->
+            <div>
+                <h4 class="text-xl font-semibold mb-4 text-nq-accent-blue">Quick Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="index.html" class="hover:text-nq-accent-blue transition duration-300">Home</a></li>
+                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Quizzes</a></li>
+                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Leaderboard</a></li>
+                    <li><a href="about-us.html" class="hover:text-nq-accent-blue transition duration-300">About Us</a></li>
+                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Links -->
+            <div>
+                <h4 class="text-xl font-semibold mb-4 text-nq-accent-blue">Connect With Us</h4>
+                <div class="flex justify-center md:justify-start space-x-6 text-2xl">
+                    <a href="#" class="hover:text-nq-accent-blue hover:scale-110 transition duration-300" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-nq-accent-blue hover:scale-110 transition duration-300" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-nq-accent-blue hover:scale-110 transition duration-300" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-nq-accent-blue hover:scale-110 transition duration-300" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle - Copied from homepage
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Scroll Reveal Animations using Intersection Observer - Copied from homepage
+            const revealElements = document.querySelectorAll('.reveal-item');
+
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: '0px',
+                threshold: 0.1 // 10% of item visible to trigger
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Stop observing once visible
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+            revealElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

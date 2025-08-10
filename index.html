@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NepalQuiz – Play GK, CEE, NEET, and Loksewa Quizzes Online</title>
+    <meta name="description" content="NepalQuiz is Nepal’s ultimate quiz platform for CEE, NEET, Loksewa, GK, and fun quizzes. Play, learn, and compete with friends online.">
+
+    <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
+    <meta property="og:title" content="NepalQuiz – Play GK, CEE, NEET, and Loksewa Quizzes Online">
+    <meta property="og:description" content="NepalQuiz is Nepal’s ultimate quiz platform for CEE, NEET, Loksewa, GK, and fun quizzes. Play, learn, and compete with friends online.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nepalquiz.xyz/">
+    <meta property="og:image" content="https://placehold.co/1200x630/1A374D/4DC0B5?text=NepalQuiz"> <!-- Placeholder image updated for new theme -->
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "NepalQuiz",
+      "url": "https://nepalquiz.xyz/",
+      "logo": "https://placehold.co/60x60/1A374D/4DC0B5?text=NQ",
+      "description": "Nepal's ultimate online quiz platform for academic, Loksewa, GK, and fun quizzes.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Virtual Platform",
+        "addressLocality": "Kathmandu",
+        "addressRegion": "Bagmati",
+        "addressCountry": "NP"
+      },
+      "sameAs": [
+        "https://www.facebook.com/nepalquiz",
+        "https://twitter.com/nepalquiz",
+        "https://www.instagram.com/nepalquiz"
+      ]
+    }
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Poppins (English) & Noto Sans Devanagari (Nepali) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* New Custom Tailwind Colors: Blue, Black, and Accent Aqua */
+        :root {
+            --color-blue-primary: #1A374D; /* Deep Blue for main sections */
+            --color-black-primary: #0A0A0A; /* Near Black for backgrounds/text */
+            --color-accent-blue: #4DC0B5; /* Vibrant Teal/Aqua for accents and highlights */
+            --color-text-light: #F8F8F8; /* Off-white for light text on dark backgrounds */
+            --color-text-dark: #A0AEC0; /* Lighter gray for secondary text on dark backgrounds */
+            --color-background-soft-dark: #1E3A4D; /* Slightly lighter dark background for contrast */
+        }
+
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+        .font-devanagari { font-family: 'Noto Sans Devanagari', sans-serif; }
+        .bg-nq-blue-primary { background-color: var(--color-blue-primary); }
+        .text-nq-blue-primary { color: var(--color-blue-primary); }
+        .bg-nq-black-primary { background-color: var(--color-black-primary); }
+        .text-nq-black-primary { color: var(--color-black-primary); }
+        .bg-nq-accent-blue { background-color: var(--color-accent-blue); }
+        .text-nq-accent-blue { color: var(--color-accent-blue); }
+        .bg-nq-text-light { background-color: var(--color-text-light); }
+        .text-nq-text-light { color: var(--color-text-light); }
+        .text-nq-text-dark { color: var(--color-text-dark); }
+        .bg-nq-background-soft-dark { background-color: var(--color-background-soft-dark); }
+
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-black-primary); /* Dark background for the whole page */
+            color: var(--color-text-light); /* Light text on dark background */
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+        }
+
+        /* Hero Section Background Slider */
+        .hero-slider-bg {
+            background-size: cover;
+            background-position: center;
+            transition: background-image 1s ease-in-out;
+            filter: brightness(0.5); /* Darken background significantly for text readability */
+        }
+
+        /* Button hover glow effect */
+        .btn-glow {
+            box-shadow: 0 0 0 rgba(77, 192, 181, 0); /* Initial transparent shadow with accent color */
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 20px rgba(77, 192, 181, 0.8), 0 0 40px rgba(77, 192, 181, 0.6);
+            transform: translateY(-3px);
+        }
+
+        /* Card hover animations */
+        .card-hover-zoom {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card-hover-zoom:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* Darker shadow for dark theme */
+        }
+
+        /* Scroll reveal animations */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Leaderboard entry animation (removed, but keeping class for consistency if needed elsewhere) */
+        .leaderboard-entry {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        /* Delay animation for each entry */
+        .leaderboard-entry:nth-child(1) { transition-delay: 0.1s; }
+        .leaderboard-entry:nth-child(2) { transition-delay: 0.2s; }
+        .leaderboard-entry:nth-child(3) { transition-delay: 0.3s; }
+        .leaderboard-entry:nth-child(4) { transition-delay: 0.4s; }
+        .leaderboard-entry:nth-child(5) { transition-delay: 0.5s; }
+        .leaderboard-entry.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="font-poppins antialiased">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-nq-blue-primary text-nq-text-light shadow-lg py-4 px-6 md:px-12 rounded-b-xl">
+        <nav class="container mx-auto flex justify-between items-center flex-wrap">
+            <!-- Logo -->
+            <a href="#" class="text-3xl font-extrabold text-nq-accent-blue tracking-wide rounded-md">NepalQuiz</a>
+
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-button" class="md:hidden text-nq-text-light focus:outline-none focus:ring-2 focus:ring-nq-accent-blue rounded-md p-2">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+
+            <!-- Navigation Links (Desktop) -->
+            <ul class="hidden md:flex space-x-8 font-semibold">
+                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Home</a></li>
+                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Quizzes</a></li>
+                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Leaderboard</a></li>
+                <li><a href="about-us.html" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">About</a></li>
+                <li><a href="#" class="hover:text-nq-accent-blue transition duration-300 rounded-md py-2 px-3">Contact</a></li>
+            </ul>
+
+            <!-- Language Toggle (Placeholder) -->
+            <div class="hidden md:block">
+                <button class="text-nq-text-light border border-nq-accent-blue rounded-full px-4 py-2 text-sm hover:bg-nq-accent-blue hover:text-nq-blue-primary transition duration-300">
+                    <i class="fas fa-globe mr-2"></i> भाषा
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="md:hidden mt-4 text-center hidden bg-nq-blue-primary/90 rounded-b-lg py-2">
+            <ul class="flex flex-col space-y-3 font-medium">
+                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Home</a></li>
+                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Quizzes</a></li>
+                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Leaderboard</a></li>
+                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">About</a></li>
+                <li><a href="#" class="block py-2 hover:bg-nq-accent-blue hover:text-nq-blue-primary rounded-lg transition duration-300">Contact</a></li>
+                <li>
+                    <button class="w-full text-nq-text-light border border-nq-accent-blue rounded-full px-4 py-2 text-sm hover:bg-nq-accent-blue hover:text-nq-blue-primary transition duration-300 mt-2">
+                        <i class="fas fa-globe mr-2"></i> भाषा
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero-section" class="relative bg-gradient-to-br from-nq-blue-primary to-black text-nq-text-light py-20 md:py-32 flex items-center justify-center text-center overflow-hidden shadow-inner rounded-b-3xl min-h-[500px]">
+        <!-- Dynamic Background Slider -->
+        <div id="hero-background" class="absolute inset-0 hero-slider-bg"></div>
+
+        <div class="relative z-10 p-6 max-w-4xl mx-auto reveal-item">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-8 drop-shadow-lg">
+                <span class="block text-nq-accent-blue font-poppins">Test Your Knowledge – Anywhere, Anytime!</span>
+                <span class="block mt-2 font-devanagari text-nq-text-light/90 text-3xl sm:text-4xl md:text-5xl">आफ्नो ज्ञान परीक्षण गर्नुहोस् – जुनसुकै बेला, जुनसुकै स्थानमा!</span>
+            </h1>
+            <p class="text-lg md:text-xl mb-10 opacity-90 max-w-2xl mx-auto text-nq-text-dark">
+                Dive into a world of diverse quizzes designed for learners of all ages.
+                <span class="block mt-2 text-sm text-nq-accent-blue">#NepalQuiz #GK #CEE #NEET #Loksewa #OnlineQuiz #EducationNepal</span>
+            </p>
+            <button class="btn-glow bg-nq-accent-blue text-nq-blue-primary font-bold py-4 px-10 rounded-full text-lg shadow-xl hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-nq-accent-blue/50">
+                Start Quiz
+            </button>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-6 py-16">
+
+        <!-- Categories Section -->
+        <section class="mb-16 reveal-item">
+            <h2 class="text-3xl font-bold text-center mb-10 text-nq-accent-blue">Explore Quiz Categories</h2>
+            <div id="quiz-categories" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Category Cards will be dynamically inserted here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Upcoming Live Quiz Banner -->
+        <section class="bg-nq-blue-primary text-nq-text-light p-8 rounded-2xl text-center shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out reveal-item">
+            <h2 class="text-3xl font-bold mb-4">Upcoming Live Quiz!</h2>
+            <p class="text-xl mb-6 text-nq-text-dark">Mathematics Challenge - Don't Miss Out!</p>
+            <div id="countdown" class="flex justify-center items-center space-x-4 text-nq-accent-blue font-extrabold text-5xl md:text-6xl text-shadow-lg countdown-text">
+                <span id="days">00</span><span class="text-3xl text-nq-text-light">:</span>
+                <span id="hours">00</span><span class="text-3xl text-nq-text-light">:</span>
+                <span id="minutes">00</span><span class="text-3xl text-nq-text-light">:</span>
+                <span id="seconds">00</span>
+            </div>
+            <p class="text-lg mt-6 text-nq-text-light/90">Get ready to compete live!</p>
+        </section>
+
+        <!-- Features Section (Now "Our Core Offerings") -->
+        <section class="mt-16 reveal-item">
+            <h2 class="text-3xl font-bold text-center mb-10 text-nq-accent-blue">Our Core Offerings</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="flex flex-col items-center text-center p-6 bg-nq-background-soft-dark rounded-2xl shadow-md card-hover-zoom">
+                    <i class="fas fa-calendar-day text-5xl text-nq-accent-blue mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-nq-text-light">Daily Quizzes</h3>
+                    <p class="text-sm text-nq-text-dark">Enhance your knowledge with new quizzes every day!</p>
+                </div>
+                <div class="flex flex-col items-center text-center p-6 bg-nq-background-soft-dark rounded-2xl shadow-md card-hover-zoom">
+                    <i class="fas fa-graduation-cap text-5xl text-nq-accent-blue mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-nq-text-light">SEE Prep</h3>
+                    <p class="text-sm text-nq-text-dark">Comprehensive practice for Secondary Education Exam.</p>
+                </div>
+                <div class="flex flex-col items-center text-center p-6 bg-nq-background-soft-dark rounded-2xl shadow-md card-hover-zoom">
+                    <i class="fas fa-gavel text-5xl text-nq-accent-blue mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-nq-text-light">Loksewa Prep</h3>
+                    <p class="text-sm text-nq-text-dark">Dedicated quizzes for Government Service Exam aspirants.</p>
+                </div>
+                <div class="flex flex-col items-center text-center p-6 bg-nq-background-soft-dark rounded-2xl shadow-md card-hover-zoom">
+                    <i class="fas fa-globe-asia text-5xl text-nq-accent-blue mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-nq-text-light">Nepal GK</h3>
+                    <p class="text-sm text-nq-text-dark">Sharpen your knowledge of Nepal's general knowledge & current affairs.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-nq-blue-primary text-nq-text-light py-10 px-6 md:px-12 mt-16 rounded-t-xl">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <!-- Copyright & Logo -->
+            <div>
+                <a href="#" class="text-3xl font-extrabold text-nq-accent-blue tracking-wide mb-4 inline-block">NepalQuiz</a>
+                <p class="text-sm text-nq-text-dark">&copy; 2025 NepalQuiz. All rights reserved.</p>
+            </div>
+
+            <!-- Quick Navigation -->
+            <div>
+                <h4 class="text-xl font-semibold mb-4 text-nq-accent-blue">Quick Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Home</a></li>
+                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Quizzes</a></li>
+                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Leaderboard</a></li>
+                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">About Us</a></li>
+                    <li><a href="#" class="hover:text-nq-accent-blue transition duration-300">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Links -->
+            <div>
+                <h4 class="text-xl font-semibold mb-4 text-nq-accent-blue">Connect With Us</h4>
+                <div class="flex justify-center md:justify-start space-x-6 text-2xl">
+                    <a href="#" class="hover:text-nq-accent-blue hover:scale-110 transition duration-300" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-nq-accent-blue hover:scale-110 transition duration-300" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-nq-accent-blue hover:scale-110 transition duration-300" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-nq-accent-blue hover:scale-110 transition duration-300" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Helper Functions for Backend Data Mocking ---
+
+        /**
+         * Simulates fetching quiz categories from a backend API.
+         * @returns {Promise<Array<Object>>} A promise that resolves with an array of quiz categories.
+         */
+        async function fetchQuizCategories() {
+            const mockCategories = [
+                { id: 'academic', name: 'Academic Quizzes', icon: '📚', description: '(CEE/NEET/SEE)' },
+                { id: 'loksewa', name: 'Loksewa Prep', icon: '🏛️', description: 'Prepare for government exams' },
+                { id: 'nepal-gk', name: 'Nepal GK & Current Affairs', icon: '🇳🇵', description: 'Stay updated on Nepal' },
+                { id: 'fun', name: 'Fun Quizzes', icon: '🎉', description: 'Test your general knowledge' },
+            ];
+            return new Promise(resolve => setTimeout(() => resolve(mockCategories), 300)); // Simulate network delay
+        }
+
+        // --- Core JavaScript Logic ---
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Hero Background Image Slider
+            const heroBackground = document.getElementById('hero-background');
+            const heroImages = [
+                'https://placehold.co/1920x1080/1A374D/4DC0B5?text=Nepal_Mountains', // Placeholder Mountain image (themed)
+                'https://placehold.co/1920x1080/0A0A0A/4DC0B5?text=Nepal_Temple',    // Placeholder Temple image (themed)
+                'https://placehold.co/1920x1080/1A374D/4DC0B5?text=Nepal_Flag',     // Placeholder Flag image (themed)
+                'https://placehold.co/1920x1080/0A0A0A/4DC0B5?text=Nepal_Classroom' // Placeholder Classroom image (themed)
+            ];
+            let currentImageIndex = 0;
+
+            function updateHeroBackground() {
+                currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+                heroBackground.style.backgroundImage = `url('${heroImages[currentImageIndex]}')`;
+                // Preload next image to avoid flicker
+                const nextImage = new Image();
+                nextImage.src = heroImages[(currentImageIndex + 1) % heroImages.length];
+            }
+            // Start the slider (change every 5 seconds)
+            heroBackground.style.backgroundImage = `url('${heroImages[currentImageIndex]}')`; // Initial image
+            setInterval(updateHeroBackground, 5000);
+
+            // Populate Leaderboard (Leaderboard section is removed, this function is no longer needed)
+            // No need to call or define fetchLeaderboardData() here anymore.
+
+            // Populate Quiz Categories
+            const categoriesContainer = document.getElementById('quiz-categories');
+            fetchQuizCategories().then(data => {
+                categoriesContainer.innerHTML = ''; // Clear any placeholders
+                data.forEach(category => {
+                    const categoryCard = document.createElement('a');
+                    categoryCard.href = `#category-${category.id}`; // Link to specific category page/section
+                    categoryCard.className = 'card-hover-zoom block bg-nq-background-soft-dark p-6 rounded-2xl shadow-md text-center border border-nq-blue-primary';
+                    categoryCard.innerHTML = `
+                        <div class="text-5xl mb-4 text-nq-accent-blue">${category.icon}</div>
+                        <h3 class="text-xl font-semibold mb-2 text-nq-text-light">${category.name}</h3>
+                        <p class="text-sm text-nq-text-dark">${category.description}</p>
+                    `;
+                    categoriesContainer.appendChild(categoryCard);
+                });
+            }).catch(error => {
+                console.error('Error fetching quiz categories:', error);
+                categoriesContainer.innerHTML = '<p class="text-center text-red-500 col-span-full">Failed to load categories. Please try again later.</p>';
+            });
+
+            // Countdown Timer Logic
+            const countdownElement = document.getElementById('countdown');
+            const daysElement = document.getElementById('days');
+            const hoursElement = document.getElementById('hours');
+            const minutesElement = document.getElementById('minutes');
+            const secondsElement = document.getElementById('seconds');
+
+            /**
+             * Backend configurable quiz date. In a real scenario, this would be fetched from a DB.
+             * Example: Quiz is 3 days from now, at 10 AM.
+             */
+            const getBackendQuizDate = () => {
+                const now = new Date();
+                const quizTime = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 3, 10, 0, 0); // Example: 3 days from now, at 10:00 AM
+                return quizTime;
+            };
+            const quizDate = getBackendQuizDate();
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = quizDate.getTime() - now;
+
+                if (distance < 0) {
+                    countdownElement.innerHTML = "<span class='text-nq-accent-blue text-4xl'>Quiz has started!</span>";
+                    clearInterval(countdownInterval);
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                daysElement.textContent = String(days).padStart(2, '0');
+                hoursElement.textContent = String(hours).padStart(2, '0');
+                minutesElement.textContent = String(minutes).padStart(2, '0');
+                secondsElement.textContent = String(seconds).padStart(2, '0');
+            }
+
+            // Update the countdown every 1 second
+            const countdownInterval = setInterval(updateCountdown, 1000);
+            updateCountdown(); // Initial call to display immediately
+
+            // Scroll Reveal Animations using Intersection Observer
+            const revealElements = document.querySelectorAll('.reveal-item');
+            // Removed leaderboardEntries as the section no longer exists.
+
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: '0px',
+                threshold: 0.1 // 10% of item visible to trigger
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Stop observing once visible
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+            revealElements.forEach(el => observer.observe(el));
+            // No longer observing leaderboard entries.
+        });
+    </script>
+</body>
+</html>
