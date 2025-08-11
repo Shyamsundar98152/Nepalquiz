@@ -1,4 +1,4 @@
-# 🇳🇵 NepalQuiz – Test Your Knowledge
+# NepalQuiz – Test Your Knowledge
 
 **NepalQuiz** is an online quiz platform designed for students, aspirants, and knowledge enthusiasts in Nepal.  
 Play quizzes for **Loksewa**, **CEE**, **NEET**, **General Knowledge**, **Current Affairs**, and more – compete with friends and track your rank on live leaderboards.  
